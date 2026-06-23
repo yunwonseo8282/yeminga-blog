@@ -57,9 +57,24 @@
           <button class="filter-btn" data-filter="relation">인간관계 심리</button>
         </div>
 
-        <!-- 글 카드가 JS로 자동 생성됩니다 -->
+        <!-- 글 카드는 build.js가 posts/posts.json을 읽어 정적으로 생성합니다.
+             (node build.js 실행) JS를 꺼도 카드가 그대로 존재합니다.
+             아래 마커 사이는 빌드 때 자동으로 교체되니 직접 수정하지 마세요. -->
         <div id="post-grid" class="post-grid">
-          <!-- main.js의 posts 배열을 읽어 렌더링 -->
+          <!-- POSTS_START -->
+          <a class="post-card" href="/posts/sample-post.html" data-category="consume">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="card-body">
+              <span class="badge badge--consume">소비 심리</span>
+              <h2 class="card-title">예시 글: 나는 왜 세일만 하면 지갑을 열까?</h2>
+              <p class="card-excerpt">할인 앞에서 마음이 흔들리는 이유를 예밍과 함께 가볍게 들여다보는 예시 글입니다. 세일 문구를 보면 왜 평소보다 지갑이 쉽게 열리는지, 그 안에 숨은 심리를 살펴봐요.</p>
+              <div class="card-meta">
+                <span>예밍이네 심리사전</span>
+                <time datetime="2026-06-23">2026.06.23</time>
+              </div>
+            </div>
+          </a>
+          <!-- POSTS_END -->
         </div>
       </section>
     </div>

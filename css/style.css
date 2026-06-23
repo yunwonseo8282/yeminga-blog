@@ -284,6 +284,11 @@ a:hover {
   color: var(--color-text-soft);
   margin: 0;
   flex: 1;
+  /* 요약은 최대 3줄까지만 표시 (넘치면 ... 처리) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .post-card .card-meta {
