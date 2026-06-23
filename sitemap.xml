@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  사이트맵 관리 안내
+  새 글을 추가하면 아래 형식으로 <url> 블록을 하나 추가하세요.
+  <loc>에는 글의 전체 주소를, <lastmod>에는 수정일(YYYY-MM-DD)을 적습니다.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://yeminga.com/</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/about.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/privacy.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/posts/sample-post.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
