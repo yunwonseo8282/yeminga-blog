@@ -24,7 +24,7 @@
   --cat-relation: #aee9d1;  /* 인간관계 심리 */
 
   /* ----- 폰트 ----- */
-  --font-base: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR",
+  --font-base: 'NanumSquare Neo', "Apple SD Gothic Neo", "Noto Sans KR",
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --fs-xs: 0.78rem;
   --fs-sm: 0.88rem;
@@ -135,9 +135,11 @@ a:hover {
   text-decoration: none;
 }
 
-.brand .brand-emoji {
-  font-size: 1.4em;
-  line-height: 1;
+.brand .brand-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 /* 데스크탑 내비게이션 */
@@ -708,4 +710,146 @@ a:hover {
   .about-hero h1 {
     font-size: var(--fs-3xl);
   }
+}
+
+/* =========================================================
+   글 본문 (article-body) 스타일
+   모든 셀렉터가 .article-body 안에서만 적용됩니다.
+========================================================= */
+
+/* [1] NanumSquare Neo 웹폰트 — 로컬 @font-face */
+@font-face {
+  font-family: 'NanumSquare Neo';
+  src: url('/fonts/NanumSquareNeo-bRg.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NanumSquare Neo';
+  src: url('/fonts/NanumSquareNeo-cBd.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.article-body {
+  font-family: 'NanumSquare Neo', -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+/* [2] 본문 박스 공통 */
+.article-body .summary-box,
+.article-body .tip-box,
+.article-body .notice-box {
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-5);
+  margin: var(--space-6) 0;
+}
+
+/* 📌 요약 박스 — 연회색 + 왼쪽 회색 강조선 */
+.article-body .summary-box {
+  background-color: #f7f7f9;
+  border: 1px solid #ececf0;
+  border-left: 4px solid #d0d0d8;
+  color: #333;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+}
+
+/* 💡 팁 박스 — 연노랑 */
+.article-body .tip-box {
+  background-color: #fffbe6;
+  border: 1px solid #f2e6b8;
+  border-left: 4px solid #f5c842;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+}
+
+/* 참고 안내 박스 — 연핑크 + 옅은 테두리 */
+.article-body .notice-box {
+  background-color: #fff5f7;
+  border: 1px solid #f5d5e2;
+  border-left: 4px solid #f0a8c0;
+  color: #333;
+}
+
+/* 박스 내부 <strong> 제목 */
+.article-body .summary-box strong,
+.article-body .tip-box strong,
+.article-body .notice-box strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+/* [3] 후킹 문구 */
+.article-body .hook {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 1.15em;
+  margin: var(--space-5) 0;
+}
+
+/* [4] 제목 단계 */
+.article-body h2 {
+  border-left: 5px solid var(--color-primary);
+  padding-left: var(--space-4);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+  font-family: 'NanumSquare Neo', -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+.article-body h3 {
+  color: var(--color-primary-dark);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-3);
+  font-family: 'NanumSquare Neo', -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+.article-body h4 {
+  font-size: var(--fs-md);
+  font-weight: 700;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+/* [5] FAQ 카드 */
+.article-body .faq-item {
+  background-color: #f4f2fb;
+  border: 1px solid #ddd5f2;
+  border-left: 4px solid #b9a8e8;
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin: var(--space-4) 0;
+  box-shadow: var(--shadow-soft);
+}
+
+.article-body .faq-item h3 {
+  margin-top: 0;
+  color: #2b2b2b;
+  font-weight: 700;
+  font-family: 'NanumSquare Neo', -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+.article-body .faq-item p {
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+/* [6] 본문 이미지 (마스코트 삽화) */
+.article-body img {
+  display: block;
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 16px;
 }
