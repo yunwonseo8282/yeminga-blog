@@ -190,7 +190,7 @@ a:hover {
 }
 
 .hero h1 {
-  font-size: var(--fs-2xl);
+  font-size: 2.25rem;
   margin: 0 0 var(--space-3);
 }
 
@@ -198,6 +198,7 @@ a:hover {
   margin: 0 auto;
   max-width: 560px;
   color: var(--color-text-soft);
+  font-size: 1.1rem;
 }
 
 /* ---------------- 카테고리 필터 ---------------- */
@@ -602,7 +603,7 @@ a:hover {
   }
 
   .hero h1 {
-    font-size: var(--fs-3xl);
+    font-size: 2.9rem;
   }
 
   .site-footer .container {

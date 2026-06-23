@@ -5,32 +5,76 @@
    카드는 build.js가 posts/posts.json을 읽어 index.html에
    "정적으로" 박아넣습니다. (node build.js)
 
-   이 스크립트가 하는 일은 두 가지뿐입니다:
-   1) 카테고리 필터 버튼 클릭 시, 이미 HTML에 존재하는 카드의
-      display 만 토글(show/hide)합니다.
-      → JavaScript를 꺼도 모든 카드는 HTML에 그대로 남아 있습니다.
-   2) 푸터 연도 자동 갱신.
+   이 스크립트가 하는 일:
+   1) 카테고리 필터 버튼 클릭 → 카드 show/hide 토글
+   2) 헤더 메뉴 클릭(해시 변경) → 동일한 필터 적용 + 버튼 활성화 동기화
+   3) 페이지 로드 시 URL 해시 읽어 초기 필터 적용
+   4) 푸터 연도 자동 갱신
 ========================================================= */
 
-/* 카테고리 필터: 카드 show/hide 토글 (카드 생성 X) */
+/* 유효한 카테고리 해시 목록 */
+const HASH_TO_FILTER = {
+  "#consume": "consume",
+  "#emotion": "emotion",
+  "#relation": "relation",
+};
+
+/* --------------------------------------------------------
+   applyFilter(filter)
+   - filter: "all" | "consume" | "emotion" | "relation"
+   - 카드 show/hide + 버튼 is-active 상태를 한 번에 처리.
+   - 버튼 클릭과 해시 변경 모두 이 함수 하나로 처리.
+-------------------------------------------------------- */
+function applyFilter(filter) {
+  const buttons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".post-card");
+
+  /* 버튼 활성화 상태 동기화 */
+  buttons.forEach((btn) => {
+    const matches = btn.dataset.filter === filter;
+    btn.classList.toggle("is-active", matches);
+  });
+
+  /* 카드 show/hide */
+  cards.forEach((card) => {
+    const show = filter === "all" || card.dataset.category === filter;
+    card.style.display = show ? "" : "none";
+  });
+}
+
+/* --------------------------------------------------------
+   현재 URL 해시로부터 filter 값을 반환.
+   인식하지 못하는 해시이거나 해시 없으면 "all" 반환.
+-------------------------------------------------------- */
+function filterFromHash() {
+  return HASH_TO_FILTER[location.hash] ?? "all";
+}
+
+/* --------------------------------------------------------
+   initFilters()
+   - 본문 필터 버튼 클릭: applyFilter 호출 (기존 동작 그대로)
+   - hashchange 이벤트: 헤더 메뉴 클릭 시 해시 바뀌면 applyFilter 호출
+   - 페이지 최초 로드: 해시 읽어 초기 필터 적용
+-------------------------------------------------------- */
 function initFilters() {
   const buttons = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".post-card");
   if (!buttons.length || !cards.length) return;
 
+  /* 본문 필터 버튼 클릭 — 기존 동작 그대로 유지 */
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      buttons.forEach((b) => b.classList.remove("is-active"));
-      btn.classList.add("is-active");
-
-      const filter = btn.dataset.filter;
-      cards.forEach((card) => {
-        const show = filter === "all" || card.dataset.category === filter;
-        // 빈 문자열로 되돌리면 CSS 기본 display(그리드 아이템)로 복귀
-        card.style.display = show ? "" : "none";
-      });
+      applyFilter(btn.dataset.filter);
     });
   });
+
+  /* 헤더 메뉴 클릭 시 발생하는 hashchange 대응 */
+  window.addEventListener("hashchange", () => {
+    applyFilter(filterFromHash());
+  });
+
+  /* 페이지 최초 로드: 해시가 있으면 해당 카테고리, 없으면 전체 */
+  applyFilter(filterFromHash());
 }
 
 /* 푸터 연도 자동 갱신 */
