@@ -19,6 +19,9 @@ const path = require("path");
 const ROOT = __dirname;
 const POSTS_JSON = path.join(ROOT, "posts", "posts.json");
 const INDEX_HTML = path.join(ROOT, "index.html");
+const SITEMAP_XML = path.join(ROOT, "sitemap.xml");
+
+const SITE_ORIGIN = "https://yeminga.com";
 
 /* 카테고리 코드 → 한글 라벨 / 배지 클래스 매핑 */
 const CATEGORY_MAP = {
@@ -78,6 +81,55 @@ function createCardHtml(post) {
           </a>`;
 }
 
+/* --------------------------------------------------------
+   buildSitemap(posts)
+   - 고정 페이지(메인/about/privacy) + posts.json 글 목록으로
+     sitemap.xml 을 자동 생성합니다.
+   - node build.js 실행 시 index.html 카드 생성과 함께 호출됩니다.
+-------------------------------------------------------- */
+function buildSitemap(posts) {
+  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+
+  /* 고정 페이지 정의 */
+  const staticPages = [
+    { loc: "/",            lastmod: today, changefreq: "daily",   priority: "1.0" },
+    { loc: "/about.html",  lastmod: today, changefreq: "monthly", priority: "0.6" },
+    { loc: "/privacy.html",lastmod: today, changefreq: "yearly",  priority: "0.3" },
+  ];
+
+  /* 글 페이지: posts.json의 url 필드 사용, 발행일 기준 lastmod */
+  const postPages = posts.map((p) => ({
+    loc: p.url,
+    lastmod: p.date || today,
+    changefreq: "monthly",
+    priority: "0.8",
+  }));
+
+  const allPages = [...staticPages, ...postPages];
+
+  const urlEntries = allPages
+    .map(
+      (p) =>
+        `  <url>\n` +
+        `    <loc>${SITE_ORIGIN}${p.loc}</loc>\n` +
+        `    <lastmod>${p.lastmod}</lastmod>\n` +
+        `    <changefreq>${p.changefreq}</changefreq>\n` +
+        `    <priority>${p.priority}</priority>\n` +
+        `  </url>`
+    )
+    .join("\n");
+
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<!-- 이 파일은 build.js가 자동으로 생성합니다. 직접 수정하지 마세요. -->\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    urlEntries +
+    `\n</urlset>\n`;
+
+  fs.writeFileSync(SITEMAP_XML, xml, "utf8");
+  console.log(`[build] sitemap.xml 생성 완료 (총 ${allPages.length}개 URL)`);
+}
+
 function build() {
   // 1) 데이터 읽기
   const raw = fs.readFileSync(POSTS_JSON, "utf8");
@@ -107,7 +159,10 @@ function build() {
   html = html.replace(marker, replacement);
 
   fs.writeFileSync(INDEX_HTML, html, "utf8");
-  console.log(`[build] 완료: 글 ${posts.length}개의 카드를 index.html에 정적으로 생성했습니다.`);
+  console.log(`[build] index.html 완료: 글 ${posts.length}개의 카드를 정적으로 생성했습니다.`);
+
+  // 5) sitemap.xml 자동 생성
+  buildSitemap(posts);
 }
 
 build();
