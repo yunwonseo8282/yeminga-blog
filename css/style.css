@@ -854,3 +854,68 @@ a:hover {
   margin: 24px auto;
   border-radius: 16px;
 }
+
+/* ================================================================
+   [7] 본문 표(table) 스타일
+   - 모바일에서 가로 스크롤 처리를 위해 .article-body table을
+     display:block + overflow-x:auto 로 감쌉니다.
+================================================================ */
+.article-body table {
+  display: block;          /* overflow-x 적용을 위해 block으로 */
+  overflow-x: auto;        /* 모바일: 표가 넘칠 때 가로 스크롤, 깨지지 않음 */
+  -webkit-overflow-scrolling: touch;
+  width: fit-content;      /* 내용 너비에 맞게 줄어듦 → margin:auto 가운데 효과 */
+  max-width: 100%;         /* 본문 너비는 절대 넘지 않음 */
+  border-collapse: collapse;
+  margin: var(--space-6) auto; /* 가운데 배치 */
+  font-size: var(--fs-sm);
+  color: #333;
+}
+
+.article-body th,
+.article-body td {
+  padding: 12px 14px;
+  border: 1px solid #e5e5e5;   /* 세로 열 구분선 */
+  border-bottom: 1px solid #ddd; /* 가로 행 구분선 (더 또렷하게) */
+  vertical-align: middle;
+  word-break: keep-all;
+}
+
+.article-body td {
+  background-color: #fff;  /* 본문 셀 흰색 명시 */
+}
+
+/* 헤더 행: 연보라 배경 + 글자색 #333 + 굵게 + 가운데 정렬 */
+.article-body th {
+  background-color: #f4f2fb;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: 2px solid #d0ccea; /* 헤더 하단선만 한 톤 진하게 */
+}
+
+/* zebra 제거: 모든 본문 셀 흰색으로 통일 (th는 별도 규칙으로 #f4f2fb 유지) */
+
+/* ================================================================
+   [8] warning-box (주의 박스)
+   - tip-box / notice-box 와 동일한 구조(박스 공통 padding/radius/margin),
+     색상만 옅은 살구/주황빛으로 차별화.
+================================================================ */
+.article-body .warning-box {
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-5);
+  margin: var(--space-6) 0;
+  background-color: #fdf3ec;
+  border: 1px solid #f5dfc8;
+  border-left: 4px solid #f0a87a;
+  color: #333;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.10);
+}
+
+/* warning-box 내부 <strong> 제목: 기존 박스와 동일 패턴 */
+.article-body .warning-box strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
