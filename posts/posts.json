@@ -14,5 +14,45 @@
     "date": "2026-06-23",
     "thumbnail": "/images/thumb-gamjeong-labeling-anger.png",
     "url": "/posts/gamjeong-labeling-anger.html"
-  }
+  },
+  {
+    "title": "친구 인스타 보고 부러웠던 그 마음의 정체",
+    "excerpt": "SNS 보다 기분이 가라앉는 건 뇌가 원래 남과 나를 비교하도록 설계됐기 때문이에요. 비교 상대가 '편집된 하이라이트'라는 게 함정이죠. 비교를 없애기보다 방향을 바꾸는 현실적인 법을 풀어봤어요.",
+    "category": "relation",
+    "date": "2026-06-23",
+    "thumbnail": "/images/thumb-friend-instagram-social-comparison.png",
+    "url": "/posts/friend-instagram-social-comparison.html"
+  },
+  {
+    "title": "현재 편향 때문에 할인 문구만 보면 지갑이 열리는 이유",
+    "excerpt": "다이어트는 내일부터인데 결제만큼은 늘 지금 당장인 이유, 바로 현재 편향이에요. 미래의 큰 이득보다 지금의 작은 만족을 크게 느끼는 뇌의 기본값과, 구조를 살짝 바꿔 덜 휘둘리는 법을 풀어봤어요.",
+    "category": "consume",
+    "date": "2026-06-23",
+    "thumbnail": "/images/thumb-present-bias-discount.png",
+    "url": "/posts/present-bias-discount.html"
+  },
+  {
+    "title": "더닝 크루거 효과 때문에 입문 3일차의 내가 제일 잘난 줄 알았어요",
+    "excerpt": "막 배우기 시작했을 때 자신감이 폭발하는 건 더닝 크루거 효과예요. 실력이 부족할수록 자기 실력을 가늠하는 눈도 같이 부족하거든요. 실력이 늘수록 오히려 자신감이 떨어지는 이유와 함정에서 빠져나오는 법을 풀어봤어요.",
+    "category": "emotion",
+    "date": "2026-06-23",
+    "thumbnail": "/images/thumb-dunning-kruger-effect-beginner.png",
+    "url": "/posts/dunning-kruger-effect-beginner.html"
+  },
+  {
+    "title": "후광 효과 때문에 우리가 자주 속는 것들",
+    "excerpt": "하나의 좋은 인상이 그 사람의 모든 면까지 좋게 보이게 만드는 게 후광 효과예요. 잘생긴 사람이 성격도 좋아 보이고, 말 잘하는 사람이 똑똑해 보이는 이유와, 그 함정에 덜 속는 현실적인 법을 풀어봤어요.",
+    "category": "relation",
+    "date": "2026-06-24",
+    "thumbnail": "/images/thumb-halo-effect-first-impression.png",
+    "url": "/posts/halo-effect-first-impression.html"
+  },
+  {
+    "title": "앵커링 효과, 줄 그어진 가격표에 속는 이유",
+    "excerpt": "맨 처음 본 숫자가 닻처럼 박혀 그 뒤 판단을 다 끌고 가는 게 앵커링 효과예요. 줄 그어진 원래 가격이 다 이걸 노린 거고요. 뇌가 첫 숫자에 휘둘리는 원리와, 일상에서 덜 휘둘리는 습관을 풀어봤어요.",
+    "category": "consume",
+    "date": "2026-06-24",
+    "thumbnail": "/images/thumb-anchoring-effect-price-tag.png",
+    "url": "/posts/anchoring-effect-price-tag.html"
+  }          
 ]

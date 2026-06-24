@@ -26,6 +26,18 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://yeminga.com/posts/halo-effect-first-impression.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/posts/anchoring-effect-price-tag.html</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://yeminga.com/posts/loss-aversion-subscription.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -33,6 +45,24 @@
   </url>
   <url>
     <loc>https://yeminga.com/posts/gamjeong-labeling-anger.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/posts/friend-instagram-social-comparison.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/posts/present-bias-discount.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/posts/dunning-kruger-effect-beginner.html</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
