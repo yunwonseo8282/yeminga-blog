@@ -54,5 +54,29 @@
     "date": "2026-06-24",
     "thumbnail": "/images/thumb-anchoring-effect-price-tag.png",
     "url": "/posts/anchoring-effect-price-tag.html"
-  }          
+  },
+  {
+    "title": "드라마가 꼭 제일 궁금한 데서 끊기는 데는 이유가 있어요",
+    "excerpt": "다 끝낸 일은 금방 잊는데 못 끝낸 일만 머릿속에 맴도는 자이가르닉 효과. 드라마가 절정에서 끊기는 이유부터 머릿속 알림을 잠재우는 법까지 풀어봤어요.",
+    "category": "emotion",
+    "date": "2026-06-24",
+    "thumbnail": "/images/thumb-zeigarnik-effect-unfinished.png",
+    "url": "/posts/zeigarnik-effect-unfinished.html"
+  },
+  {
+    "title": "공짜로 받으면 갚고 싶어지는 마음의 정체",
+    "excerpt": "누가 호의를 베풀면 갚아야 할 것 같은 마음이 드는 건 호혜성 원리 때문이에요. 시식 후 그냥 가기 미안한 심리의 정체부터, 거기 덜 휘둘리는 현실적인 방법까지 풀어봤어요.",
+    "category": "relation",
+    "date": "2026-06-24",
+    "thumbnail": "/images/thumb-reciprocity-principle-free-sample.png",
+    "url": "/posts/reciprocity-principle-free-sample.html"
+  },
+  {
+    "title": "미끼 효과, 중간 옵션이 합리적으로 보이는 이유",
+    "excerpt": "아무도 안 살 것 같은 선택지 하나가 옆의 비싼 걸 합리적으로 보이게 만드는 미끼 효과. 팝콘·구독 요금제 사례로 그 원리와 덜 휘둘리는 법을 풀어봤어요.",
+    "category": "consume",
+    "date": "2026-06-24",
+    "thumbnail": "/images/thumb-decoy-effect-middle-option.png",
+    "url": "/posts/decoy-effect-middle-option.html"
+  }                
 ]
