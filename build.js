@@ -95,6 +95,7 @@ function buildSitemap(posts) {
     { loc: "/",            lastmod: today, changefreq: "daily",   priority: "1.0" },
     { loc: "/about.html",  lastmod: today, changefreq: "monthly", priority: "0.6" },
     { loc: "/privacy.html",lastmod: today, changefreq: "yearly",  priority: "0.3" },
+    { loc: "/terms.html",  lastmod: today, changefreq: "yearly",  priority: "0.3" },
   ];
 
   /* 글 페이지: posts.json의 url 필드 사용, 발행일 기준 lastmod */
