@@ -922,3 +922,92 @@ a:hover {
   font-weight: 700;
   margin-bottom: var(--space-3);
 }
+
+/* ================================================================
+   관련 글 섹션 — "📚 이런 글도 있어요"
+   기존 .post-card / .post-grid 와 완전히 분리된 전용 클래스
+================================================================ */
+
+/* 섹션 래퍼 */
+.related-posts {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 2px solid var(--color-border);
+}
+
+/* 섹션 제목 */
+.related-posts-title {
+  font-size: var(--fs-lg);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0 0 var(--space-5);
+  /* article-body h2 의 border-left 스타일이 상속되지 않도록 초기화 */
+  border-left: none;
+  padding-left: 0;
+}
+
+/* 그리드: 기본 1열 (모바일) */
+.related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+/* 480px 이상: 2열 → 최대 4카드 = 2×2 */
+@media (min-width: 480px) {
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 관련 글 카드 */
+.related-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--color-text);
+}
+
+.related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  text-decoration: none;
+}
+
+/* 정사각형 썸네일 */
+.related-card .thumb {
+  display: block;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--color-primary-soft), var(--color-accent-soft));
+}
+
+/* 카드 텍스트 영역 */
+.related-card-body {
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+/* 카드 제목 */
+.related-card-title {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

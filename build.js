@@ -48,6 +48,113 @@ function formatDate(isoDate) {
   return `${y}.${m}.${d}`;
 }
 
+/* --------------------------------------------------------
+   getRelatedPosts(currentPost, allPosts, max)
+   - 기준 글을 제외한 후보를 3단계 우선순위로 정렬해 최대 max개 반환
+   - 1순위: 공유 태그 수 (많을수록 위)
+   - 2순위: 같은 카테고리 여부
+   - 3순위: 발행일 최신순
+   - 0개이면 빈 배열 반환
+-------------------------------------------------------- */
+function getRelatedPosts(currentPost, allPosts, max = 4) {
+  const others = allPosts.filter((p) => p.url !== currentPost.url);
+  if (others.length === 0) return [];
+
+  const currentTags = Array.isArray(currentPost.tags) ? currentPost.tags : [];
+
+  const scored = others.map((p) => {
+    const pTags = Array.isArray(p.tags) ? p.tags : [];
+    const sharedTags = currentTags.filter((t) => pTags.includes(t)).length;
+    const sameCategory = p.category === currentPost.category ? 1 : 0;
+    return { post: p, sharedTags, sameCategory };
+  });
+
+  scored.sort((a, b) => {
+    if (b.sharedTags !== a.sharedTags) return b.sharedTags - a.sharedTags;
+    if (b.sameCategory !== a.sameCategory) return b.sameCategory - a.sameCategory;
+    return String(b.post.date).localeCompare(String(a.post.date));
+  });
+
+  return scored.slice(0, max).map((s) => s.post);
+}
+
+/* 관련 글 카드 1개 HTML */
+function createRelatedCardHtml(post) {
+  const cat = CATEGORY_MAP[post.category] || {
+    label: "심리",
+    badge: "badge--emotion",
+  };
+
+  const thumb = post.thumbnail
+    ? `<img class="thumb" src="${escapeHtml(post.thumbnail)}" alt="${escapeHtml(
+        post.title
+      )} 썸네일" loading="lazy" />`
+    : `<div class="thumb" aria-hidden="true"></div>`;
+
+  return `          <a class="related-card" href="${escapeHtml(post.url)}">
+            ${thumb}
+            <div class="related-card-body">
+              <span class="badge ${cat.badge}">${escapeHtml(cat.label)}</span>
+              <p class="related-card-title">${escapeHtml(post.title)}</p>
+            </div>
+          </a>`;
+}
+
+/* 관련 글 섹션 전체 HTML (후보 0개면 빈 문자열 반환) */
+function createRelatedSectionHtml(currentPost, allPosts) {
+  const related = getRelatedPosts(currentPost, allPosts);
+  if (related.length === 0) return "";
+
+  const cardsHtml = related.map(createRelatedCardHtml).join("\n");
+
+  return `        <section class="related-posts" aria-label="이런 글도 있어요">
+          <h2 class="related-posts-title">📚 이런 글도 있어요</h2>
+          <div class="related-grid">
+${cardsHtml}
+          </div>
+        </section>`;
+}
+
+/* --------------------------------------------------------
+   buildRelatedPosts(posts)
+   - 각 글 HTML의 RELATED_START ~ RELATED_END 마커를
+     관련 글 섹션으로 교체합니다.
+   - 마커가 없는 파일은 경고만 출력하고 건너뜁니다.
+-------------------------------------------------------- */
+function buildRelatedPosts(posts) {
+  const POSTS_DIR = path.join(ROOT, "posts");
+  const marker = /<!-- RELATED_START -->[\s\S]*?<!-- RELATED_END -->/;
+  let updated = 0;
+
+  for (const post of posts) {
+    const fileName = path.basename(post.url); // "slug.html"
+    const filePath = path.join(POSTS_DIR, fileName);
+
+    if (!fs.existsSync(filePath)) {
+      console.warn(`[build] 경고: ${filePath} 파일을 찾을 수 없습니다.`);
+      continue;
+    }
+
+    let html = fs.readFileSync(filePath, "utf8");
+
+    if (!marker.test(html)) {
+      console.warn(`[build] 경고: ${fileName} 에서 RELATED 마커를 찾지 못했습니다.`);
+      continue;
+    }
+
+    const sectionHtml = createRelatedSectionHtml(post, posts);
+    const replacement = sectionHtml
+      ? `<!-- RELATED_START -->\n${sectionHtml}\n        <!-- RELATED_END -->`
+      : `<!-- RELATED_START --><!-- RELATED_END -->`;
+
+    html = html.replace(marker, replacement);
+    fs.writeFileSync(filePath, html, "utf8");
+    updated++;
+  }
+
+  console.log(`[build] 관련 글 섹션 완료: ${updated}개 글 HTML 업데이트`);
+}
+
 /* 글 1개 → 카드 HTML (정적 문자열).
    - data-category 속성을 항상 부여 → JS 없이도 필터 대상 식별 가능
    - 썸네일이 없으면 파스텔 그라데이션 div 사용 */
@@ -162,7 +269,10 @@ function build() {
   fs.writeFileSync(INDEX_HTML, html, "utf8");
   console.log(`[build] index.html 완료: 글 ${posts.length}개의 카드를 정적으로 생성했습니다.`);
 
-  // 5) sitemap.xml 자동 생성
+  // 5) 각 글 HTML에 관련 글 섹션 삽입
+  buildRelatedPosts(posts);
+
+  // 6) sitemap.xml 자동 생성
   buildSitemap(posts);
 }
 
