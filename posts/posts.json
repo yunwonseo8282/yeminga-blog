@@ -88,5 +88,50 @@
     "thumbnail": "/images/thumb-decoy-effect-middle-option.png",
     "url": "/posts/decoy-effect-middle-option.html",
     "tags": ["소비 심리", "미끼 효과", "선택 설계", "가격 심리", "인지 편향"]
+  },
+  {
+    "title": "알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요",
+    "excerpt": "늘 시간을 적게 잡았다가 매번 늦는 계획 오류. 머리가 좋아도 안 고쳐지는 이유부터, 과거 기록 활용·1.5배 보정·잘게 쪼개기로 예측을 덜 빗나가게 하는 법까지 풀어봤어요.",
+    "category": "emotion",
+    "date": "2026-06-25",
+    "thumbnail": "/images/thumb-planning-fallacy-deadline.png",
+    "url": "/posts/planning-fallacy-deadline.html",
+    "tags": ["감정과 자아", "계획 오류", "시간 관리", "자기 인식", "메타인지"]
+  },
+  {
+    "title": "짜증 난 사람 옆에 있으면 나까지 가라앉는 이유",
+    "excerpt": "옆 사람 기분에 나까지 물드는 정서 전염. 뇌가 남의 감정을 자동으로 따라 하는 이유부터, 내 감정과 옮아 온 감정을 구분하며 덜 휩쓸리는 법까지 풀어봤어요.",
+    "category": "relation",
+    "date": "2026-06-25",
+    "thumbnail": "/images/thumb-emotional-contagion-mood-spread.png",
+    "url": "/posts/emotional-contagion-mood-spread.html",
+    "tags": ["인간관계 심리", "정서 전염", "공감", "감정 조절", "거리 두기"]
+  },
+  {
+    "title": "희소성 원리, 한정판이라는 말에 무너지는 이유",
+    "excerpt": "'재고 2개 남음' 한 줄에 결제 버튼을 누르게 되는 희소성 원리. 우리가 사라지는 것에 약한 진짜 이유부터, 한정판 앞에서 덜 휘둘리는 24시간 규칙까지 풀어봤어요.",
+    "category": "consume",
+    "date": "2026-06-25",
+    "thumbnail": "/images/thumb-scarcity-principle-limited-edition.png",
+    "url": "/posts/scarcity-principle-limited-edition.html",
+    "tags": ["소비 심리", "희소성 원리", "한정판", "손실 회피", "충동구매"]
+  },
+  {
+    "title": "엄마가 \"공부해\" 한 순간 펴려던 책을 덮어버린 적 있나요",
+    "excerpt": "막 하려던 일도 누가 시키는 순간 하기 싫어지는 이유를 자기 결정 이론으로 풀었어요. 자율성·유능감·관계성이 채워질 때 진짜 의욕이 살아나는 원리와, 식어버린 동기를 되살리는 법까지 담았어요.",
+    "category": "emotion",
+    "date": "2026-06-25",
+    "thumbnail": "/images/thumb-self-determination-theory-motivation.png",
+    "url": "/posts/self-determination-theory-motivation.html",
+    "tags": ["감정과 자아", "자기 결정 이론", "내적 동기", "자율성", "과잉정당화 효과"]
+  },
+  {
+    "title": "남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유",
+    "excerpt": "남의 시선이 자꾸 신경 쓰이는 건 거울 자아 때문이에요. 우리는 남이 나를 어떻게 볼지 상상하고 그 상상을 거울 삼아 '나'를 만들어가거든요. 시선에 덜 휘둘리는 현실적인 방법까지 담았어요.",
+    "category": "relation",
+    "date": "2026-06-25",
+    "thumbnail": "/images/thumb-looking-glass-self-others-eyes.png",
+    "url": "/posts/looking-glass-self-others-eyes.html",
+    "tags": ["인간관계 심리", "거울 자아", "조명 효과", "자아상", "SNS"]
   }
 ]

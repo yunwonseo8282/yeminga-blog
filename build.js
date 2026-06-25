@@ -123,7 +123,8 @@ ${cardsHtml}
 -------------------------------------------------------- */
 function buildRelatedPosts(posts) {
   const POSTS_DIR = path.join(ROOT, "posts");
-  const marker = /<!-- RELATED_START -->[\s\S]*?<!-- RELATED_END -->/;
+  const markerRe = /<!-- RELATED_START -->[\s\S]*?<!-- RELATED_END -->/;
+  const backLinkAnchor = '        <a class="back-link"';
   let updated = 0;
 
   for (const post of posts) {
@@ -136,18 +137,40 @@ function buildRelatedPosts(posts) {
     }
 
     let html = fs.readFileSync(filePath, "utf8");
+    const sectionHtml = createRelatedSectionHtml(post, posts);
 
-    if (!marker.test(html)) {
-      console.warn(`[build] 경고: ${fileName} 에서 RELATED 마커를 찾지 못했습니다.`);
-      continue;
+    if (markerRe.test(html)) {
+      /* ── 마커 있음: 마커 사이를 교체 ── */
+      const replacement = sectionHtml
+        ? `<!-- RELATED_START -->\n${sectionHtml}\n        <!-- RELATED_END -->`
+        : `<!-- RELATED_START --><!-- RELATED_END -->`;
+      html = html.replace(markerRe, replacement);
+
+    } else {
+      /* ── 마커 없음: 중복 확인 후 back-link 앞에 삽입 ── */
+
+      // 이미 섹션이 존재하면(중복 방지) 건너뜀
+      if (html.includes('class="related-posts"')) {
+        console.warn(`[build] 경고: ${fileName} 에 마커 없이 관련 글 섹션이 이미 존재합니다. 건너뜁니다.`);
+        continue;
+      }
+
+      // 후보 0개면 삽입 안 함
+      if (!sectionHtml) continue;
+
+      // back-link 앵커를 찾아 그 앞에 섹션+마커를 삽입
+      if (!html.includes(backLinkAnchor)) {
+        console.warn(`[build] 경고: ${fileName} 에서 back-link 앵커를 찾지 못했습니다. 건너뜁니다.`);
+        continue;
+      }
+
+      const wrapped =
+        `        <!-- RELATED_START -->\n` +
+        `${sectionHtml}\n` +
+        `        <!-- RELATED_END -->\n`;
+      html = html.replace(backLinkAnchor, wrapped + backLinkAnchor);
     }
 
-    const sectionHtml = createRelatedSectionHtml(post, posts);
-    const replacement = sectionHtml
-      ? `<!-- RELATED_START -->\n${sectionHtml}\n        <!-- RELATED_END -->`
-      : `<!-- RELATED_START --><!-- RELATED_END -->`;
-
-    html = html.replace(marker, replacement);
     fs.writeFileSync(filePath, html, "utf8");
     updated++;
   }
