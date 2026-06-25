@@ -260,8 +260,11 @@ a:hover {
 }
 
 .post-card .thumb {
+  display: block;      /* <img> 인라인 baseline 여백 제거 */
+  flex-shrink: 0;      /* flex 컨테이너가 썸네일 높이를 압축하지 않도록 */
   aspect-ratio: 1 / 1;
   width: 100%;
+  height: auto;        /* 고정 height 간섭 차단, aspect-ratio가 높이를 결정 */
   object-fit: cover;
   background: linear-gradient(135deg, var(--color-primary-soft), var(--color-accent-soft));
 }
