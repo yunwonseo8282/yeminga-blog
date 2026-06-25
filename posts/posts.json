@@ -5,7 +5,8 @@
     "category": "consume",
     "date": "2026-06-23",
     "thumbnail": "/images/thumb-loss-aversion-subscription.png",
-    "url": "/posts/loss-aversion-subscription.html"
+    "url": "/posts/loss-aversion-subscription.html",
+    "tags": ["소비 심리", "손실 회피", "구독 해지", "매몰 비용", "충동구매"]
   },
   {
     "title": "감정에 이름만 붙였을 뿐인데 화가 스르륵 가라앉는 이유",
@@ -13,7 +14,8 @@
     "category": "emotion",
     "date": "2026-06-23",
     "thumbnail": "/images/thumb-gamjeong-labeling-anger.png",
-    "url": "/posts/gamjeong-labeling-anger.html"
+    "url": "/posts/gamjeong-labeling-anger.html",
+    "tags": ["감정과 자아", "감정 라벨링", "분노 조절", "감정 인식", "자기 조절"]
   },
   {
     "title": "친구 인스타 보고 부러웠던 그 마음의 정체",
@@ -21,7 +23,8 @@
     "category": "relation",
     "date": "2026-06-23",
     "thumbnail": "/images/thumb-friend-instagram-social-comparison.png",
-    "url": "/posts/friend-instagram-social-comparison.html"
+    "url": "/posts/friend-instagram-social-comparison.html",
+    "tags": ["인간관계 심리", "사회적 비교", "SNS", "비교 심리", "자존감"]
   },
   {
     "title": "현재 편향 때문에 할인 문구만 보면 지갑이 열리는 이유",
@@ -29,7 +32,8 @@
     "category": "consume",
     "date": "2026-06-23",
     "thumbnail": "/images/thumb-present-bias-discount.png",
-    "url": "/posts/present-bias-discount.html"
+    "url": "/posts/present-bias-discount.html",
+    "tags": ["소비 심리", "현재 편향", "충동구매", "할인", "지연 보상"]
   },
   {
     "title": "더닝 크루거 효과 때문에 입문 3일차의 내가 제일 잘난 줄 알았어요",
@@ -37,7 +41,8 @@
     "category": "emotion",
     "date": "2026-06-23",
     "thumbnail": "/images/thumb-dunning-kruger-effect-beginner.png",
-    "url": "/posts/dunning-kruger-effect-beginner.html"
+    "url": "/posts/dunning-kruger-effect-beginner.html",
+    "tags": ["감정과 자아", "더닝 크루거 효과", "자기 인식", "메타인지", "자신감"]
   },
   {
     "title": "후광 효과 때문에 우리가 자주 속는 것들",
@@ -45,7 +50,8 @@
     "category": "relation",
     "date": "2026-06-24",
     "thumbnail": "/images/thumb-halo-effect-first-impression.png",
-    "url": "/posts/halo-effect-first-impression.html"
+    "url": "/posts/halo-effect-first-impression.html",
+    "tags": ["인간관계 심리", "후광 효과", "첫인상", "인지 편향", "인상 형성"]
   },
   {
     "title": "앵커링 효과, 줄 그어진 가격표에 속는 이유",
@@ -53,7 +59,8 @@
     "category": "consume",
     "date": "2026-06-24",
     "thumbnail": "/images/thumb-anchoring-effect-price-tag.png",
-    "url": "/posts/anchoring-effect-price-tag.html"
+    "url": "/posts/anchoring-effect-price-tag.html",
+    "tags": ["소비 심리", "앵커링 효과", "가격 심리", "할인", "인지 편향"]
   },
   {
     "title": "드라마가 꼭 제일 궁금한 데서 끊기는 데는 이유가 있어요",
@@ -61,7 +68,8 @@
     "category": "emotion",
     "date": "2026-06-24",
     "thumbnail": "/images/thumb-zeigarnik-effect-unfinished.png",
-    "url": "/posts/zeigarnik-effect-unfinished.html"
+    "url": "/posts/zeigarnik-effect-unfinished.html",
+    "tags": ["감정과 자아", "자이가르닉 효과", "미완성 효과", "집중력", "기억"]
   },
   {
     "title": "공짜로 받으면 갚고 싶어지는 마음의 정체",
@@ -69,7 +77,8 @@
     "category": "relation",
     "date": "2026-06-24",
     "thumbnail": "/images/thumb-reciprocity-principle-free-sample.png",
-    "url": "/posts/reciprocity-principle-free-sample.html"
+    "url": "/posts/reciprocity-principle-free-sample.html",
+    "tags": ["인간관계 심리", "호혜성 원리", "시식", "설득", "사회적 의무"]
   },
   {
     "title": "미끼 효과, 중간 옵션이 합리적으로 보이는 이유",
@@ -77,6 +86,7 @@
     "category": "consume",
     "date": "2026-06-24",
     "thumbnail": "/images/thumb-decoy-effect-middle-option.png",
-    "url": "/posts/decoy-effect-middle-option.html"
-  }                
+    "url": "/posts/decoy-effect-middle-option.html",
+    "tags": ["소비 심리", "미끼 효과", "선택 설계", "가격 심리", "인지 편향"]
+  }
 ]
