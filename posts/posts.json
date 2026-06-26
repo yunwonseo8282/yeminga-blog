@@ -133,5 +133,25 @@
     "thumbnail": "/images/thumb-looking-glass-self-others-eyes.png",
     "url": "/posts/looking-glass-self-others-eyes.html",
     "tags": ["인간관계 심리", "거울 자아", "조명 효과", "자아상", "SNS"]
+  },
+  {
+    "title": "같은 우유인데 95% 무지방이 더 맛있어 보이는 이유",
+    "excerpt": "똑같은 우유인데 '95% 무지방'이라고 하면 왜 더 끌릴까요? 같은 사실도 어떻게 말하느냐에 따라 선택이 달라지는 프레이밍 효과를, 마트·병원·쇼핑몰 장면으로 쉽게 풀고 덜 휘둘리는 법까지 알려드려요.",
+    "category": "consume",
+    "date": "2026-06-26",
+    "thumbnail": "/images/thumb-framing-effect-95-percent-milk.png",
+    "url": "/posts/framing-effect-95-percent-milk.html",
+    "tags": ["소비 심리", "프레이밍 효과", "손실 회피", "충동구매", "가격 심리"]
+  },
+  {
+    "title": "부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유",
+    "excerpt": "칭찬 열 개는 흘려보내면서 비난 한마디는 며칠씩 곱씹게 되는 부정성 편향. 나쁜 기억이 더 끈질긴 이유를 일상 장면으로 풀고, 덜 휘둘리는 방법까지 정리했어요.",
+    "category": "emotion",
+    "date": "2026-06-26",
+    "thumbnail": "/images/thumb-negativity-bias-bad-memory.png",
+    "url": "/posts/negativity-bias-bad-memory.html",
+    "tags": ["감정과 자아", "부정성 편향", "손실 회피", "생존 본능", "자존감"]
   }
+  
+  
 ]
