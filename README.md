@@ -32,6 +32,7 @@ yeminga-blog/
 1. `posts/sample-post.html`을 복사해 `posts/` 안에 새 이름으로 저장합니다.
    - 예: `posts/why-i-buy-on-sale.html`
 2. 파일 안의 `[TODO]` 부분(제목, 설명, 카테고리, 날짜, 본문, JSON-LD)을 채웁니다.
+   - `<head>` 안에 `<!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END -->` 마커를 포함하세요. (`node build.js` 실행 시 애드센스 스크립트가 자동 주입됩니다.)
 3. `posts/posts.json`에 글 정보를 **항목 1개** 추가합니다. (순서는 상관없음 — 빌드 시 발행일 최신순 자동 정렬)
 
 ```json

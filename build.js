@@ -7,6 +7,8 @@
    - 글 카드 HTML을 "정적으로" 생성합니다. (런타임 fetch/렌더링 없음)
    - index.html 의 <!-- POSTS_START --> ~ <!-- POSTS_END --> 사이를
      생성한 카드 HTML로 갈아끼웁니다. (그 외 영역은 건드리지 않음)
+   - 모든 HTML의 <!-- HEAD_ADSENSE_START --> ~ <!-- HEAD_ADSENSE_END --> 사이에
+     구글 애드센스 스크립트를 일괄 주입합니다.
 
    실행: node build.js
 
@@ -22,6 +24,11 @@ const INDEX_HTML = path.join(ROOT, "index.html");
 const SITEMAP_XML = path.join(ROOT, "sitemap.xml");
 
 const SITE_ORIGIN = "https://yeminga.com";
+
+/* 구글 애드센스 — HEAD_ADSENSE 마커 사이에 빌드 시 주입 */
+const ADSENSE_SCRIPT =
+  '  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067927801872250" crossorigin="anonymous"></script>';
+const HEAD_ADSENSE_MARKER = /<!-- HEAD_ADSENSE_START -->[\s\S]*?<!-- HEAD_ADSENSE_END -->/;
 
 /* 카테고리 코드 → 한글 라벨 / 배지 클래스 매핑 */
 const CATEGORY_MAP = {
@@ -261,6 +268,55 @@ function buildSitemap(posts) {
   console.log(`[build] sitemap.xml 생성 완료 (총 ${allPages.length}개 URL)`);
 }
 
+/* --------------------------------------------------------
+   buildHeadAdsense()
+   - 모든 HTML 파일의 HEAD_ADSENSE_START ~ END 마커 사이에
+     구글 애드센스 스크립트를 일괄 주입합니다.
+   - 마커가 없는 파일은 경고 후 건너뜁니다.
+   - 재실행해도 스크립트가 중복 삽입되지 않습니다.
+-------------------------------------------------------- */
+function buildHeadAdsense() {
+  const htmlFiles = [
+    INDEX_HTML,
+    path.join(ROOT, "about.html"),
+    path.join(ROOT, "privacy.html"),
+    path.join(ROOT, "terms.html"),
+    ...fs
+      .readdirSync(path.join(ROOT, "posts"))
+      .filter((f) => f.endsWith(".html"))
+      .map((f) => path.join(ROOT, "posts", f)),
+  ];
+
+  let updated = 0;
+  let skipped = 0;
+
+  for (const filePath of htmlFiles) {
+    if (!fs.existsSync(filePath)) {
+      console.warn(`[build] 경고: ${filePath} 파일을 찾을 수 없습니다.`);
+      skipped++;
+      continue;
+    }
+
+    let html = fs.readFileSync(filePath, "utf8");
+
+    if (!HEAD_ADSENSE_MARKER.test(html)) {
+      console.warn(
+        `[build] 경고: ${path.relative(ROOT, filePath)} 에서 HEAD_ADSENSE 마커를 찾지 못했습니다.`
+      );
+      skipped++;
+      continue;
+    }
+
+    const replacement =
+      `<!-- HEAD_ADSENSE_START -->\n${ADSENSE_SCRIPT}\n  <!-- HEAD_ADSENSE_END -->`;
+    html = html.replace(HEAD_ADSENSE_MARKER, replacement);
+    fs.writeFileSync(filePath, html, "utf8");
+    updated++;
+  }
+
+  console.log(`[build] 애드센스 head 주입 완료: ${updated}개 (마커 없음 ${skipped}개)`);
+}
+
 function build() {
   // 1) 데이터 읽기
   const raw = fs.readFileSync(POSTS_JSON, "utf8");
@@ -297,6 +353,9 @@ function build() {
 
   // 6) sitemap.xml 자동 생성
   buildSitemap(posts);
+
+  // 7) 모든 HTML에 애드센스 스크립트 주입
+  buildHeadAdsense();
 }
 
 build();
@@ -304,8 +363,9 @@ build();
 /* ---------------------------------------------------------
    새 글 추가 워크플로우
    1) posts/sample-post.html 을 복사해 posts/ 에 새 글 HTML 작성
+      (head에 <!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END --> 마커 포함)
    2) posts/posts.json 에 항목 1개 추가 (title, excerpt, category,
       date, thumbnail, url). category 는 consume | emotion | relation
-   3) node build.js 실행 → index.html 카드가 정적으로 다시 생성됨
+   3) node build.js 실행 → index.html 카드 + 관련 글 + 애드센스 head 주입
    4) git add . && git commit && git push → Cloudflare Pages 자동 배포
 --------------------------------------------------------- */
