@@ -187,7 +187,54 @@
     "thumbnail": "/images/thumb-mere-exposure-effect-familiarity.png",
     "url": "/posts/mere-exposure-effect-familiarity.html",
     "tags": ["인간관계 심리", "단순 노출 효과", "호감", "익숙함", "첫인상"]
+  },
+  {
+    "title": "무료 배송 채우려다 결국 더 사버린 적 있죠",
+    "excerpt": "3천 원 아끼려다 만 원을 더 쓰게 만드는 '제로 가격 효과'. 공짜 앞에서 계산을 멈추는 우리 뇌의 습성을 일상 장면으로 쉽게 풀어봤어요.",
+    "category": "consume",
+    "date": "2026-07-05",
+    "thumbnail": "/images/thumb-zero-price-effect-free-shipping.png",
+    "url": "/posts/zero-price-effect-free-shipping.html",
+    "tags": ["소비 심리", "제로 가격 효과", "무료 배송", "충동구매", "손실 회피"]
+  },
+  {
+    "title": "인지 부조화로 풀어보는 내 선택을 끝까지 방어하는 마음",
+    "excerpt": "비싸게 샀는데 별로인 물건도 자꾸 잘 샀다고 칭찬하게 되는 건 인지 부조화 때문이에요. 마음이 행동 대신 생각을 바꿔 불편을 없애는 원리와, 이 합리화를 알아채고 다루는 법을 풀어봤어요.",
+    "category": "emotion",
+    "date": "2026-07-07",
+    "thumbnail": "/images/thumb-cognitive-dissonance-justification.png",
+    "url": "/posts/cognitive-dissonance-justification.html",
+    "tags": ["감정과 자아", "인지 부조화", "자기 합리화", "선택 정당화", "노력 정당화"]
+  },
+  {
+    "title": "회식 메뉴 정할 때 결국 다수 따라가는 이유",
+    "excerpt": "다들 같은 메뉴를 고르면 나도 모르게 따라가는 건 동조 때문이에요. 우리 뇌가 다수를 따라가는 원리와, 분위기에 덜 휩쓸리고 내 생각을 지키는 법을 편하게 풀었어요.",
+    "category": "relation",
+    "date": "2026-07-09",
+    "thumbnail": "/images/thumb-conformity-group-majority.png",
+    "url": "/posts/conformity-group-majority.html",
+    "tags": ["인간관계 심리", "동조", "애시 실험", "규범적 동조", "정보적 동조"]
+  },
+  {
+    "title": "본전 생각에 못 멈춰본 적, 다들 있잖아요",
+    "excerpt": "이미 써버린 돈과 시간이 아까워 멈춰야 할 때 못 멈추는 매몰 비용 오류. 재미없는 영화부터 안 맞는 관계까지, 일상 속 사례와 덜 휘둘리는 법을 쉽게 풀었어요.",
+    "category": "consume",
+    "date": "2026-07-11",
+    "thumbnail": "/images/thumb-sunk-cost-fallacy-cant-stop.png",
+    "url": "/posts/sunk-cost-fallacy-cant-stop.html",
+    "tags": ["소비 심리", "매몰 비용", "손실 회피", "손절", "인지 편향"]
+  },
+  {
+    "title": "며칠 힘들었던 여행인데 사진첩 넘기며 또 가고 싶었던 적 있나요",
+    "excerpt": "고생한 여행도 좋게 기억되는 건 피크엔드 법칙 때문이에요. 뇌는 가장 강렬했던 순간과 마지막 순간만으로 경험 전체를 요약하거든요. 이 원리를 일상에 써먹는 법까지 챙겨가세요.",
+    "category": "emotion",
+    "date": "2026-07-13",
+    "thumbnail": "/images/thumb-peak-end-rule-memory.png",
+    "url": "/posts/peak-end-rule-memory.html",
+    "tags": ["감정과 자아", "피크엔드 법칙", "기억 편향", "지속 시간 무시", "인지 편향"]
   }
+  
+  
   
   
 ]
