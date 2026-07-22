@@ -39,9 +39,9 @@
       <label for="nav-toggle" class="nav-toggle-label" aria-label="메뉴 열기">☰</label>
 
       <nav class="main-nav" aria-label="주요 메뉴">
-        <a href="/#consume">소비 심리</a>
-        <a href="/#emotion">감정과 자아</a>
-        <a href="/#relation">인간관계 심리</a>
+        <a href="/category/consume/">소비 심리</a>
+        <a href="/category/emotion/">감정과 자아</a>
+        <a href="/category/relation/">인간관계 심리</a>
         <a href="/about.html">소개</a>
       </nav>
     </div>
@@ -58,10 +58,10 @@
       <!-- ================= 카테고리 필터 ================= -->
       <section class="section" aria-label="카테고리 필터">
         <div class="category-filter">
-          <button class="filter-btn is-active" data-filter="all">전체</button>
-          <button class="filter-btn" data-filter="consume">소비 심리</button>
-          <button class="filter-btn" data-filter="emotion">감정과 자아</button>
-          <button class="filter-btn" data-filter="relation">인간관계 심리</button>
+          <a class="filter-btn is-active" href="/" data-filter="all">전체</a>
+          <a class="filter-btn" href="/category/consume/" data-filter="consume">소비 심리</a>
+          <a class="filter-btn" href="/category/emotion/" data-filter="emotion">감정과 자아</a>
+          <a class="filter-btn" href="/category/relation/" data-filter="relation">인간관계 심리</a>
         </div>
 
         <!-- 글 카드는 build.js가 posts/posts.json을 읽어 정적으로 생성합니다.
@@ -213,212 +213,16 @@
               </div>
             </div>
           </a>
-          <a class="post-card" href="/posts/framing-effect-95-percent-milk.html" data-category="consume">
-            <img class="thumb" src="/images/thumb-framing-effect-95-percent-milk.png" alt="같은 우유인데 95% 무지방이 더 맛있어 보이는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">같은 우유인데 95% 무지방이 더 맛있어 보이는 이유</h2>
-              <p class="card-excerpt">똑같은 우유인데 &#39;95% 무지방&#39;이라고 하면 왜 더 끌릴까요? 같은 사실도 어떻게 말하느냐에 따라 선택이 달라지는 프레이밍 효과를, 마트·병원·쇼핑몰 장면으로 쉽게 풀고 덜 휘둘리는 법까지 알려드려요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-26">2026.06.26</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/negativity-bias-bad-memory.html" data-category="emotion">
-            <img class="thumb" src="/images/thumb-negativity-bias-bad-memory.png" alt="부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유</h2>
-              <p class="card-excerpt">칭찬 열 개는 흘려보내면서 비난 한마디는 며칠씩 곱씹게 되는 부정성 편향. 나쁜 기억이 더 끈질긴 이유를 일상 장면으로 풀고, 덜 휘둘리는 방법까지 정리했어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-26">2026.06.26</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/planning-fallacy-deadline.html" data-category="emotion">
-            <img class="thumb" src="/images/thumb-planning-fallacy-deadline.png" alt="알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요</h2>
-              <p class="card-excerpt">늘 시간을 적게 잡았다가 매번 늦는 계획 오류. 머리가 좋아도 안 고쳐지는 이유부터, 과거 기록 활용·1.5배 보정·잘게 쪼개기로 예측을 덜 빗나가게 하는 법까지 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-25">2026.06.25</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/emotional-contagion-mood-spread.html" data-category="relation">
-            <img class="thumb" src="/images/thumb-emotional-contagion-mood-spread.png" alt="짜증 난 사람 옆에 있으면 나까지 가라앉는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">짜증 난 사람 옆에 있으면 나까지 가라앉는 이유</h2>
-              <p class="card-excerpt">옆 사람 기분에 나까지 물드는 정서 전염. 뇌가 남의 감정을 자동으로 따라 하는 이유부터, 내 감정과 옮아 온 감정을 구분하며 덜 휩쓸리는 법까지 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-25">2026.06.25</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/scarcity-principle-limited-edition.html" data-category="consume">
-            <img class="thumb" src="/images/thumb-scarcity-principle-limited-edition.png" alt="희소성 원리, 한정판이라는 말에 무너지는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">희소성 원리, 한정판이라는 말에 무너지는 이유</h2>
-              <p class="card-excerpt">&#39;재고 2개 남음&#39; 한 줄에 결제 버튼을 누르게 되는 희소성 원리. 우리가 사라지는 것에 약한 진짜 이유부터, 한정판 앞에서 덜 휘둘리는 24시간 규칙까지 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-25">2026.06.25</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/self-determination-theory-motivation.html" data-category="emotion">
-            <img class="thumb" src="/images/thumb-self-determination-theory-motivation.png" alt="엄마가 &quot;공부해&quot; 한 순간 펴려던 책을 덮어버린 적 있나요 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">엄마가 &quot;공부해&quot; 한 순간 펴려던 책을 덮어버린 적 있나요</h2>
-              <p class="card-excerpt">막 하려던 일도 누가 시키는 순간 하기 싫어지는 이유를 자기 결정 이론으로 풀었어요. 자율성·유능감·관계성이 채워질 때 진짜 의욕이 살아나는 원리와, 식어버린 동기를 되살리는 법까지 담았어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-25">2026.06.25</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/looking-glass-self-others-eyes.html" data-category="relation">
-            <img class="thumb" src="/images/thumb-looking-glass-self-others-eyes.png" alt="남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유</h2>
-              <p class="card-excerpt">남의 시선이 자꾸 신경 쓰이는 건 거울 자아 때문이에요. 우리는 남이 나를 어떻게 볼지 상상하고 그 상상을 거울 삼아 &#39;나&#39;를 만들어가거든요. 시선에 덜 휘둘리는 현실적인 방법까지 담았어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-25">2026.06.25</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/halo-effect-first-impression.html" data-category="relation">
-            <img class="thumb" src="/images/thumb-halo-effect-first-impression.png" alt="후광 효과 때문에 우리가 자주 속는 것들 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">후광 효과 때문에 우리가 자주 속는 것들</h2>
-              <p class="card-excerpt">하나의 좋은 인상이 그 사람의 모든 면까지 좋게 보이게 만드는 게 후광 효과예요. 잘생긴 사람이 성격도 좋아 보이고, 말 잘하는 사람이 똑똑해 보이는 이유와, 그 함정에 덜 속는 현실적인 법을 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-24">2026.06.24</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/anchoring-effect-price-tag.html" data-category="consume">
-            <img class="thumb" src="/images/thumb-anchoring-effect-price-tag.png" alt="앵커링 효과, 줄 그어진 가격표에 속는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">앵커링 효과, 줄 그어진 가격표에 속는 이유</h2>
-              <p class="card-excerpt">맨 처음 본 숫자가 닻처럼 박혀 그 뒤 판단을 다 끌고 가는 게 앵커링 효과예요. 줄 그어진 원래 가격이 다 이걸 노린 거고요. 뇌가 첫 숫자에 휘둘리는 원리와, 일상에서 덜 휘둘리는 습관을 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-24">2026.06.24</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/zeigarnik-effect-unfinished.html" data-category="emotion">
-            <img class="thumb" src="/images/thumb-zeigarnik-effect-unfinished.png" alt="드라마가 꼭 제일 궁금한 데서 끊기는 데는 이유가 있어요 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">드라마가 꼭 제일 궁금한 데서 끊기는 데는 이유가 있어요</h2>
-              <p class="card-excerpt">다 끝낸 일은 금방 잊는데 못 끝낸 일만 머릿속에 맴도는 자이가르닉 효과. 드라마가 절정에서 끊기는 이유부터 머릿속 알림을 잠재우는 법까지 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-24">2026.06.24</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/reciprocity-principle-free-sample.html" data-category="relation">
-            <img class="thumb" src="/images/thumb-reciprocity-principle-free-sample.png" alt="공짜로 받으면 갚고 싶어지는 마음의 정체 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">공짜로 받으면 갚고 싶어지는 마음의 정체</h2>
-              <p class="card-excerpt">누가 호의를 베풀면 갚아야 할 것 같은 마음이 드는 건 호혜성 원리 때문이에요. 시식 후 그냥 가기 미안한 심리의 정체부터, 거기 덜 휘둘리는 현실적인 방법까지 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-24">2026.06.24</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/decoy-effect-middle-option.html" data-category="consume">
-            <img class="thumb" src="/images/thumb-decoy-effect-middle-option.png" alt="미끼 효과, 중간 옵션이 합리적으로 보이는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">미끼 효과, 중간 옵션이 합리적으로 보이는 이유</h2>
-              <p class="card-excerpt">아무도 안 살 것 같은 선택지 하나가 옆의 비싼 걸 합리적으로 보이게 만드는 미끼 효과. 팝콘·구독 요금제 사례로 그 원리와 덜 휘둘리는 법을 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-24">2026.06.24</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/loss-aversion-subscription.html" data-category="consume">
-            <img class="thumb" src="/images/thumb-loss-aversion-subscription.png" alt="손실 회피 때문에 안 쓰는 구독을 못 끊는 진짜 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">손실 회피 때문에 안 쓰는 구독을 못 끊는 진짜 이유</h2>
-              <p class="card-excerpt">손실 회피는 같은 크기라도 얻는 기쁨보다 잃는 아픔을 훨씬 크게 느끼는 마음이에요. 그래서 안 쓰는 구독도, 안 입는 옷도 못 놓게 되죠. 의지 부족이 아니라 누구 머릿속에나 깔려 있는 기본 설정이라는 이야기를 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-23">2026.06.23</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/gamjeong-labeling-anger.html" data-category="emotion">
-            <img class="thumb" src="/images/thumb-gamjeong-labeling-anger.png" alt="감정에 이름만 붙였을 뿐인데 화가 스르륵 가라앉는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">감정에 이름만 붙였을 뿐인데 화가 스르륵 가라앉는 이유</h2>
-              <p class="card-excerpt">욱하는 순간 감정에 이름만 붙여도 화가 가라앉는 이유, 감정 라벨링의 진짜 원리를 일상 장면으로 쉽게 풀었어요. 참기와 뭐가 다른지, 바로 써먹는 법까지 챙겨가세요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-23">2026.06.23</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/friend-instagram-social-comparison.html" data-category="relation">
-            <img class="thumb" src="/images/thumb-friend-instagram-social-comparison.png" alt="친구 인스타 보고 부러웠던 그 마음의 정체 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">친구 인스타 보고 부러웠던 그 마음의 정체</h2>
-              <p class="card-excerpt">SNS 보다 기분이 가라앉는 건 뇌가 원래 남과 나를 비교하도록 설계됐기 때문이에요. 비교 상대가 &#39;편집된 하이라이트&#39;라는 게 함정이죠. 비교를 없애기보다 방향을 바꾸는 현실적인 법을 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-23">2026.06.23</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/present-bias-discount.html" data-category="consume">
-            <img class="thumb" src="/images/thumb-present-bias-discount.png" alt="현재 편향 때문에 할인 문구만 보면 지갑이 열리는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">현재 편향 때문에 할인 문구만 보면 지갑이 열리는 이유</h2>
-              <p class="card-excerpt">다이어트는 내일부터인데 결제만큼은 늘 지금 당장인 이유, 바로 현재 편향이에요. 미래의 큰 이득보다 지금의 작은 만족을 크게 느끼는 뇌의 기본값과, 구조를 살짝 바꿔 덜 휘둘리는 법을 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-23">2026.06.23</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/dunning-kruger-effect-beginner.html" data-category="emotion">
-            <img class="thumb" src="/images/thumb-dunning-kruger-effect-beginner.png" alt="더닝 크루거 효과 때문에 입문 3일차의 내가 제일 잘난 줄 알았어요 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">더닝 크루거 효과 때문에 입문 3일차의 내가 제일 잘난 줄 알았어요</h2>
-              <p class="card-excerpt">막 배우기 시작했을 때 자신감이 폭발하는 건 더닝 크루거 효과예요. 실력이 부족할수록 자기 실력을 가늠하는 눈도 같이 부족하거든요. 실력이 늘수록 오히려 자신감이 떨어지는 이유와 함정에서 빠져나오는 법을 풀어봤어요.</p>
-              <div class="card-meta">
-                <span>예밍이네 심리사전</span>
-                <time datetime="2026-06-23">2026.06.23</time>
-              </div>
-            </div>
-          </a>
           <!-- POSTS_END -->
         </div>
+        <!-- PAGINATION_START -->
+        <nav class="pagination" aria-label="페이지 내비게이션">
+          <span class="page-current" aria-current="page">1</span>
+          <a href="/page/2.html">2</a>
+          <a href="/page/3.html">3</a>
+          <a class="page-next" href="/page/2.html" rel="next">다음 →</a>
+        </nav>
+        <!-- PAGINATION_END -->
       </section>
     </div>
   </main>

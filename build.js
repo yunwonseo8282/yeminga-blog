@@ -24,6 +24,15 @@ const INDEX_HTML = path.join(ROOT, "index.html");
 const SITEMAP_XML = path.join(ROOT, "sitemap.xml");
 
 const SITE_ORIGIN = "https://yeminga.com";
+const PAGE_SIZE = 12;
+
+const DEFAULT_PAGE_TITLE =
+  "예밍이네 심리사전 | 소비·감정·인간관계 심리 이야기";
+const DEFAULT_PAGE_DESC =
+  "복잡한 마음, 예밍이랑 쉽게 풀어봐요. 소비, 감정, 인간관계 속 작은 심리들을 쉽고 다정하게 풀어내는 공간이에요.";
+
+const POSTS_MARKER = /<!-- POSTS_START -->[\s\S]*?<!-- POSTS_END -->/;
+const PAGINATION_MARKER = /<!-- PAGINATION_START -->[\s\S]*?<!-- PAGINATION_END -->/;
 
 /* 구글 애드센스 — HEAD_ADSENSE 마커 사이에 빌드 시 주입 */
 const ADSENSE_SCRIPT =
@@ -218,6 +227,129 @@ function createCardHtml(post) {
           </a>`;
 }
 
+/* items를 size 단위로 잘라 페이지 배열로 반환 */
+function paginate(items, size) {
+  if (items.length === 0) return [[]];
+  const pages = [];
+  for (let i = 0; i < items.length; i += size) {
+    pages.push(items.slice(i, i + size));
+  }
+  return pages;
+}
+
+/* 페이지네이션 내비 HTML */
+function createPaginationHtml({
+  currentPage,
+  totalPages,
+  getPageHref,
+  prevHref,
+  nextHref,
+}) {
+  if (totalPages <= 1) return "";
+
+  const parts = ['        <nav class="pagination" aria-label="페이지 내비게이션">'];
+
+  if (prevHref) {
+    parts.push(
+      `          <a class="page-prev" href="${escapeHtml(prevHref)}" rel="prev">← 이전</a>`
+    );
+  }
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === currentPage) {
+      parts.push(`          <span class="page-current" aria-current="page">${i}</span>`);
+    } else {
+      parts.push(`          <a href="${escapeHtml(getPageHref(i))}">${i}</a>`);
+    }
+  }
+
+  if (nextHref) {
+    parts.push(
+      `          <a class="page-next" href="${escapeHtml(nextHref)}" rel="next">다음 →</a>`
+    );
+  }
+
+  parts.push("        </nav>");
+  return parts.join("\n");
+}
+
+/* index.html 템플릿 기반 목록/카테고리 페이지 생성 */
+function renderListPage({
+  template,
+  cards,
+  outPath,
+  canonicalPath,
+  pageTitle,
+  pageDesc,
+  prevHref,
+  nextHref,
+  currentPage,
+  totalPages,
+  getPageHref,
+}) {
+  let html = template;
+  const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
+
+  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(pageTitle)}</title>`);
+  html = html.replace(
+    /<meta name="description" content="[^"]*" \/>/,
+    `<meta name="description" content="${escapeHtml(pageDesc)}" />`
+  );
+  html = html.replace(
+    /<link rel="canonical" href="[^"]*" \/>/,
+    `<link rel="canonical" href="${canonicalUrl}" />`
+  );
+  html = html.replace(
+    /<meta property="og:title" content="[^"]*" \/>/,
+    `<meta property="og:title" content="${escapeHtml(pageTitle)}" />`
+  );
+  html = html.replace(
+    /<meta property="og:description" content="[^"]*" \/>/,
+    `<meta property="og:description" content="${escapeHtml(pageDesc)}" />`
+  );
+  html = html.replace(
+    /<meta property="og:url" content="[^"]*" \/>/,
+    `<meta property="og:url" content="${canonicalUrl}" />`
+  );
+
+  if (!POSTS_MARKER.test(html)) {
+    console.error(
+      "[build] 오류: index.html 에서 <!-- POSTS_START --> ~ <!-- POSTS_END --> 마커를 찾지 못했습니다."
+    );
+    process.exit(1);
+  }
+
+  html = html.replace(
+    POSTS_MARKER,
+    `<!-- POSTS_START -->\n${cards}\n          <!-- POSTS_END -->`
+  );
+
+  const paginationHtml = createPaginationHtml({
+    currentPage,
+    totalPages,
+    getPageHref,
+    prevHref,
+    nextHref,
+  });
+
+  if (!PAGINATION_MARKER.test(html)) {
+    console.warn(
+      `[build] 경고: ${path.relative(ROOT, outPath)} 에서 PAGINATION 마커를 찾지 못했습니다.`
+    );
+  } else {
+    const paginationReplacement = paginationHtml
+      ? `<!-- PAGINATION_START -->\n${paginationHtml}\n        <!-- PAGINATION_END -->`
+      : `<!-- PAGINATION_START --><!-- PAGINATION_END -->`;
+    html = html.replace(PAGINATION_MARKER, paginationReplacement);
+  }
+
+  const dir = path.dirname(outPath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  fs.writeFileSync(outPath, html, "utf8");
+}
+
 /* --------------------------------------------------------
    buildSitemap(posts)
    - 고정 페이지(메인/about/privacy) + posts.json 글 목록으로
@@ -243,7 +375,54 @@ function buildSitemap(posts) {
     priority: "0.8",
   }));
 
-  const allPages = [...staticPages, ...postPages];
+  /* 목록 페이지네이션 URL (/page/2.html …) */
+  const listPaginationPages = [];
+  const allPageCount = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+  for (let n = 2; n <= allPageCount; n++) {
+    listPaginationPages.push({
+      loc: `/page/${n}.html`,
+      lastmod: today,
+      changefreq: "daily",
+      priority: "0.5",
+    });
+  }
+
+  /* 카테고리 목록 페이지 URL */
+  const categoryPaginationPages = [];
+  for (const cat of Object.keys(CATEGORY_MAP)) {
+    const catPosts = posts.filter((p) => p.category === cat);
+    if (catPosts.length === 0) continue;
+
+    categoryPaginationPages.push({
+      loc: `/category/${cat}/`,
+      lastmod: today,
+      changefreq: "weekly",
+      priority: "0.7",
+    });
+
+    const catPageCount = Math.ceil(catPosts.length / PAGE_SIZE);
+    for (let n = 2; n <= catPageCount; n++) {
+      categoryPaginationPages.push({
+        loc: `/category/${cat}/page/${n}.html`,
+        lastmod: today,
+        changefreq: "weekly",
+        priority: "0.5",
+      });
+    }
+  }
+
+  const seen = new Set();
+  const allPages = [];
+  for (const p of [
+    ...staticPages,
+    ...postPages,
+    ...listPaginationPages,
+    ...categoryPaginationPages,
+  ]) {
+    if (seen.has(p.loc)) continue;
+    seen.add(p.loc);
+    allPages.push(p);
+  }
 
   const urlEntries = allPages
     .map(
@@ -275,12 +454,28 @@ function buildSitemap(posts) {
    - 마커가 없는 파일은 경고 후 건너뜁니다.
    - 재실행해도 스크립트가 중복 삽입되지 않습니다.
 -------------------------------------------------------- */
+function collectHtmlFilesRecursive(dir) {
+  const results = [];
+  if (!fs.existsSync(dir)) return results;
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...collectHtmlFilesRecursive(full));
+    } else if (entry.name.endsWith(".html")) {
+      results.push(full);
+    }
+  }
+  return results;
+}
+
 function buildHeadAdsense() {
   const htmlFiles = [
     INDEX_HTML,
     path.join(ROOT, "about.html"),
     path.join(ROOT, "privacy.html"),
     path.join(ROOT, "terms.html"),
+    ...collectHtmlFilesRecursive(path.join(ROOT, "page")),
+    ...collectHtmlFilesRecursive(path.join(ROOT, "category")),
     ...fs
       .readdirSync(path.join(ROOT, "posts"))
       .filter((f) => f.endsWith(".html"))
@@ -317,6 +512,96 @@ function buildHeadAdsense() {
   console.log(`[build] 애드센스 head 주입 완료: ${updated}개 (마커 없음 ${skipped}개)`);
 }
 
+function buildListPages(template, posts) {
+  const emptyCards =
+    '          <p class="empty-state">아직 등록된 글이 없어요. 곧 채워질 예정이에요!</p>';
+  let generated = 0;
+
+  const allPages = paginate(posts, PAGE_SIZE);
+  const totalAllPages = allPages.length;
+
+  allPages.forEach((pagePosts, idx) => {
+    const pageNum = idx + 1;
+    const cardsHtml =
+      pagePosts.length > 0 ? pagePosts.map(createCardHtml).join("\n") : emptyCards;
+    const outPath =
+      pageNum === 1 ? INDEX_HTML : path.join(ROOT, "page", `${pageNum}.html`);
+    const canonicalPath = pageNum === 1 ? "/" : `/page/${pageNum}.html`;
+    const pageTitle =
+      pageNum === 1 ? DEFAULT_PAGE_TITLE : `예밍이네 심리사전 (${pageNum}페이지)`;
+    const prevHref =
+      pageNum > 1 ? (pageNum === 2 ? "/" : `/page/${pageNum - 1}.html`) : null;
+    const nextHref =
+      pageNum < totalAllPages ? `/page/${pageNum + 1}.html` : null;
+
+    renderListPage({
+      template,
+      cards: cardsHtml,
+      outPath,
+      canonicalPath,
+      pageTitle,
+      pageDesc: DEFAULT_PAGE_DESC,
+      prevHref,
+      nextHref,
+      currentPage: pageNum,
+      totalPages: totalAllPages,
+      getPageHref: (n) => (n === 1 ? "/" : `/page/${n}.html`),
+    });
+    generated++;
+  });
+
+  for (const cat of Object.keys(CATEGORY_MAP)) {
+    const catPosts = posts.filter((p) => p.category === cat);
+    if (catPosts.length === 0) continue;
+
+    const catPages = paginate(catPosts, PAGE_SIZE);
+    const totalCatPages = catPages.length;
+    const label = CATEGORY_MAP[cat].label;
+
+    catPages.forEach((pagePosts, idx) => {
+      const pageNum = idx + 1;
+      const cardsHtml = pagePosts.map(createCardHtml).join("\n");
+      const outPath =
+        pageNum === 1
+          ? path.join(ROOT, "category", cat, "index.html")
+          : path.join(ROOT, "category", cat, "page", `${pageNum}.html`);
+      const canonicalPath =
+        pageNum === 1 ? `/category/${cat}/` : `/category/${cat}/page/${pageNum}.html`;
+      let pageTitle = `${label} | 예밍이네 심리사전`;
+      if (pageNum >= 2) pageTitle += ` (${pageNum}페이지)`;
+      const pageDesc = `${label} 카테고리 글 모음. ${DEFAULT_PAGE_DESC}`;
+      const prevHref =
+        pageNum > 1
+          ? pageNum === 2
+            ? `/category/${cat}/`
+            : `/category/${cat}/page/${pageNum - 1}.html`
+          : null;
+      const nextHref =
+        pageNum < totalCatPages ? `/category/${cat}/page/${pageNum + 1}.html` : null;
+
+      renderListPage({
+        template,
+        cards: cardsHtml,
+        outPath,
+        canonicalPath,
+        pageTitle,
+        pageDesc,
+        prevHref,
+        nextHref,
+        currentPage: pageNum,
+        totalPages: totalCatPages,
+        getPageHref: (n) =>
+          n === 1 ? `/category/${cat}/` : `/category/${cat}/page/${n}.html`,
+      });
+      generated++;
+    });
+  }
+
+  console.log(
+    `[build] 목록/카테고리 페이지 생성 완료: ${generated}개 (전체 ${posts.length}글, PAGE_SIZE ${PAGE_SIZE})`
+  );
+}
+
 function build() {
   // 1) 데이터 읽기
   const raw = fs.readFileSync(POSTS_JSON, "utf8");
@@ -325,36 +610,23 @@ function build() {
   // 2) 최신 발행일순 정렬 (내림차순)
   posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
-  // 3) 카드 HTML 생성
-  const cardsHtml =
-    posts.length > 0
-      ? posts.map(createCardHtml).join("\n")
-      : '          <p class="empty-state">아직 등록된 글이 없어요. 곧 채워질 예정이에요!</p>';
-
-  // 4) index.html 마커 사이 교체
-  let html = fs.readFileSync(INDEX_HTML, "utf8");
-  const marker = /<!-- POSTS_START -->[\s\S]*?<!-- POSTS_END -->/;
-
-  if (!marker.test(html)) {
+  // 3) index.html 템플릿 읽기 → 목록/카테고리 페이지 생성
+  const template = fs.readFileSync(INDEX_HTML, "utf8");
+  if (!POSTS_MARKER.test(template)) {
     console.error(
       "[build] 오류: index.html 에서 <!-- POSTS_START --> ~ <!-- POSTS_END --> 마커를 찾지 못했습니다."
     );
     process.exit(1);
   }
+  buildListPages(template, posts);
 
-  const replacement = `<!-- POSTS_START -->\n${cardsHtml}\n          <!-- POSTS_END -->`;
-  html = html.replace(marker, replacement);
-
-  fs.writeFileSync(INDEX_HTML, html, "utf8");
-  console.log(`[build] index.html 완료: 글 ${posts.length}개의 카드를 정적으로 생성했습니다.`);
-
-  // 5) 각 글 HTML에 관련 글 섹션 삽입
+  // 4) 각 글 HTML에 관련 글 섹션 삽입
   buildRelatedPosts(posts);
 
-  // 6) sitemap.xml 자동 생성
+  // 5) sitemap.xml 자동 생성
   buildSitemap(posts);
 
-  // 7) 모든 HTML에 애드센스 스크립트 주입
+  // 6) 모든 HTML에 애드센스 스크립트 주입
   buildHeadAdsense();
 }
 
@@ -366,6 +638,6 @@ build();
       (head에 <!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END --> 마커 포함)
    2) posts/posts.json 에 항목 1개 추가 (title, excerpt, category,
       date, thumbnail, url). category 는 consume | emotion | relation
-   3) node build.js 실행 → index.html 카드 + 관련 글 + 애드센스 head 주입
+   3) node build.js 실행 → 목록/카테고리 페이지 + 관련 글 + 애드센스 head 주입
    4) git add . && git commit && git push → Cloudflare Pages 자동 배포
 --------------------------------------------------------- */

@@ -221,6 +221,8 @@ a:hover {
   border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .filter-btn:hover {
@@ -232,6 +234,50 @@ a:hover {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: #fff;
+}
+
+/* ---------------- 페이지네이션 ---------------- */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: var(--space-6) 0 var(--space-4);
+}
+
+.pagination a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface);
+  color: var(--color-text-soft);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.pagination a:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+.page-current {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 700;
 }
 
 /* ---------------- 글 카드 그리드 ---------------- */
