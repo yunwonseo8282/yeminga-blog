@@ -78,20 +78,62 @@ function getRelatedPosts(currentPost, allPosts, max = 4) {
 
   const currentTags = Array.isArray(currentPost.tags) ? currentPost.tags : [];
 
-  const scored = others.map((p) => {
-    const pTags = Array.isArray(p.tags) ? p.tags : [];
-    const sharedTags = currentTags.filter((t) => pTags.includes(t)).length;
-    const sameCategory = p.category === currentPost.category ? 1 : 0;
-    return { post: p, sharedTags, sameCategory };
-  });
+  function sortByRelevance(posts) {
+    return [...posts].sort((a, b) => {
+      const aTags = Array.isArray(a.tags) ? a.tags : [];
+      const bTags = Array.isArray(b.tags) ? b.tags : [];
+      const aShared = currentTags.filter((t) => aTags.includes(t)).length;
+      const bShared = currentTags.filter((t) => bTags.includes(t)).length;
+      if (bShared !== aShared) return bShared - aShared;
+      return String(b.date).localeCompare(String(a.date));
+    });
+  }
 
-  scored.sort((a, b) => {
-    if (b.sharedTags !== a.sharedTags) return b.sharedTags - a.sharedTags;
-    if (b.sameCategory !== a.sameCategory) return b.sameCategory - a.sameCategory;
-    return String(b.post.date).localeCompare(String(a.post.date));
-  });
+  const selected = [];
+  const selectedUrls = new Set();
 
-  return scored.slice(0, max).map((s) => s.post);
+  function pick(post) {
+    if (!post || selectedUrls.has(post.url)) return;
+    selected.push(post);
+    selectedUrls.add(post.url);
+  }
+
+  const sameCount = Math.floor(max / 2);
+  const otherCategoryKeys = Object.keys(CATEGORY_MAP).filter(
+    (k) => k !== currentPost.category
+  );
+  const perOtherCategory = Math.floor(
+    (max - sameCount) / otherCategoryKeys.length
+  );
+
+  /* 같은 카테고리: 상위 sameCount개 */
+  const sameCategoryPosts = sortByRelevance(
+    others.filter((p) => p.category === currentPost.category)
+  );
+  for (let i = 0; i < sameCount && i < sameCategoryPosts.length; i++) {
+    pick(sameCategoryPosts[i]);
+  }
+
+  /* 다른 카테고리: 각 카테고리에서 perOtherCategory개 */
+  for (const cat of otherCategoryKeys) {
+    const catPosts = sortByRelevance(others.filter((p) => p.category === cat));
+    for (let i = 0; i < perOtherCategory && i < catPosts.length; i++) {
+      pick(catPosts[i]);
+    }
+  }
+
+  /* 부족분: 미선택 후보에서 관련도순으로 채움 */
+  if (selected.length < max) {
+    const remaining = sortByRelevance(
+      others.filter((p) => !selectedUrls.has(p.url))
+    );
+    for (const post of remaining) {
+      if (selected.length >= max) break;
+      pick(post);
+    }
+  }
+
+  return selected.slice(0, max);
 }
 
 /* 관련 글 카드 1개 HTML */
