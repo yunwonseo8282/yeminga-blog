@@ -448,6 +448,62 @@ function buildSitemap(posts) {
 }
 
 /* --------------------------------------------------------
+   fixPostNavLinks()
+   - posts/*.html 의 site-header nav 카테고리 링크를
+     해시(/#consume 등) → 카테고리 페이지 경로로 일괄 치환
+-------------------------------------------------------- */
+function fixPostNavLinks() {
+  const POSTS_DIR = path.join(ROOT, "posts");
+  const REPLACEMENTS = [
+    ['href="/#consume"', 'href="/category/consume/"'],
+    ['href="/#emotion"', 'href="/category/emotion/"'],
+    ['href="/#relation"', 'href="/category/relation/"'],
+  ];
+  const NEEDLES = REPLACEMENTS.map(([from]) => from);
+
+  const files = fs
+    .readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith(".html"))
+    .map((f) => path.join(POSTS_DIR, f));
+
+  let updated = 0;
+
+  for (const filePath of files) {
+    let html = fs.readFileSync(filePath, "utf8");
+    const fileName = path.basename(filePath);
+
+    const counts = NEEDLES.map((needle) => html.split(needle).length - 1);
+    const allZero = counts.every((c) => c === 0);
+    const allOne = counts.every((c) => c === 1);
+
+    if (!allZero && !allOne) {
+      console.warn(
+        `[build] 경고: ${fileName} nav 링크 치환 대상 횟수 비정상 — consume:${counts[0]}, emotion:${counts[1]}, relation:${counts[2]} (예상 각 1회 또는 이미 치환됨 0회)`
+      );
+    } else if (counts.some((c) => c > 1)) {
+      console.warn(
+        `[build] 경고: ${fileName} nav 링크 치환 대상이 중복됨 — consume:${counts[0]}, emotion:${counts[1]}, relation:${counts[2]}`
+      );
+    }
+
+    let changed = false;
+    for (const [from, to] of REPLACEMENTS) {
+      if (html.includes(from)) {
+        html = html.split(from).join(to);
+        changed = true;
+      }
+    }
+
+    if (changed) {
+      fs.writeFileSync(filePath, html, "utf8");
+      updated++;
+    }
+  }
+
+  console.log(`[build] 글 HTML nav 링크 수정 완료: ${updated}개 파일`);
+}
+
+/* --------------------------------------------------------
    buildHeadAdsense()
    - 모든 HTML 파일의 HEAD_ADSENSE_START ~ END 마커 사이에
      구글 애드센스 스크립트를 일괄 주입합니다.
@@ -623,10 +679,13 @@ function build() {
   // 4) 각 글 HTML에 관련 글 섹션 삽입
   buildRelatedPosts(posts);
 
-  // 5) sitemap.xml 자동 생성
+  // 5) 글 HTML nav 카테고리 링크 수정
+  fixPostNavLinks();
+
+  // 6) sitemap.xml 자동 생성
   buildSitemap(posts);
 
-  // 6) 모든 HTML에 애드센스 스크립트 주입
+  // 7) 모든 HTML에 애드센스 스크립트 주입
   buildHeadAdsense();
 }
 
