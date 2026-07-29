@@ -259,8 +259,35 @@
     "thumbnail": "/images/thumb-mood-congruent-effect.png",
     "url": "/posts/mood-congruent-effect.html",
     "tags": ["감정과 자아", "기분 일치 효과", "감정과 기억", "우울", "감정 조절"]
+  },
+  {
+    "title": "혼자선 안 할 일을 무리에선 하게 되는 이유",
+    "excerpt": "혼자라면 절대 안 했을 일을 무리 속에선 해버리는 건 군중심리 때문이에요. 사람이 많아지면 책임감이 옅어지고 흥분이 번지면서 판단력이 흐려지거든요. 휩쓸리지 않고 나를 지키는 법을 편하게 풀어봤어요.",
+    "category": "relation",
+    "date": "2026-07-22",
+    "thumbnail": "/images/thumb-herd-mentality-crowd-behavior.png",
+    "url": "/posts/herd-mentality-crowd-behavior.html",
+    "tags": ["인간관계 심리", "군중심리", "몰개성화", "익명성", "동조"]
+  },
+  {
+    "title": "클래식 음악 틀었더니 비싼 와인이 더 팔린 이유",
+    "excerpt": "먼저 접한 자극이 다음 선택에 슬쩍 영향을 주는 점화 효과. 매장 클래식이 어떻게 더 비싼 와인을 고르게 만드는지, 그리고 그 함정에서 빠져나오는 법을 일상 장면으로 풀어드려요.",
+    "category": "consume",
+    "date": "2026-07-25",
+    "thumbnail": "/images/thumb-priming-effect-wine-music.png",
+    "url": "/posts/priming-effect-wine-music.html",
+    "tags": ["소비 심리", "점화 효과", "무의식", "매장 심리", "충동구매"]
+  },
+  {
+    "title": "인지 재평가, 같은 일도 다르게 해석하면 감정이 바뀌는 이유",
+    "excerpt": "똑같은 일도 어떻게 해석하느냐에 따라 감정이 달라져요. 감정을 만드는 건 사건이 아니라 해석이라는 원리와, 억누르기와 다른 인지 재평가를 일상에서 연습하는 법을 풀었어요.",
+    "category": "emotion",
+    "date": "2026-07-28",
+    "thumbnail": "/images/thumb-cognitive-reappraisal-emotion.png",
+    "url": "/posts/cognitive-reappraisal-emotion.html",
+    "tags": ["감정과 자아", "인지 재평가", "감정 조절", "감정 억제", "감정 라벨링"]
   }
-  
+   
   
 
 ]
