@@ -31,8 +31,19 @@ const DEFAULT_PAGE_TITLE =
 const DEFAULT_PAGE_DESC =
   "복잡한 마음, 예밍이랑 쉽게 풀어봐요. 소비, 감정, 인간관계 속 작은 심리들을 쉽고 다정하게 풀어내는 공간이에요.";
 
+const DEFAULT_HERO_H1 = "복잡한 마음, 예밍이랑 쉽게 풀어봐요";
+const DEFAULT_HERO_DESC =
+  "소비, 감정, 인간관계 속 작은 심리들을 쉽고 다정하게 풀어내는 공간이에요.";
+
 const POSTS_MARKER = /<!-- POSTS_START -->[\s\S]*?<!-- POSTS_END -->/;
 const PAGINATION_MARKER = /<!-- PAGINATION_START -->[\s\S]*?<!-- PAGINATION_END -->/;
+const HERO_MARKER = /<!-- HERO_START -->[\s\S]*?<!-- HERO_END -->/;
+
+/* 브라우저 URL — .html 확장자 제거 (물리 경로·posts.json url 은 그대로) */
+function toCleanPath(p) {
+  if (!p || p === "/" || /\/$/.test(p)) return p;
+  return p.endsWith(".html") ? p.slice(0, -5) : p;
+}
 
 /* 구글 애드센스 — HEAD_ADSENSE 마커 사이에 빌드 시 주입 */
 const ADSENSE_SCRIPT =
@@ -41,10 +52,39 @@ const HEAD_ADSENSE_MARKER = /<!-- HEAD_ADSENSE_START -->[\s\S]*?<!-- HEAD_ADSENS
 
 /* 카테고리 코드 → 한글 라벨 / 배지 클래스 매핑 */
 const CATEGORY_MAP = {
-  consume: { label: "소비 심리", badge: "badge--consume" },
-  emotion: { label: "감정과 자아", badge: "badge--emotion" },
-  relation: { label: "인간관계 심리", badge: "badge--relation" },
+  consume: {
+    label: "소비 심리",
+    badge: "badge--consume",
+    heading: "왜 자꾸 지갑이 열릴까요",
+    heroDesc:
+      "할인, 무료 배송, 구독 해지… 일상 소비 속에 숨은 심리를 예밍이랑 쉽게 풀어봐요.",
+  },
+  emotion: {
+    label: "감정과 자아",
+    badge: "badge--emotion",
+    heading: "내 마음, 조금 더 잘 이해하기",
+    heroDesc:
+      "기분, 자존감, 동기… 감정과 자아 속 심리를 다정하게 풀어내는 공간이에요.",
+  },
+  relation: {
+    label: "인간관계 심리",
+    badge: "badge--relation",
+    heading: "사람 사이에 있는 심리",
+    heroDesc:
+      "첫인상, 비교, 애착… 관계 속 작은 심리들을 쉽고 따뜻하게 풀어봐요.",
+  },
 };
+
+/* 내부 링크 치환 (멱등 — 이미 치환된 값은 needle 이 없으므로 건너뜀) */
+const INTERNAL_LINK_REPLACEMENTS = [
+  ["href=\"/#consume\"", "href=\"/category/consume/\""],
+  ["href=\"/#emotion\"", "href=\"/category/emotion/\""],
+  ["href=\"/#relation\"", "href=\"/category/relation/\""],
+  ["href=\"/about.html#contact\"", "href=\"/about#contact\""],
+  ["href=\"/about.html\"", "href=\"/about\""],
+  ["href=\"/privacy.html\"", "href=\"/privacy\""],
+  ["href=\"/terms.html\"", "href=\"/terms\""],
+];
 
 /* HTML 특수문자 이스케이프 (속성/텍스트 안전 삽입용) */
 function escapeHtml(str) {
@@ -149,7 +189,7 @@ function createRelatedCardHtml(post) {
       )} 썸네일" loading="lazy" />`
     : `<div class="thumb" aria-hidden="true"></div>`;
 
-  return `          <a class="related-card" href="${escapeHtml(post.url)}">
+  return `          <a class="related-card" href="${escapeHtml(toCleanPath(post.url))}">
             ${thumb}
             <div class="related-card-body">
               <span class="badge ${cat.badge}">${escapeHtml(cat.label)}</span>
@@ -251,9 +291,7 @@ function createCardHtml(post) {
       )} 썸네일" loading="lazy" />`
     : `<div class="thumb" aria-hidden="true"></div>`;
 
-  return `          <a class="post-card" href="${escapeHtml(
-    post.url
-  )}" data-category="${escapeHtml(post.category)}">
+  return `          <a class="post-card" href="${escapeHtml(toCleanPath(post.url))}" data-category="${escapeHtml(post.category)}">
             ${thumb}
             <div class="card-body">
               <span class="badge ${cat.badge}">${escapeHtml(cat.label)}</span>
@@ -293,7 +331,7 @@ function createPaginationHtml({
 
   if (prevHref) {
     parts.push(
-      `          <a class="page-prev" href="${escapeHtml(prevHref)}" rel="prev">← 이전</a>`
+      `          <a class="page-prev" href="${escapeHtml(toCleanPath(prevHref))}" rel="prev">← 이전</a>`
     );
   }
 
@@ -301,13 +339,13 @@ function createPaginationHtml({
     if (i === currentPage) {
       parts.push(`          <span class="page-current" aria-current="page">${i}</span>`);
     } else {
-      parts.push(`          <a href="${escapeHtml(getPageHref(i))}">${i}</a>`);
+      parts.push(`          <a href="${escapeHtml(toCleanPath(getPageHref(i)))}">${i}</a>`);
     }
   }
 
   if (nextHref) {
     parts.push(
-      `          <a class="page-next" href="${escapeHtml(nextHref)}" rel="next">다음 →</a>`
+      `          <a class="page-next" href="${escapeHtml(toCleanPath(nextHref))}" rel="next">다음 →</a>`
     );
   }
 
@@ -323,6 +361,8 @@ function renderListPage({
   canonicalPath,
   pageTitle,
   pageDesc,
+  heroH1,
+  heroDesc,
   prevHref,
   nextHref,
   currentPage,
@@ -330,7 +370,7 @@ function renderListPage({
   getPageHref,
 }) {
   let html = template;
-  const canonicalUrl = `${SITE_ORIGIN}${canonicalPath}`;
+  const canonicalUrl = `${SITE_ORIGIN}${toCleanPath(canonicalPath)}`;
 
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(pageTitle)}</title>`);
   html = html.replace(
@@ -353,6 +393,17 @@ function renderListPage({
     /<meta property="og:url" content="[^"]*" \/>/,
     `<meta property="og:url" content="${canonicalUrl}" />`
   );
+
+  if (HERO_MARKER.test(html)) {
+    html = html.replace(
+      HERO_MARKER,
+      `<!-- HERO_START -->\n        <h1>${escapeHtml(heroH1)}</h1>\n        <p>${escapeHtml(heroDesc)}</p>\n        <!-- HERO_END -->`
+    );
+  } else {
+    console.warn(
+      `[build] 경고: ${path.relative(ROOT, outPath)} 에서 HERO 마커를 찾지 못했습니다.`
+    );
+  }
 
   if (!POSTS_MARKER.test(html)) {
     console.error(
@@ -407,22 +458,22 @@ function buildSitemap(posts) {
     { loc: "/about.html",  lastmod: today, changefreq: "monthly", priority: "0.6" },
     { loc: "/privacy.html",lastmod: today, changefreq: "yearly",  priority: "0.3" },
     { loc: "/terms.html",  lastmod: today, changefreq: "yearly",  priority: "0.3" },
-  ];
+  ].map((p) => ({ ...p, loc: toCleanPath(p.loc) }));
 
   /* 글 페이지: posts.json의 url 필드 사용, 발행일 기준 lastmod */
   const postPages = posts.map((p) => ({
-    loc: p.url,
+    loc: toCleanPath(p.url),
     lastmod: p.date || today,
     changefreq: "monthly",
     priority: "0.8",
   }));
 
-  /* 목록 페이지네이션 URL (/page/2.html …) */
+  /* 목록 페이지네이션 URL (/page/2 …) */
   const listPaginationPages = [];
   const allPageCount = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
   for (let n = 2; n <= allPageCount; n++) {
     listPaginationPages.push({
-      loc: `/page/${n}.html`,
+      loc: toCleanPath(`/page/${n}.html`),
       lastmod: today,
       changefreq: "daily",
       priority: "0.5",
@@ -445,7 +496,7 @@ function buildSitemap(posts) {
     const catPageCount = Math.ceil(catPosts.length / PAGE_SIZE);
     for (let n = 2; n <= catPageCount; n++) {
       categoryPaginationPages.push({
-        loc: `/category/${cat}/page/${n}.html`,
+        loc: toCleanPath(`/category/${cat}/page/${n}.html`),
         lastmod: today,
         changefreq: "weekly",
         priority: "0.5",
@@ -470,7 +521,7 @@ function buildSitemap(posts) {
     .map(
       (p) =>
         `  <url>\n` +
-        `    <loc>${SITE_ORIGIN}${p.loc}</loc>\n` +
+        `    <loc>${SITE_ORIGIN}${toCleanPath(p.loc)}</loc>\n` +
         `    <lastmod>${p.lastmod}</lastmod>\n` +
         `    <changefreq>${p.changefreq}</changefreq>\n` +
         `    <priority>${p.priority}</priority>\n` +
@@ -491,17 +542,10 @@ function buildSitemap(posts) {
 
 /* --------------------------------------------------------
    fixPostNavLinks()
-   - posts/*.html 의 site-header nav 카테고리 링크를
-     해시(/#consume 등) → 카테고리 페이지 경로로 일괄 치환
+   - posts/*.html 의 nav·푸터 내부 링크를 정규 URL로 일괄 치환
 -------------------------------------------------------- */
 function fixPostNavLinks() {
   const POSTS_DIR = path.join(ROOT, "posts");
-  const REPLACEMENTS = [
-    ['href="/#consume"', 'href="/category/consume/"'],
-    ['href="/#emotion"', 'href="/category/emotion/"'],
-    ['href="/#relation"', 'href="/category/relation/"'],
-  ];
-  const NEEDLES = REPLACEMENTS.map(([from]) => from);
 
   const files = fs
     .readdirSync(POSTS_DIR)
@@ -512,24 +556,9 @@ function fixPostNavLinks() {
 
   for (const filePath of files) {
     let html = fs.readFileSync(filePath, "utf8");
-    const fileName = path.basename(filePath);
-
-    const counts = NEEDLES.map((needle) => html.split(needle).length - 1);
-    const allZero = counts.every((c) => c === 0);
-    const allOne = counts.every((c) => c === 1);
-
-    if (!allZero && !allOne) {
-      console.warn(
-        `[build] 경고: ${fileName} nav 링크 치환 대상 횟수 비정상 — consume:${counts[0]}, emotion:${counts[1]}, relation:${counts[2]} (예상 각 1회 또는 이미 치환됨 0회)`
-      );
-    } else if (counts.some((c) => c > 1)) {
-      console.warn(
-        `[build] 경고: ${fileName} nav 링크 치환 대상이 중복됨 — consume:${counts[0]}, emotion:${counts[1]}, relation:${counts[2]}`
-      );
-    }
-
     let changed = false;
-    for (const [from, to] of REPLACEMENTS) {
+
+    for (const [from, to] of INTERNAL_LINK_REPLACEMENTS) {
       if (html.includes(from)) {
         html = html.split(from).join(to);
         changed = true;
@@ -542,7 +571,89 @@ function fixPostNavLinks() {
     }
   }
 
-  console.log(`[build] 글 HTML nav 링크 수정 완료: ${updated}개 파일`);
+  console.log(`[build] 글 HTML nav/푸터 링크 수정 완료: ${updated}개 파일`);
+}
+
+/* --------------------------------------------------------
+   fixPostMeta()
+   - posts/*.html 의 canonical·og:url 을 확장자 없는 URL로 일괄 치환
+-------------------------------------------------------- */
+function fixPostMeta() {
+  const POSTS_DIR = path.join(ROOT, "posts");
+
+  const files = fs
+    .readdirSync(POSTS_DIR)
+    .filter((f) => f.endsWith(".html"))
+    .map((f) => path.join(POSTS_DIR, f));
+
+  let updated = 0;
+
+  for (const filePath of files) {
+    const slug = path.basename(filePath, ".html");
+    const cleanUrl = `${SITE_ORIGIN}/posts/${slug}`;
+    let html = fs.readFileSync(filePath, "utf8");
+    const before = html;
+
+    html = html.replace(
+      /(<link rel="canonical" href=")[^"]*(" \/>)/,
+      `$1${cleanUrl}$2`
+    );
+    html = html.replace(
+      /(<meta property="og:url" content=")[^"]*(" \/>)/,
+      `$1${cleanUrl}$2`
+    );
+
+    if (html !== before) {
+      fs.writeFileSync(filePath, html, "utf8");
+      updated++;
+    }
+  }
+
+  console.log(`[build] 글 HTML canonical/og:url 수정 완료: ${updated}개 파일`);
+}
+
+/* --------------------------------------------------------
+   fixStaticPages()
+   - about/privacy/terms.html 의 nav·푸터·canonical·og:url 정규화
+-------------------------------------------------------- */
+function fixStaticPages() {
+  const staticFiles = [
+    { filePath: path.join(ROOT, "about.html"), cleanPath: "/about" },
+    { filePath: path.join(ROOT, "privacy.html"), cleanPath: "/privacy" },
+    { filePath: path.join(ROOT, "terms.html"), cleanPath: "/terms" },
+  ];
+
+  let updated = 0;
+
+  for (const { filePath, cleanPath } of staticFiles) {
+    if (!fs.existsSync(filePath)) continue;
+
+    let html = fs.readFileSync(filePath, "utf8");
+    const before = html;
+    const cleanUrl = `${SITE_ORIGIN}${cleanPath}`;
+
+    for (const [from, to] of INTERNAL_LINK_REPLACEMENTS) {
+      if (html.includes(from)) {
+        html = html.split(from).join(to);
+      }
+    }
+
+    html = html.replace(
+      /(<link rel="canonical" href=")[^"]*(" \/>)/,
+      `$1${cleanUrl}$2`
+    );
+    html = html.replace(
+      /(<meta property="og:url" content=")[^"]*(" \/>)/,
+      `$1${cleanUrl}$2`
+    );
+
+    if (html !== before) {
+      fs.writeFileSync(filePath, html, "utf8");
+      updated++;
+    }
+  }
+
+  console.log(`[build] 정적 페이지(about/privacy/terms) URL 정규화 완료: ${updated}개 파일`);
 }
 
 /* --------------------------------------------------------
@@ -624,13 +735,21 @@ function buildListPages(template, posts) {
       pagePosts.length > 0 ? pagePosts.map(createCardHtml).join("\n") : emptyCards;
     const outPath =
       pageNum === 1 ? INDEX_HTML : path.join(ROOT, "page", `${pageNum}.html`);
-    const canonicalPath = pageNum === 1 ? "/" : `/page/${pageNum}.html`;
+    const canonicalPath = pageNum === 1 ? "/" : `/page/${pageNum}`;
     const pageTitle =
       pageNum === 1 ? DEFAULT_PAGE_TITLE : `예밍이네 심리사전 (${pageNum}페이지)`;
+    const pageDesc =
+      pageNum === 1
+        ? DEFAULT_PAGE_DESC
+        : `예밍이네 심리사전 ${pageNum}페이지. ${DEFAULT_PAGE_DESC}`;
+    const heroDesc =
+      pageNum === 1
+        ? DEFAULT_HERO_DESC
+        : `${DEFAULT_HERO_DESC} (전체 글 목록 ${pageNum}페이지)`;
     const prevHref =
-      pageNum > 1 ? (pageNum === 2 ? "/" : `/page/${pageNum - 1}.html`) : null;
+      pageNum > 1 ? (pageNum === 2 ? "/" : `/page/${pageNum - 1}`) : null;
     const nextHref =
-      pageNum < totalAllPages ? `/page/${pageNum + 1}.html` : null;
+      pageNum < totalAllPages ? `/page/${pageNum + 1}` : null;
 
     renderListPage({
       template,
@@ -638,12 +757,14 @@ function buildListPages(template, posts) {
       outPath,
       canonicalPath,
       pageTitle,
-      pageDesc: DEFAULT_PAGE_DESC,
+      pageDesc,
+      heroH1: DEFAULT_HERO_H1,
+      heroDesc,
       prevHref,
       nextHref,
       currentPage: pageNum,
       totalPages: totalAllPages,
-      getPageHref: (n) => (n === 1 ? "/" : `/page/${n}.html`),
+      getPageHref: (n) => (n === 1 ? "/" : `/page/${n}`),
     });
     generated++;
   });
@@ -655,6 +776,7 @@ function buildListPages(template, posts) {
     const catPages = paginate(catPosts, PAGE_SIZE);
     const totalCatPages = catPages.length;
     const label = CATEGORY_MAP[cat].label;
+    const { heading, heroDesc: catHeroDesc } = CATEGORY_MAP[cat];
 
     catPages.forEach((pagePosts, idx) => {
       const pageNum = idx + 1;
@@ -664,18 +786,21 @@ function buildListPages(template, posts) {
           ? path.join(ROOT, "category", cat, "index.html")
           : path.join(ROOT, "category", cat, "page", `${pageNum}.html`);
       const canonicalPath =
-        pageNum === 1 ? `/category/${cat}/` : `/category/${cat}/page/${pageNum}.html`;
+        pageNum === 1 ? `/category/${cat}/` : `/category/${cat}/page/${pageNum}`;
       let pageTitle = `${label} | 예밍이네 심리사전`;
       if (pageNum >= 2) pageTitle += ` (${pageNum}페이지)`;
-      const pageDesc = `${label} 카테고리 글 모음. ${DEFAULT_PAGE_DESC}`;
+      let pageDesc = `${label} 카테고리 글 모음. ${DEFAULT_PAGE_DESC}`;
+      if (pageNum >= 2) pageDesc = `${label} 카테고리 글 모음 (${pageNum}페이지). ${DEFAULT_PAGE_DESC}`;
+      let heroDesc = catHeroDesc;
+      if (pageNum >= 2) heroDesc = `${catHeroDesc} (${pageNum}페이지)`;
       const prevHref =
         pageNum > 1
           ? pageNum === 2
             ? `/category/${cat}/`
-            : `/category/${cat}/page/${pageNum - 1}.html`
+            : `/category/${cat}/page/${pageNum - 1}`
           : null;
       const nextHref =
-        pageNum < totalCatPages ? `/category/${cat}/page/${pageNum + 1}.html` : null;
+        pageNum < totalCatPages ? `/category/${cat}/page/${pageNum + 1}` : null;
 
       renderListPage({
         template,
@@ -684,12 +809,14 @@ function buildListPages(template, posts) {
         canonicalPath,
         pageTitle,
         pageDesc,
+        heroH1: heading,
+        heroDesc,
         prevHref,
         nextHref,
         currentPage: pageNum,
         totalPages: totalCatPages,
         getPageHref: (n) =>
-          n === 1 ? `/category/${cat}/` : `/category/${cat}/page/${n}.html`,
+          n === 1 ? `/category/${cat}/` : `/category/${cat}/page/${n}`,
       });
       generated++;
     });
@@ -721,13 +848,19 @@ function build() {
   // 4) 각 글 HTML에 관련 글 섹션 삽입
   buildRelatedPosts(posts);
 
-  // 5) 글 HTML nav 카테고리 링크 수정
+  // 5) 글 HTML nav/푸터 링크 수정
   fixPostNavLinks();
 
-  // 6) sitemap.xml 자동 생성
+  // 6) 글 HTML canonical/og:url 정규화
+  fixPostMeta();
+
+  // 7) about/privacy/terms URL 정규화
+  fixStaticPages();
+
+  // 8) sitemap.xml 자동 생성
   buildSitemap(posts);
 
-  // 7) 모든 HTML에 애드센스 스크립트 주입
+  // 9) 모든 HTML에 애드센스 스크립트 주입
   buildHeadAdsense();
 }
 
