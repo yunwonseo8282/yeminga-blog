@@ -7,6 +7,7 @@
    - 글 카드 HTML을 "정적으로" 생성합니다. (런타임 fetch/렌더링 없음)
    - index.html 의 <!-- POSTS_START --> ~ <!-- POSTS_END --> 사이를
      생성한 카드 HTML로 갈아끼웁니다. (그 외 영역은 건드리지 않음)
+   - 메인 1페이지에서만 FEATURED / CATSECTIONS 마커를 채웁니다.
    - 모든 HTML의 <!-- HEAD_ADSENSE_START --> ~ <!-- HEAD_ADSENSE_END --> 사이에
      구글 애드센스 스크립트를 일괄 주입합니다.
 
@@ -38,6 +39,9 @@ const DEFAULT_HERO_DESC =
 const POSTS_MARKER = /<!-- POSTS_START -->[\s\S]*?<!-- POSTS_END -->/;
 const PAGINATION_MARKER = /<!-- PAGINATION_START -->[\s\S]*?<!-- PAGINATION_END -->/;
 const HERO_MARKER = /<!-- HERO_START -->[\s\S]*?<!-- HERO_END -->/;
+const FEATURED_MARKER = /<!-- FEATURED_START -->[\s\S]*?<!-- FEATURED_END -->/;
+const CATSECTIONS_MARKER = /<!-- CATSECTIONS_START -->[\s\S]*?<!-- CATSECTIONS_END -->/;
+const POSTSHEAD_MARKER = /<!-- POSTSHEAD_START -->[\s\S]*?<!-- POSTSHEAD_END -->/;
 
 /* 브라우저 URL — .html 확장자 제거 (물리 경로·posts.json url 은 그대로) */
 function toCleanPath(p) {
@@ -298,13 +302,155 @@ function createCardHtml(post) {
               <h2 class="card-title">${escapeHtml(post.title)}</h2>
               <p class="card-excerpt">${escapeHtml(post.excerpt)}</p>
               <div class="card-meta">
-                <span>예밍이네 심리사전</span>
+                <span>예밍이</span>
                 <time datetime="${escapeHtml(post.date)}">${formatDate(
     post.date
   )}</time>
               </div>
             </div>
           </a>`;
+}
+
+/* 메인 상단 뉴스형 2단 HTML (posts[0]~[9], 메인 1페이지 전용) */
+function createFeaturedBlockHtml(posts) {
+  if (!posts || posts.length === 0) return "";
+
+  const lead = posts[0];
+  const leadCat = CATEGORY_MAP[lead.category] || {
+    label: "심리",
+    badge: "badge--emotion",
+  };
+  const leadHref = escapeHtml(toCleanPath(lead.url));
+  const leadThumb = lead.thumbnail
+    ? `<img class="thumb thumb--wide" src="${escapeHtml(lead.thumbnail)}" alt="${escapeHtml(
+        lead.title
+      )} 썸네일" loading="lazy" />`
+    : `<div class="thumb thumb--wide" aria-hidden="true"></div>`;
+
+  const subLinks = posts
+    .slice(1, 3)
+    .map(
+      (p) =>
+        `            <li><a href="${escapeHtml(toCleanPath(p.url))}">· ${escapeHtml(
+          p.title
+        )}</a></li>`
+    )
+    .join("\n");
+
+  const listItems = posts
+    .slice(3, 10)
+    .map((p) => {
+      const cat = CATEGORY_MAP[p.category] || { label: "심리" };
+      const thumb = p.thumbnail
+        ? `<img class="hero-list-thumb" src="${escapeHtml(p.thumbnail)}" alt="" loading="lazy" />`
+        : `<span class="hero-list-thumb hero-list-thumb--empty" aria-hidden="true"></span>`;
+      return (
+        `          <a class="hero-list-item" href="${escapeHtml(toCleanPath(p.url))}">\n` +
+        `            <span class="hero-list-text">\n` +
+        `              <span class="hero-list-cat">${escapeHtml(cat.label)}</span>\n` +
+        `              <span class="hero-list-title">${escapeHtml(p.title)}</span>\n` +
+        `            </span>\n` +
+        `            ${thumb}\n` +
+        `          </a>`
+      );
+    })
+    .join("\n");
+
+  return (
+    `        <div class="hero-featured">\n` +
+    `          <div class="hero-lead">\n` +
+    `            <a class="hero-lead-main" href="${leadHref}">\n` +
+    `              ${leadThumb}\n` +
+    `              <span class="badge ${leadCat.badge}">${escapeHtml(leadCat.label)}</span>\n` +
+    `              <h2 class="hero-lead-title">${escapeHtml(lead.title)}</h2>\n` +
+    `              <p class="hero-lead-excerpt">${escapeHtml(lead.excerpt)}</p>\n` +
+    `            </a>\n` +
+    (subLinks
+      ? `            <ul class="hero-sub-links">\n${subLinks}\n            </ul>\n`
+      : "") +
+    `          </div>\n` +
+    `          <div class="hero-list">\n` +
+    `${listItems}\n` +
+    `          </div>\n` +
+    `        </div>`
+  );
+}
+
+/* 카테고리별 섹션 HTML (메인 1페이지 전용)
+   - 대표 영역(posts[0]~[9])에 이미 나온 글은 제외
+   - 왼쪽 최신 1개(리드) + 오른쪽 제목 리스트 4개 */
+function createCategorySectionsHtml(posts) {
+  const order = ["consume", "emotion", "relation"];
+  const featuredUrls = new Set(posts.slice(0, 10).map((p) => p.url));
+  const sections = [];
+
+  for (const cat of order) {
+    const info = CATEGORY_MAP[cat];
+    if (!info) continue;
+
+    const catPosts = posts.filter(
+      (p) => p.category === cat && !featuredUrls.has(p.url)
+    );
+    if (catPosts.length === 0) continue;
+
+    const lead = catPosts[0];
+    const listPosts = catPosts.slice(1, 5);
+    const leadHref = escapeHtml(toCleanPath(lead.url));
+    const leadThumb = lead.thumbnail
+      ? `<img class="thumb thumb--wide" src="${escapeHtml(lead.thumbnail)}" alt="${escapeHtml(
+          lead.title
+        )} 썸네일" loading="lazy" />`
+      : `<div class="thumb thumb--wide" aria-hidden="true"></div>`;
+
+    const listHtml = listPosts
+      .map((p) => {
+        const itemCat = CATEGORY_MAP[p.category] || { label: "심리" };
+        const thumb = p.thumbnail
+          ? `<img class="category-section-list-thumb" src="${escapeHtml(
+              p.thumbnail
+            )}" alt="" loading="lazy" />`
+          : `<span class="category-section-list-thumb category-section-list-thumb--empty" aria-hidden="true"></span>`;
+        return (
+          `            <a class="category-section-list-item" href="${escapeHtml(
+            toCleanPath(p.url)
+          )}">\n` +
+          `              <span class="category-section-list-text">\n` +
+          `                <span class="category-section-list-cat">${escapeHtml(
+            itemCat.label
+          )}</span>\n` +
+          `                <span class="category-section-list-title">${escapeHtml(
+            p.title
+          )}</span>\n` +
+          `              </span>\n` +
+          `              ${thumb}\n` +
+          `            </a>`
+        );
+      })
+      .join("\n");
+
+    sections.push(
+      `        <section class="category-section" aria-label="${escapeHtml(info.label)}">\n` +
+        `          <div class="category-section-head">\n` +
+        `            <h2 class="category-section-title">${escapeHtml(info.label)}</h2>\n` +
+        `            <a class="category-more" href="/category/${escapeHtml(cat)}/">더 보기</a>\n` +
+        `          </div>\n` +
+        `          <div class="category-section-body">\n` +
+        `            <div class="category-section-lead">\n` +
+        `              <a class="category-section-lead-main" href="${leadHref}">\n` +
+        `                ${leadThumb}\n` +
+        `                <h3 class="category-section-lead-title">${escapeHtml(lead.title)}</h3>\n` +
+        `                <p class="category-section-lead-excerpt">${escapeHtml(lead.excerpt)}</p>\n` +
+        `              </a>\n` +
+        `            </div>\n` +
+        `            <div class="category-section-list">\n` +
+        `${listHtml}\n` +
+        `            </div>\n` +
+        `          </div>\n` +
+        `        </section>`
+    );
+  }
+
+  return sections.join("\n");
 }
 
 /* items를 size 단위로 잘라 페이지 배열로 반환 */
@@ -368,9 +514,13 @@ function renderListPage({
   currentPage,
   totalPages,
   getPageHref,
+  featuredHtml = "",
+  catSectionsHtml = "",
+  postsHeadTitle = "이런 글도 있어요",
 }) {
   let html = template;
   const canonicalUrl = `${SITE_ORIGIN}${toCleanPath(canonicalPath)}`;
+  const isCategoryPage = String(canonicalPath).startsWith("/category/");
 
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(pageTitle)}</title>`);
   html = html.replace(
@@ -405,6 +555,34 @@ function renderListPage({
     );
   }
 
+  if (FEATURED_MARKER.test(html)) {
+    const featuredReplacement = featuredHtml
+      ? `<!-- FEATURED_START -->\n${featuredHtml}\n        <!-- FEATURED_END -->`
+      : `<!-- FEATURED_START --><!-- FEATURED_END -->`;
+    html = html.replace(FEATURED_MARKER, featuredReplacement);
+  } else {
+    console.warn(
+      `[build] 경고: ${path.relative(ROOT, outPath)} 에서 FEATURED 마커를 찾지 못했습니다.`
+    );
+  }
+
+  /* 그리드 제목: 메인은 "이런 글도 있어요", 카테고리는 "{라벨} 글" */
+  const resolvedPostsHead = isCategoryPage
+    ? postsHeadTitle
+    : "이런 글도 있어요";
+  if (POSTSHEAD_MARKER.test(html)) {
+    html = html.replace(
+      POSTSHEAD_MARKER,
+      `<!-- POSTSHEAD_START -->\n        <div class="category-section-head">\n          <h2 class="category-section-title">${escapeHtml(
+        resolvedPostsHead
+      )}</h2>\n        </div>\n        <!-- POSTSHEAD_END -->`
+    );
+  } else {
+    console.warn(
+      `[build] 경고: ${path.relative(ROOT, outPath)} 에서 POSTSHEAD 마커를 찾지 못했습니다.`
+    );
+  }
+
   if (!POSTS_MARKER.test(html)) {
     console.error(
       "[build] 오류: index.html 에서 <!-- POSTS_START --> ~ <!-- POSTS_END --> 마커를 찾지 못했습니다."
@@ -416,6 +594,17 @@ function renderListPage({
     POSTS_MARKER,
     `<!-- POSTS_START -->\n${cards}\n          <!-- POSTS_END -->`
   );
+
+  if (CATSECTIONS_MARKER.test(html)) {
+    const catReplacement = catSectionsHtml
+      ? `<!-- CATSECTIONS_START -->\n${catSectionsHtml}\n        <!-- CATSECTIONS_END -->`
+      : `<!-- CATSECTIONS_START --><!-- CATSECTIONS_END -->`;
+    html = html.replace(CATSECTIONS_MARKER, catReplacement);
+  } else {
+    console.warn(
+      `[build] 경고: ${path.relative(ROOT, outPath)} 에서 CATSECTIONS 마커를 찾지 못했습니다.`
+    );
+  }
 
   const paginationHtml = createPaginationHtml({
     currentPage,
@@ -577,6 +766,7 @@ function fixPostNavLinks() {
 /* --------------------------------------------------------
    fixPostMeta()
    - posts/*.html 의 canonical·og:url 을 확장자 없는 URL로 일괄 치환
+   - 글 상세 작성자 표기를 "예밍이"로 통일
 -------------------------------------------------------- */
 function fixPostMeta() {
   const POSTS_DIR = path.join(ROOT, "posts");
@@ -603,13 +793,20 @@ function fixPostMeta() {
       `$1${cleanUrl}$2`
     );
 
+    /* 작성자 표기: 예밍이네 심리사전 → 예밍이 (사이트명·publisher 는 유지) */
+    html = html.replace(/작성자:\s*예밍이네 심리사전/g, "작성자: 예밍이");
+    html = html.replace(
+      /("author"\s*:\s*\{[^}]*?"name"\s*:\s*")예밍이네 심리사전(")/gs,
+      "$1예밍이$2"
+    );
+
     if (html !== before) {
       fs.writeFileSync(filePath, html, "utf8");
       updated++;
     }
   }
 
-  console.log(`[build] 글 HTML canonical/og:url 수정 완료: ${updated}개 파일`);
+  console.log(`[build] 글 HTML canonical/og:url·작성자 수정 완료: ${updated}개 파일`);
 }
 
 /* --------------------------------------------------------
@@ -731,8 +928,26 @@ function buildListPages(template, posts) {
 
   allPages.forEach((pagePosts, idx) => {
     const pageNum = idx + 1;
-    const cardsHtml =
-      pagePosts.length > 0 ? pagePosts.map(createCardHtml).join("\n") : emptyCards;
+    let cardsHtml;
+    let featuredHtml = "";
+    let catSectionsHtml = "";
+
+    if (pageNum === 1 && posts.length > 0) {
+      /* 메인 1페이지: 상단 뉴스형(posts[0]~[9]) + 그리드 posts.slice(10, 16) */
+      featuredHtml = createFeaturedBlockHtml(posts);
+      const gridPosts = posts.slice(10, 16);
+      cardsHtml =
+        gridPosts.length > 0
+          ? gridPosts.map(createCardHtml).join("\n")
+          : emptyCards;
+      catSectionsHtml = createCategorySectionsHtml(posts);
+    } else {
+      cardsHtml =
+        pagePosts.length > 0
+          ? pagePosts.map(createCardHtml).join("\n")
+          : emptyCards;
+    }
+
     const outPath =
       pageNum === 1 ? INDEX_HTML : path.join(ROOT, "page", `${pageNum}.html`);
     const canonicalPath = pageNum === 1 ? "/" : `/page/${pageNum}`;
@@ -765,6 +980,9 @@ function buildListPages(template, posts) {
       currentPage: pageNum,
       totalPages: totalAllPages,
       getPageHref: (n) => (n === 1 ? "/" : `/page/${n}`),
+      featuredHtml,
+      catSectionsHtml,
+      postsHeadTitle: "이런 글도 있어요",
     });
     generated++;
   });
@@ -817,6 +1035,9 @@ function buildListPages(template, posts) {
         totalPages: totalCatPages,
         getPageHref: (n) =>
           n === 1 ? `/category/${cat}/` : `/category/${cat}/page/${n}`,
+        featuredHtml: "",
+        catSectionsHtml: "",
+        postsHeadTitle: `${label} 글`,
       });
       generated++;
     });
