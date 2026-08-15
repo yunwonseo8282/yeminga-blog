@@ -649,10 +649,10 @@ function buildSitemap(posts) {
     { loc: "/terms.html",  lastmod: today, changefreq: "yearly",  priority: "0.3" },
   ].map((p) => ({ ...p, loc: toCleanPath(p.loc) }));
 
-  /* 글 페이지: posts.json의 url 필드 사용, 발행일 기준 lastmod */
+  /* 글 페이지: lastmod = modified(수정일) 우선, 없으면 date(발행일) */
   const postPages = posts.map((p) => ({
     loc: toCleanPath(p.url),
-    lastmod: p.date || today,
+    lastmod: p.modified || p.date || today,
     changefreq: "monthly",
     priority: "0.8",
   }));
@@ -727,6 +727,39 @@ function buildSitemap(posts) {
 
   fs.writeFileSync(SITEMAP_XML, xml, "utf8");
   console.log(`[build] sitemap.xml 생성 완료 (총 ${allPages.length}개 URL)`);
+}
+
+/* --------------------------------------------------------
+   buildRedirects(posts)
+   - 예전 루트 URL (/slug.html) → /posts/slug 301 줄을
+     posts.json 기준으로 정적 생성합니다.
+   - Cloudflare Pages 는 세그먼트 내 부분 플레이스홀더가
+     불안정하므로 와일드카드 없이 한 줄씩 씁니다.
+-------------------------------------------------------- */
+function buildRedirects(posts) {
+  const REDIRECTS = path.join(ROOT, "_redirects");
+  const lines = [
+    "# 이 파일은 build.js가 자동으로 생성합니다. 직접 수정하지 마세요.",
+    "# 형식: /슬러그.html  /posts/슬러그  301",
+    "",
+  ];
+
+  const seen = new Set();
+  for (const post of posts) {
+    const clean = toCleanPath(post.url); // "/posts/slug"
+    const m = String(clean).match(/^\/posts\/([^/]+)$/);
+    if (!m) {
+      console.warn(`[build] 경고: url 형식을 해석할 수 없습니다 → ${post.url}`);
+      continue;
+    }
+    const slug = m[1];
+    if (seen.has(slug)) continue;
+    seen.add(slug);
+    lines.push(`/${slug}.html  /posts/${slug}  301`);
+  }
+
+  fs.writeFileSync(REDIRECTS, lines.join("\n") + "\n", "utf8");
+  console.log(`[build] _redirects 생성 완료 (${seen.size}개 리다이렉트)`);
 }
 
 /* --------------------------------------------------------
@@ -880,6 +913,7 @@ function buildHeadAdsense() {
     path.join(ROOT, "about.html"),
     path.join(ROOT, "privacy.html"),
     path.join(ROOT, "terms.html"),
+    path.join(ROOT, "404.html"),
     ...collectHtmlFilesRecursive(path.join(ROOT, "page")),
     ...collectHtmlFilesRecursive(path.join(ROOT, "category")),
     ...fs
@@ -1081,7 +1115,10 @@ function build() {
   // 8) sitemap.xml 자동 생성
   buildSitemap(posts);
 
-  // 9) 모든 HTML에 애드센스 스크립트 주입
+  // 9) 예전 /slug.html → /posts/slug 301 (_redirects)
+  buildRedirects(posts);
+
+  // 10) 모든 HTML에 애드센스 스크립트 주입
   buildHeadAdsense();
 }
 
@@ -1093,6 +1130,9 @@ build();
       (head에 <!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END --> 마커 포함)
    2) posts/posts.json 에 항목 1개 추가 (title, excerpt, category,
       date, thumbnail, url). category 는 consume | emotion | relation
-   3) node build.js 실행 → 목록/카테고리 페이지 + 관련 글 + 애드센스 head 주입
+      글을 수정·재작성한 경우 선택적으로 "modified": "YYYY-MM-DD" 추가
+      (sitemap lastmod 에 사용. 없으면 date 사용)
+   3) node build.js 실행 → 목록/카테고리 페이지 + 관련 글 + _redirects
+      + 애드센스 head 주입
    4) git add . && git commit && git push → Cloudflare Pages 자동 배포
 --------------------------------------------------------- */
