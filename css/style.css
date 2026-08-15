@@ -1329,6 +1329,46 @@ a:hover {
   margin-bottom: var(--space-3);
 }
 
+/* ---------------- [9] 본문 내부 링크 버튼 ---------------- */
+/* cta-box와 무관한 별개 요소. 글 본문 안에서 다른 글로 넘기는 버튼 */
+.inline-cta {
+  display: inline-block;
+  margin: var(--space-2) 0;
+  padding: var(--space-3) var(--space-5);
+  background-color: var(--color-primary-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-primary-dark);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  line-height: 1.5;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.inline-cta::after {
+  content: "→";
+  margin-left: var(--space-2);
+  transition: transform 0.15s;
+  display: inline-block;
+}
+
+.inline-cta:hover {
+  background-color: #e2dbfb;
+  border-color: var(--color-primary);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.inline-cta:hover::after {
+  transform: translateX(3px);
+}
+
+.inline-cta:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
 /* ================================================================
    관련 글 섹션 — "📚 이런 글도 있어요"
    기존 .post-card / .post-grid 와 완전히 분리된 전용 클래스
