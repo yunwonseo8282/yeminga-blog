@@ -835,6 +835,11 @@ a:hover {
   color: var(--color-text-soft);
 }
 
+.article-modified {
+  font-size: var(--fs-xs);
+  color: var(--color-text-soft);
+}
+
 .article-body {
   font-size: 1.05rem;
 }

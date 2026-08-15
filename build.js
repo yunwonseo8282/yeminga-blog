@@ -649,10 +649,10 @@ function buildSitemap(posts) {
     { loc: "/terms.html",  lastmod: today, changefreq: "yearly",  priority: "0.3" },
   ].map((p) => ({ ...p, loc: toCleanPath(p.loc) }));
 
-  /* 글 페이지: lastmod = modified(수정일) 우선, 없으면 date(발행일) */
+  /* 글 페이지: lastmod = dateModified(수정일) 우선, 없으면 date(발행일) */
   const postPages = posts.map((p) => ({
     loc: toCleanPath(p.url),
-    lastmod: p.modified || p.date || today,
+    lastmod: p.dateModified || p.date || today,
     changefreq: "monthly",
     priority: "0.8",
   }));
@@ -797,12 +797,19 @@ function fixPostNavLinks() {
 }
 
 /* --------------------------------------------------------
-   fixPostMeta()
+   fixPostMeta(posts)
    - posts/*.html 의 canonical·og:url 을 확장자 없는 URL로 일괄 치환
    - 글 상세 작성자 표기를 "예밍이"로 통일
+   - JSON-LD dateModified / 화면 수정일 표기 동기화
 -------------------------------------------------------- */
-function fixPostMeta() {
+function fixPostMeta(posts) {
   const POSTS_DIR = path.join(ROOT, "posts");
+  const bySlug = new Map();
+  for (const p of posts) {
+    const clean = toCleanPath(p.url); // "/posts/slug"
+    const m = String(clean).match(/^\/posts\/([^/]+)$/);
+    if (m) bySlug.set(m[1], p);
+  }
 
   const files = fs
     .readdirSync(POSTS_DIR)
@@ -814,6 +821,7 @@ function fixPostMeta() {
   for (const filePath of files) {
     const slug = path.basename(filePath, ".html");
     const cleanUrl = `${SITE_ORIGIN}/posts/${slug}`;
+    const post = bySlug.get(slug);
     let html = fs.readFileSync(filePath, "utf8");
     const before = html;
 
@@ -833,13 +841,45 @@ function fixPostMeta() {
       "$1예밍이$2"
     );
 
+    if (post) {
+      const published = post.date || "";
+      const modifiedIso = post.dateModified || published;
+
+      /* JSON-LD dateModified = dateModified || date */
+      if (modifiedIso) {
+        html = html.replace(
+          /"dateModified"\s*:\s*"[^"]*"/g,
+          `"dateModified": "${modifiedIso}"`
+        );
+      }
+
+      /* 화면: 기존 수정 표기 제거 후, dateModified ≠ date 일 때만 다시 삽입 */
+      html = html.replace(
+        /\n?\s*<span class="article-modified">[\s\S]*?<\/span>/g,
+        ""
+      );
+      if (
+        post.dateModified &&
+        published &&
+        post.dateModified !== published
+      ) {
+        const modLabel = escapeHtml(formatDate(post.dateModified));
+        html = html.replace(
+          /(<div class="article-meta">[\s\S]*?<time[^>]*>[\s\S]*?<\/time>)/,
+          `$1\n            <span class="article-modified">수정: ${modLabel}</span>`
+        );
+      }
+    }
+
     if (html !== before) {
       fs.writeFileSync(filePath, html, "utf8");
       updated++;
     }
   }
 
-  console.log(`[build] 글 HTML canonical/og:url·작성자 수정 완료: ${updated}개 파일`);
+  console.log(
+    `[build] 글 HTML canonical/og:url·작성자·dateModified 수정 완료: ${updated}개 파일`
+  );
 }
 
 /* --------------------------------------------------------
@@ -1106,8 +1146,8 @@ function build() {
   // 5) 글 HTML nav/푸터 링크 수정
   fixPostNavLinks();
 
-  // 6) 글 HTML canonical/og:url 정규화
-  fixPostMeta();
+  // 6) 글 HTML canonical/og:url·dateModified 정규화
+  fixPostMeta(posts);
 
   // 7) about/privacy/terms URL 정규화
   fixStaticPages();
@@ -1130,8 +1170,9 @@ build();
       (head에 <!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END --> 마커 포함)
    2) posts/posts.json 에 항목 1개 추가 (title, excerpt, category,
       date, thumbnail, url). category 는 consume | emotion | relation
-      글을 수정·재작성한 경우 선택적으로 "modified": "YYYY-MM-DD" 추가
-      (sitemap lastmod 에 사용. 없으면 date 사용)
+      글을 수정·재작성한 경우 선택적으로 "dateModified": "YYYY-MM-DD" 추가
+      (sitemap lastmod·JSON-LD dateModified·화면 "수정:" 표기에 사용.
+       없으면 date 사용. date 와 같을 때는 화면 수정 표기 생략)
    3) node build.js 실행 → 목록/카테고리 페이지 + 관련 글 + _redirects
       + 애드센스 head 주입
    4) git add . && git commit && git push → Cloudflare Pages 자동 배포
