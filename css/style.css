@@ -1329,44 +1329,86 @@ a:hover {
   margin-bottom: var(--space-3);
 }
 
+/* 본문 인라인 링크 — 버튼(.inline-cta)은 제외 */
+.article-body p > a:not(.inline-cta) {
+  text-decoration: underline;
+  text-decoration-color: rgba(124, 95, 224, 0.6);
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+
+.article-body p > a:not(.inline-cta):hover {
+  text-decoration-color: var(--color-primary-dark);
+}
+
+.article-body p > a[target="_blank"] {
+  text-decoration-color: rgba(120, 120, 130, 0.5);
+}
+
+.article-body p > a[target="_blank"]::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 2px;
+  font-size: 0.78em;
+  vertical-align: 0.12em;
+  text-decoration: none;
+  color: #8b8b96;
+}
+
+.article-body p > a[target="_blank"]:hover {
+  text-decoration-color: #6b6b78;
+}
+
 /* ---------------- [9] 본문 내부 링크 버튼 ---------------- */
 /* cta-box와 무관한 별개 요소. 글 본문 안에서 다른 글로 넘기는 버튼 */
-.inline-cta {
-  display: inline-block;
-  margin: var(--space-2) 0;
-  padding: var(--space-3) var(--space-5);
-  background-color: var(--color-primary-soft);
-  border: 1px solid var(--color-border);
+a.inline-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--space-7) auto;
+  padding: 16px 32px;
+  min-height: 52px;
+  background: linear-gradient(135deg, #8b6ff5 0%, #6a4fd0 100%);
+  border: none;
   border-radius: var(--radius-md);
-  color: var(--color-primary-dark);
-  font-size: var(--fs-md);
-  font-weight: 700;
-  line-height: 1.5;
+  box-shadow: 5px 5px 0 #2a2438;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-align: center;
   text-decoration: none;
-  transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+  transition: box-shadow 0.15s ease-out, transform 0.15s ease-out;
 }
 
-.inline-cta::after {
-  content: "→";
-  margin-left: var(--space-2);
-  transition: transform 0.15s;
-  display: inline-block;
-}
-
-.inline-cta:hover {
-  background-color: #e2dbfb;
-  border-color: var(--color-primary);
+a.inline-cta:hover {
+  background: linear-gradient(135deg, #8b6ff5 0%, #6a4fd0 100%);
+  box-shadow: 2px 2px 0 #2a2438;
+  color: #fff;
   text-decoration: none;
-  transform: translateY(-1px);
+  transform: translate(3px, 3px);
 }
 
-.inline-cta:hover::after {
-  transform: translateX(3px);
+a.inline-cta:active {
+  box-shadow: 0 0 0 #2a2438;
+  transform: translate(5px, 5px);
 }
 
-.inline-cta:focus-visible {
-  outline: 2px solid var(--color-primary-dark);
-  outline-offset: 2px;
+a.inline-cta:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  a.inline-cta {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.05rem;
+    box-shadow: 4px 4px 0 #2a2438;
+  }
 }
 
 /* ================================================================
