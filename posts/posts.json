@@ -71,9 +71,10 @@
   },
   {
     "title": "드라마가 꼭 제일 궁금한 데서 끊기는 데는 이유가 있어요",
-    "excerpt": "다 끝낸 일은 금방 잊는데 못 끝낸 일만 머릿속에 맴도는 자이가르닉 효과. 드라마가 절정에서 끊기는 이유부터 머릿속 알림을 잠재우는 법까지 풀어봤어요.",
+    "excerpt": "못 끝낸 일이 계속 신경 쓰이는 자이가르닉 효과. 기억에 더 남는다는 통설이 흔들린 2025년 메타분석 수치와, 그래도 다시 손대게 되는 경향까지 정리했어요.",
     "category": "emotion",
     "date": "2026-06-24",
+    "dateModified": "2026-08-24",
     "thumbnail": "/images/thumb-zeigarnik-effect-unfinished.png",
     "url": "/posts/zeigarnik-effect-unfinished.html",
     "tags": ["감정과 자아", "자이가르닉 효과", "미완성 효과", "집중력", "기억"]
