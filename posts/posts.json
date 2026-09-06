@@ -201,9 +201,10 @@
   },
   {
     "title": "처음엔 별로였는데 자꾸 보니 좋아지는 이유",
-    "excerpt": "처음엔 별로였던 노래나 사람이 자꾸 접하니 좋아지는 건 단순 노출 효과 때문이에요. 뇌가 익숙한 걸 안전하다고 느끼는 원리와, 이걸 일상에서 똑똑하게 써먹는 법을 풀어봤어요.",
+    "excerpt": "처음엔 별로였던 노래가 자꾸 듣다 보니 좋아지는 건 단순 노출 효과 때문이에요. 자이언스의 1968년 실험과, 조건마다 효과가 달라진다는 1989년 메타분석까지 정리했어요.",
     "category": "relation",
     "date": "2026-07-03",
+    "dateModified": "2026-09-06",
     "thumbnail": "/images/thumb-mere-exposure-effect-familiarity.png",
     "url": "/posts/mere-exposure-effect-familiarity.html",
     "tags": ["인간관계 심리", "단순 노출 효과", "호감", "익숙함", "첫인상"]
