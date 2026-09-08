@@ -108,6 +108,14 @@ function formatDate(isoDate) {
   return `${y}.${m}.${d}`;
 }
 
+/* 날짜 YYYY-MM-DD → 2026년 9월 5일 */
+function formatDateKo(isoDate) {
+  if (!isoDate) return "";
+  const [y, m, d] = String(isoDate).split("-");
+  if (!y || !m || !d) return isoDate;
+  return `${y}년 ${Number(m)}월 ${Number(d)}일`;
+}
+
 /* --------------------------------------------------------
    getRelatedPosts(currentPost, allPosts, max)
    - 기준 글을 제외한 후보를 3단계 우선순위로 정렬해 최대 max개 반환
@@ -869,6 +877,16 @@ function fixPostMeta(posts) {
           `$1\n            <span class="article-modified">수정: ${modLabel}</span>`
         );
       }
+
+      /* 참고 자료 칸 맨 아래: 자료 확인일 = dateModified || date */
+      if (modifiedIso) {
+        const checkedLabel = escapeHtml(formatDateKo(modifiedIso));
+        html = html.replace(/\s*<p class="ref-checked">[\s\S]*?<\/p>/g, "");
+        html = html.replace(
+          /(<div class="ref-box">[\s\S]*?<\/ul>)(\s*)(<\/div>)/,
+          `$1\n  <p class="ref-checked">자료 확인일: ${checkedLabel}</p>\n$3`
+        );
+      }
     }
 
     if (html !== before) {
@@ -1171,7 +1189,7 @@ build();
    2) posts/posts.json 에 항목 1개 추가 (title, excerpt, category,
       date, thumbnail, url). category 는 consume | emotion | relation
       글을 수정·재작성한 경우 선택적으로 "dateModified": "YYYY-MM-DD" 추가
-      (sitemap lastmod·JSON-LD dateModified·화면 "수정:" 표기에 사용.
+      (sitemap lastmod·JSON-LD dateModified·화면 "수정:" 표기·참고 자료 확인일에 사용.
        없으면 date 사용. date 와 같을 때는 화면 수정 표기 생략)
    3) node build.js 실행 → 목록/카테고리 페이지 + 관련 글 + _redirects
       + 애드센스 head 주입

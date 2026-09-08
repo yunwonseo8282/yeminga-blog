@@ -1199,6 +1199,12 @@ a:hover {
   margin-bottom: 0;
 }
 
+.article-body .ref-box .ref-checked {
+  margin: var(--space-3) 0 0;
+  font-size: 0.88rem;
+  color: var(--color-text-soft);
+}
+
 .article-body .ref-box a {
   color: inherit;
   text-decoration: underline;
