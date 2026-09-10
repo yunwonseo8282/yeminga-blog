@@ -354,7 +354,22 @@
       "감정 억제",
       "감정 라벨링"
     ]
-  }
+  },
+  {
+  "title": "한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유",
+  "excerpt": "사고 뉴스 한 장면이 자꾸 떠오르면 실제 위험도 더 커 보일 수 있어요. 가용성 휴리스틱의 1973년 실험과 한국 뉴스 사례, 2021년 재현 한계까지 함께 정리했어요.",
+  "category": "relation",
+  "date": "2026-09-10",
+  "thumbnail": "/images/thumb-availability-heuristic-news-anxiety.png",
+  "url": "/posts/availability-heuristic-news-anxiety.html",
+  "tags": [
+    "인간관계 심리",
+    "가용성 휴리스틱",
+    "위험 인식",
+    "뉴스",
+    "인지 편향"
+  ]
+}
    
   
 

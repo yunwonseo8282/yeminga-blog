@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유 | 예밍이네 심리사전</title>
+  <meta name="description" content="사고 뉴스 한 장면이 실제보다 더 흔하게 느껴지는 까닭을 가용성 휴리스틱으로 풀어요. 1973년 실험과 한국 뉴스 연구, 재현 한계까지 함께 봐요." />
+  <link rel="canonical" href="https://yeminga.com/posts/availability-heuristic-news-anxiety" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="예밍이네 심리사전" />
+  <meta property="og:title" content="한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유" />
+  <meta property="og:description" content="사고 뉴스 한 장면이 실제보다 더 흔하게 느껴지는 까닭을 가용성 휴리스틱으로 풀어요. 1973년 실험과 한국 뉴스 연구, 재현 한계까지 함께 봐요." />
+  <meta property="og:url" content="https://yeminga.com/posts/availability-heuristic-news-anxiety" />
+  <meta property="og:image" content="https://yeminga.com/images/thumb-availability-heuristic-news-anxiety.png" />
+  <meta property="og:locale" content="ko_KR" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- HEAD_ADSENSE_START -->
+  <!-- HEAD_ADSENSE_END -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유",
+        "description": "사고 뉴스 한 장면이 실제보다 더 흔하게 느껴지는 까닭을 가용성 휴리스틱으로 풀어요. 1973년 실험과 한국 뉴스 연구, 재현 한계까지 함께 봐요.",
+        "inLanguage": "ko-KR",
+        "articleSection": "인간관계 심리",
+        "keywords": "가용성 휴리스틱",
+        "author": { "@type": "Person", "name": "예밍이" },
+        "publisher": { "@type": "Organization", "name": "예밍이네 심리사전" },
+        "datePublished": "2026-09-10",
+        "dateModified": "2026-09-10",
+        "citation": [
+          "Tversky & Kahneman, 1973, Availability: A heuristic for judging frequency and probability, Cognitive Psychology",
+          "주영기·유명순, 2010, 신문·TV 뉴스의 신종 출몰형 질환 및 만성질환 보도 패턴 분석, 한국언론학보",
+          "Groncki, Beaudry, & Sauer, 2021, Investigating the ease-of-retrieval effect in an eyewitness context, Memory"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "가용성 휴리스틱은 무조건 틀린 판단인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "아니에요. 떠올리기 쉬운 사례가 실제 빈도와 맞을 때도 있어요. 다만 눈에 띄는 정도나 기억하기 쉬운 특성이 섞이면 실제 빈도와 어긋날 수 있어서, 중요한 판단에서는 따로 확인할 필요가 있어요."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "사고 뉴스가 자꾸 떠오르면 실제 위험도 높다는 뜻인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "그렇게 바로 연결할 수는 없어요. 장면이 잘 떠오른다는 건 기억에서 꺼내기 쉽다는 뜻이고, 실제 위험이 얼마나 큰지는 기간과 기준이 분명한 빈도나 확률 자료로 따로 봐야 해요."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "1973년 실험에서는 무엇이 가장 중요했나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "유명인은 19명, 덜 유명한 사람은 20명이었는데도 빈도를 판단한 99명 가운데 80명이 유명인이 속한 쪽을 더 많다고 봤다는 점이에요. 기억에 잘 남는 사례가 실제 숫자보다 판단에서 더 큰 비중을 차지할 수 있음을 보여줘요."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "뉴스는 항상 실제 위험을 과장하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "항상 그렇다고 말할 수는 없어요. 이 글에서 소개한 한국 연구는 특정 건강 위험 보도에서 편중된 구간을 확인했지만, 일부 만성질환 보도는 실제 사망 변화와 함께 움직인 부분도 있었어요."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "회상하기 쉬운 느낌의 효과는 확실하게 재현됐나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "모든 맥락에서 그렇지는 않았어요. 2021년 연구에서는 네 개의 연구를 진행했지만 목격자 판단과 직접 재현에서 기대한 효과를 확인하지 못했어요. 그래서 적용 범위를 넓힐 때는 주의가 필요해요."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/">
+        <img src="/images/yeminga-logo.png" alt="예밍이" class="brand-logo" />
+        <span>예밍이네 심리사전</span>
+      </a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="메뉴 열기">☰</label>
+      <nav class="main-nav" aria-label="주요 메뉴">
+  <a href="/category/consume/">소비 심리</a>
+  <a href="/category/emotion/">감정과 자아</a>
+  <a href="/category/relation/">인간관계 심리</a>
+  <a href="/about">소개</a>
+</nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <article class="article">
+        <header class="article-header">
+          <span class="badge badge--relation">인간관계 심리</span>
+          <h1>한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유</h1>
+          <div class="article-meta">
+            <span>작성자: 예밍이</span>
+            <time datetime="2026-09-10">2026. 9. 10.</time>
+          </div>
+        </header>
+
+                <div class="article-body">
+          <!-- POST-KIND: CONCEPT -->
+<div class="summary-box">
+  <strong>📌 3줄 요약</strong>
+  <p>강렬한 사고 뉴스는 실제 빈도보다 더 흔하게 느껴질 수 있어요. 가용성 휴리스틱은 떠올리기 쉬운 사례로 빈도를 어림잡는 방식이에요. 다만 이 효과가 모든 상황에서 똑같이 나타나는 건 아니에요.</p>
+</div>
+
+<p class="hook">사고 뉴스 한 장면 뒤엔 가용성 휴리스틱이 끼어들 수 있어요.</p>
+
+<p>뉴스를 한 번 봤을 뿐인데 며칠 뒤에도 그 장면이 불쑥 떠오를 때가 있어요. 비슷한 장소나 교통수단을 마주치면, 실제로 얼마나 자주 일어나는 사건인지보다 머릿속 이미지가 먼저 튀어나오기도 하죠.</p>
+
+<p>이때 중요한 건 “무섭게 느껴진다”와 “실제로 더 자주 일어난다”를 같은 말로 취급하지 않는 거예요. 기억에 잘 남는 사건은 판단에서 존재감이 커질 수 있지만, 그 자체가 현실의 빈도를 말해주지는 않거든요.</p>
+
+<h2>가용성 휴리스틱은 왜 기억을 실제 빈도처럼 느끼게 할까</h2>
+
+<p><strong>가용성 휴리스틱</strong>(availability heuristic)은 어떤 사건의 빈도나 확률을 판단할 때, 관련 사례가 얼마나 쉽게 떠오르는지에 기대 어림잡는 방식이에요. 이름은 어렵지만 뜻은 단순해요. 머릿속에서 바로 꺼내지는 사례가 많고 선명할수록 “이런 일이 꽤 흔한가 보다”라고 판단하기 쉬워지는 거죠.</p>
+
+<p>이 개념은 Amos Tversky와 Daniel Kahneman이 1973년 <a href="https://oamonitor.ireland.openaire.eu/rfo/sfi_rfo/search/publication?pid=10.1016%2F0010-0285%2873%2990033-9" target="_blank" rel="noopener">Cognitive Psychology</a>에 발표하면서 체계적으로 설명했어요. 핵심은 기억 속 사례의 정확한 개수를 세는 게 아니라, <strong>관련 사례가 얼마나 쉽게 떠오르는가</strong>가 판단의 단서가 될 수 있다는 점이에요. 이 단서는 실제 빈도와 맞을 때도 있지만, 눈에 띄는 정도나 기억하기 쉬운 특성 때문에 어긋날 수도 있어요.</p>
+
+<img src="/images/yeminga-surprised.png" alt="사고 뉴스가 크게 느껴지는 이유에 놀란 예밍이">
+
+<p>그래서 사고 뉴스가 오래 남는다고 해서 그 사건이 실제로 갑자기 흔해졌다고 볼 수는 없어요. 이 글에서 다루는 포인트도 불안을 진단하는 게 아니라, <strong>기억의 선명함과 현실의 빈도를 분리해 보는 것</strong>이에요.</p>
+
+<!-- AD:INARTICLE-BLOG-01 -->
+
+<h2>떠올리기 쉬움이 숫자 판단을 바꾼 1973년 실험</h2>
+
+<p>Tversky와 Kahneman의 1973년 Study 8은 이 차이를 꽤 선명하게 보여줘요. 참가자에게 39명의 이름이 담긴 명단을 들려줬는데, 한 조건의 명단에는 유명인 19명과 덜 유명한 사람 20명이 들어 있었어요. 숫자만 놓고 보면 덜 유명한 사람이 더 많았던 셈이죠.</p>
+
+<p>그런데 빈도를 판단한 참가자 99명 가운데 80명은 유명인이 속한 쪽이 더 많았다고 답했어요. 실제 구성은 19명 대 20명이었는데도, 더 눈에 띄고 기억에 남는 이름이 숫자 판단을 뒤집은 거예요. 이 결과가 중요한 이유는 “기억에 남는 것”과 “실제로 많은 것”이 같은 질문이 아니라는 점을 직접 보여주기 때문이에요.</p>
+
+<img src="/images/availability-heuristic-news-anxiety-fig01.png" alt="유명인 19명과 덜 유명한 20명 판단 비교 도해">
+
+<p>물론 이 실험 하나로 사고 뉴스에 대한 모든 반응을 설명할 수는 없어요. 다만 강렬하게 떠오르는 사례를 실제 빈도의 대리표처럼 쓰면 판단이 빗나갈 수 있다는 가용성 휴리스틱의 기본 구조를 이해하기에는 좋은 예예요.</p>
+
+<h2>뉴스가 실제 세상보다 크게 느껴지는 순간</h2>
+
+<p>뉴스는 이 문제를 생각하기 좋은 일상 장면이에요. 직접 겪지 않은 사건도 영상과 제목을 통해 반복해서 접하면 머릿속에서 꺼내기 쉬워질 수 있거든요. 그렇다고 “미디어는 늘 현실을 왜곡한다”라고 넓혀 말할 수는 없어요. 어떤 주제에서 어떤 식의 보도 차이가 있었는지 범위를 좁혀 봐야 해요.</p>
+
+<p>주영기와 유명순은 2010년 <a href="https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART001443473" target="_blank" rel="noopener">한국언론학보</a>에 한국 건강 위험 보도 패턴을 발표했어요. 만성질환 분석 기간은 1997년부터 2008년까지 12년이었고, 한국언론재단 기사 데이터베이스의 10개 일간지와 KBS·MBC 뉴스를 살폈어요. 신종 질환이 등장한 시기에는 실제 사망 부담이 큰 일부 만성질환보다 신종 질환 보도가 더 크게 다뤄진 구간이 확인됐어요.</p>
+
+<div class="tip-box">
+  <strong>💡 여기서 구분할 점</strong>
+  <p>보도가 크게 보였다는 사실과 현실의 위험이 같은 비율로 커졌다는 판단은 별개예요. 반대로 모든 보도가 현실과 어긋난다고 볼 수도 없어요. 이 연구에서도 암·당뇨·고혈압 보도는 실제 사망 변화와 함께 움직인 부분이 있었거든요.</p>
+</div>
+
+<p>그러니 사고 뉴스를 본 뒤 세상이 갑자기 더 위험해 보인다면, “뉴스가 틀렸다”보다 “지금 내 판단에서 이 장면의 비중이 너무 커진 건 아닐까”라고 묻는 편이 더 정확해요. 문제는 정보의 존재가 아니라, 한 장면이 전체 빈도를 대표하는 것처럼 느껴지는 순간에 있어요.</p>
+
+<h2>떠올리기 쉬우면 언제나 판단이 바뀔까</h2>
+
+<p>여기에는 중요한 한계도 있어요. “떠올리기 쉬웠다”는 느낌이 어떤 상황에서든 같은 방향의 판단 변화를 만든다고 보기는 어려워요. Roy Groncki, Jennifer L. Beaudry, James D. Sauer가 2021년 <a href="https://pubmed.ncbi.nlm.nih.gov/33557719/?utm_source=chatgpt.com" target="_blank" rel="noopener">Memory</a>에 발표한 연구는 목격자 판단 맥락에서 회상 용이성 효과를 살폈어요.</p>
+
+<p>연구진은 네 개의 연구를 진행했고, 같은 효과가 다시 나오는지 확인한 마지막 직접 재현에는 661명이 참여했어요. 하지만 고전적인 회상 용이성 효과는 다시 확인되지 않았어요. 네 연구 중 세 연구에서는 과제가 더 어렵게 느껴지도록 한 조작 자체는 예상대로 작동했지만, 자신감이나 스스로 얼마나 자기주장적이라고 보는지에 대한 평정에서는 기대한 효과가 나타나지 않았어요.</p>
+
+<p>이 결과가 1973년의 가용성 휴리스틱 전체를 뒤집는 건 아니에요. 대신 “쉽게 떠오른다는 주관적 느낌만으로 언제나 같은 판단 오류가 생긴다”는 식의 강한 일반화는 조심해야 한다는 뜻에 가까워요. 원인 설명의 범위가 어디까지인지 따져보는 태도가 필요한 이유예요.</p>
+
+<p>사건 뉴스가 오래 남는 현상을 보다 보면, 좋은 기억보다 나쁜 기억이 왜 더 끈질기게 느껴지는지도 궁금해질 수 있어요. 둘은 닮아 보이지만 가용성 휴리스틱과 부정성 편향은 같은 개념이 아니어서 따로 보면 차이가 더 또렷해져요.</p>
+
+<p><a class="inline-cta" href="/posts/negativity-bias-bad-memory">부정성 편향의 차이가 궁금하다면</a></p>
+
+<h2>기억에 남은 장면과 실제 빈도를 나눠 보는 법</h2>
+
+<p>원인 설명의 범위는 갈려도, 떠올리기 쉬운 사례가 빈도 판단을 흔든 현상 자체는 1973년 실험에서 관찰됐어요. 그래서 여기서는 불안을 없애는 치료법이 아니라, <strong>머릿속 인상과 실제 빈도를 섞지 않기 위한 확인 순서</strong> 정도로 생각하면 좋아요.</p>
+
+<p>사건이 떠오를 때는 먼저 “내가 최근에 이 장면을 반복해서 봤나”를 확인해보세요. 그다음 “지금 떠오르는 사례 말고 전체 빈도를 보여주는 기준이 있나”를 따져보는 거예요. 뉴스 제목 몇 개와 실제 발생률은 서로 다른 자료라서, 중요한 판단일수록 전체 기준이 무엇인지, 즉 분모와 기간이 분명한 숫자를 따로 확인하는 편이 안전해요.</p>
+
+<img src="/images/yeminga-proud.png" alt="기억과 실제 빈도를 나눠 확인하는 예밍이">
+
+<p>또 하나는 강렬한 사례 하나를 곧바로 전체로 확대하지 않는 거예요. “이 사건이 실제로 있었나”와 “이 사건이 얼마나 자주 일어나나”는 별도 질문이에요. 전자는 개별 뉴스로 확인할 수 있어도, 후자는 여러 사례와 기준이 필요하거든요.</p>
+
+<p>가용성 휴리스틱을 안다고 해서 무서운 장면이 더는 떠오르지 않는 건 아니에요. 다만 그 장면이 떠오른다는 사실과 현실의 빈도를 같은 것으로 계산하지 않을 수는 있어요. 바로 그 구분이 이 개념을 일상에서 써먹는 가장 현실적인 방식이에요.</p>
+
+<!-- AD:INARTICLE-BLOG-02 -->
+
+<h2>자주 묻는 질문</h2>
+
+<div class="faq-item">
+  <h3>가용성 휴리스틱은 무조건 틀린 판단인가요?</h3>
+  <p>아니에요. 떠올리기 쉬운 사례가 실제 빈도와 맞을 때도 있어요. 다만 눈에 띄는 정도나 기억하기 쉬운 특성이 섞이면 실제 빈도와 어긋날 수 있어서, 중요한 판단에서는 따로 확인할 필요가 있어요.</p>
+</div>
+
+<div class="faq-item">
+  <h3>사고 뉴스가 자꾸 떠오르면 실제 위험도 높다는 뜻인가요?</h3>
+  <p>그렇게 바로 연결할 수는 없어요. 장면이 잘 떠오른다는 건 기억에서 꺼내기 쉽다는 뜻이고, 실제 위험이 얼마나 큰지는 기간과 기준이 분명한 빈도나 확률 자료로 따로 봐야 해요.</p>
+</div>
+
+<div class="faq-item">
+  <h3>1973년 실험에서는 무엇이 가장 중요했나요?</h3>
+  <p>유명인은 19명, 덜 유명한 사람은 20명이었는데도 빈도를 판단한 99명 가운데 80명이 유명인이 속한 쪽을 더 많다고 봤다는 점이에요. 기억에 잘 남는 사례가 실제 숫자보다 판단에서 더 큰 비중을 차지할 수 있음을 보여줘요.</p>
+</div>
+
+<div class="faq-item">
+  <h3>뉴스는 항상 실제 위험을 과장하나요?</h3>
+  <p>항상 그렇다고 말할 수는 없어요. 이 글에서 소개한 한국 연구는 특정 건강 위험 보도에서 편중된 구간을 확인했지만, 일부 만성질환 보도는 실제 사망 변화와 함께 움직인 부분도 있었어요.</p>
+</div>
+
+<div class="faq-item">
+  <h3>회상하기 쉬운 느낌의 효과는 확실하게 재현됐나요?</h3>
+  <p>모든 맥락에서 그렇지는 않았어요. 2021년 연구에서는 네 개의 연구를 진행했지만 목격자 판단과 직접 재현에서 기대한 효과를 확인하지 못했어요. 그래서 적용 범위를 넓힐 때는 주의가 필요해요.</p>
+</div>
+
+<div class="ref-box">
+  <strong>📚 참고 자료</strong>
+  <ul>
+    <li><a href="https://oamonitor.ireland.openaire.eu/rfo/sfi_rfo/search/publication?pid=10.1016%2F0010-0285%2873%2990033-9" target="_blank" rel="noopener">Cognitive Psychology</a> — Tversky &amp; Kahneman, 1973, 떠올리기 쉬움과 빈도 판단</li>
+    <li><a href="https://www.kci.go.kr/kciportal/landing/article.kci?arti_id=ART001443473" target="_blank" rel="noopener">한국언론학보</a> — 주영기 &amp; 유명순, 2010, 한국 건강 위험 보도 패턴</li>
+    <li><a href="https://pubmed.ncbi.nlm.nih.gov/33557719/?utm_source=chatgpt.com" target="_blank" rel="noopener">Memory</a> — Groncki 외, 2021, 회상 용이성 효과의 재현 한계</li>
+  </ul>
+</div>
+
+<div class="notice-box">
+  <strong>📝 참고 안내</strong>
+  <p>1973년 실험은 가용성 휴리스틱의 기본 구조를 보여주지만, 2021년 연구에서는 회상 용이성 효과가 같은 방식으로 재현되지 않았어요. 사고 뉴스가 떠오르는 경험을 곧바로 개인의 불안 원인이나 위험 수준으로 진단하지 말고, 실제 빈도 판단과 기억의 선명함을 나눠 보는 자료로 활용해 주세요.</p>
+</div>
+
+<!-- AD:DISPLAY-BLOG-BOTTOM -->
+        </div>
+
+        <!-- RELATED_START -->
+        <!-- RELATED_END -->
+        <a class="back-link" href="/">← 다른 글 보러 가기</a>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <nav class="footer-nav" aria-label="하단 메뉴">
+        <a href="/about">소개</a>
+        <a href="/privacy">개인정보처리방침</a>
+        <a href="/terms">이용약관</a>
+        <a href="/about#contact">문의</a>
+      </nav>
+      <p class="footer-copy">
+        © <span id="footer-year">2026</span> 예밍이네 심리사전. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
