@@ -27,6 +27,7 @@
   <!-- HEAD_ADSENSE_END -->
 </head>
 <body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
   <!-- ================= 헤더 ================= -->
   <header class="site-header">
     <div class="container">
@@ -35,10 +36,9 @@
         <span>예밍이네 심리사전</span>
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="메뉴 열기">☰</label>
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" hidden>메뉴 열기</button>
 
-      <nav class="main-nav" aria-label="주요 메뉴">
+      <nav class="main-nav" id="main-navigation" aria-label="주요 메뉴">
         <a href="/category/consume/">소비 심리</a>
         <a href="/category/emotion/">감정과 자아</a>
         <a href="/category/relation/">인간관계 심리</a>
@@ -47,7 +47,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <div class="container">
       <!-- ================= 히어로 ================= -->
       <section class="hero">
@@ -83,49 +83,49 @@
         <div id="post-grid" class="post-grid">
           <!-- POSTS_START -->
           <a class="post-card" href="/posts/availability-heuristic-news-anxiety" data-category="relation">
-            <img class="thumb" src="/images/thumb-availability-heuristic-news-anxiety.png" alt="한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-availability-heuristic-news-anxiety-v2.png" alt="가용성 휴리스틱, 선명한 사고 뉴스와 실제 위험은 같을까요 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유</h2>
-              <p class="card-excerpt">사고 뉴스 한 장면이 자꾸 떠오르면 실제 위험도 더 커 보일 수 있어요. 가용성 휴리스틱의 1973년 실험과 한국 뉴스 사례, 2021년 재현 한계까지 함께 정리했어요.</p>
+              <h2 class="card-title">가용성 휴리스틱, 선명한 사고 뉴스와 실제 위험은 같을까요</h2>
+              <p class="card-excerpt">선명한 사고 뉴스와 실제 발생률은 다른 자료예요. 가용성 휴리스틱의 이름 목록 실험, 뉴스 보도 연구의 범위, 분모와 기간을 맞춰 위험 숫자를 읽는 가상 계산 예시를 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-09-10">2026.09.10</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/herd-mentality-crowd-behavior" data-category="relation">
-            <img class="thumb" src="/images/thumb-herd-mentality-crowd-behavior.png" alt="군중심리 때문에 혼자선 안 할 일을 무리에선 하게 되는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-herd-mentality-crowd-behavior.png" alt="군중심리, 무리 안에서 행동이 달라지는 조건 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">군중심리 때문에 혼자선 안 할 일을 무리에선 하게 되는 이유</h2>
-              <p class="card-excerpt">군중심리를 동조·몰개성화·정서 전염으로 나눠 보고, 1976년 할로윈 현장 연구와 60개 연구 메타분석으로 익명성과 집단 규범이 행동을 바꾸는 조건, 덜 휩쓸리는 점검법까지 정리했어요.</p>
+              <h2 class="card-title">군중심리, 무리 안에서 행동이 달라지는 조건</h2>
+              <p class="card-excerpt">군중심리를 동조·몰개성화·정서 전염으로 구분해요. 할로윈 현장 연구의 범위와 집단 규범을 강조한 메타분석을 통해 익명성이 행동을 자동으로 나쁘게 만든다는 해석을 점검했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-22">2026.07.22</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/primacy-effect-first-impression" data-category="relation">
-            <img class="thumb" src="/images/thumb-primacy-effect-first-impression.png" alt="초두 효과 때문에 첫인상은 왜 좀처럼 안 바뀌는 걸까요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-primacy-effect-first-impression-v2.png" alt="초두 효과: 먼저 들은 정보가 첫인상에 영향을 주는 이유 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">초두 효과 때문에 첫인상은 왜 좀처럼 안 바뀌는 걸까요</h2>
-              <p class="card-excerpt">초두 효과가 첫인상에 어떤 영향을 주는지 애시의 순서 실험과 현대 반복연구로 살펴봤어요. 효과가 작거나 사라지는 조건과 덜 성급하게 판단하는 방법도 함께 정리했어요.</p>
+              <h2 class="card-title">초두 효과: 먼저 들은 정보가 첫인상에 영향을 주는 이유</h2>
+              <p class="card-excerpt">같은 성격 특성도 제시 순서에 따라 인상이 달라질 수 있어요. 애시의 실험과 현대 반복연구를 통해 정보 순서의 효과와 첫인상이 오래 고정된다는 주장을 구분했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-15">2026.07.15</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/conformity-group-majority" data-category="relation">
-            <img class="thumb" src="/images/thumb-conformity-group-majority.png" alt="동조 때문에 회식 메뉴 정할 때 결국 다수를 따라가는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-conformity-group-majority.png" alt="동조는 언제 커질까? 회식 메뉴와 애시 실험을 구분해 보기 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">동조 때문에 회식 메뉴 정할 때 결국 다수를 따라가는 이유</h2>
-              <p class="card-excerpt">회식 메뉴에서 다수 의견을 따르는 동조를 애시 실험의 36.8%와 5.5% 차이로 풀었어요. 공개 응답과 문화에 따라 효과가 달라지는 조건, 내 생각을 지키는 법까지 함께 정리했어요.</p>
+              <h2 class="card-title">동조는 언제 커질까? 회식 메뉴와 애시 실험을 구분해 보기</h2>
+              <p class="card-excerpt">다수 의견을 따르는 동조를 애시의 선 길이 실험으로 살펴봐요. 36.8%가 사람의 비율이 아닌 이유, 정답이 없는 메뉴 선택에 적용할 때의 차이와 공개·비공개 응답 조건을 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-09">2026.07.09</time>
               </div>
             </div>
@@ -135,45 +135,45 @@
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
               <h2 class="card-title">처음엔 별로였는데 자꾸 보니 좋아지는 이유</h2>
-              <p class="card-excerpt">처음엔 별로였던 노래가 자꾸 듣다 보니 좋아지는 건 단순 노출 효과 때문이에요. 자이언스의 1968년 실험과, 조건마다 효과가 달라진다는 1989년 메타분석까지 정리했어요.</p>
+              <p class="card-excerpt">반복해서 접한 대상이 더 좋아질 수 있는 단순 노출 효과를 살펴봐요. 낯선 문자와 얼굴 사진 연구, 반복이 호감을 보장하지 않는 조건과 관계에서 지킬 기준을 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-03">2026.07.03</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/attachment-style-late-reply-anxiety" data-category="relation">
-            <img class="thumb" src="/images/thumb-attachment-style-late-reply-anxiety.png" alt="애착 유형 때문에 연락 늦으면 불안해지는 사람의 속마음 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-attachment-style-late-reply-anxiety.png" alt="답장이 늦으면 불안할 때, 애착 유형으로 어디까지 설명할 수 있을까 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">애착 유형 때문에 연락 늦으면 불안해지는 사람의 속마음</h2>
-              <p class="card-excerpt">연락이 조금 늦었을 때 불안이 먼저 올라오는 건 애착 유형 때문이에요. 안정 56퍼센트로 갈린 1987년 설문과, 칸으로 나누는 틀이 흔들린다는 2015년 반론까지 정리했어요.</p>
+              <h2 class="card-title">답장이 늦으면 불안할 때, 애착 유형으로 어디까지 설명할 수 있을까</h2>
+              <p class="card-excerpt">답장 불안을 애착 유형 하나로 단정하지 않고 살펴봐요. 1987년 설문의 19%가 뜻하는 것, 애착의 변화 연구가 말할 수 없는 것, 사실과 해석을 나누는 대화 예시를 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-27">2026.06.27</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/emotional-contagion-mood-spread" data-category="relation">
-            <img class="thumb" src="/images/thumb-emotional-contagion-mood-spread.png" alt="짜증 난 사람 옆에 있으면 나까지 가라앉는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-emotional-contagion-mood-spread.png" alt="다른 사람의 기분이 내게도 전해질까? 정서 전염 연구 읽기 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">짜증 난 사람 옆에 있으면 나까지 가라앉는 이유</h2>
-              <p class="card-excerpt">옆 사람 기분에 나까지 물드는 정서 전염. 표정도 목소리도 없이 글만으로 옮은 68만 명 실험과, 변화폭이 아주 작다는 반론, 덜 휩쓸리는 방법까지 정리했어요.</p>
+              <h2 class="card-title">다른 사람의 기분이 내게도 전해질까? 정서 전염 연구 읽기</h2>
+              <p class="card-excerpt">정서 전염 연구가 실제로 측정한 것을 살펴봐요. 페이스북 실험의 감정 단어 비율과 개인의 기분은 어떻게 다른지, 상대의 감정과 내 해석을 구분하는 방법을 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/looking-glass-self-others-eyes" data-category="relation">
-            <img class="thumb" src="/images/thumb-looking-glass-self-others-eyes.png" alt="남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-looking-glass-self-others-eyes.png" alt="남의 시선이 신경 쓰일 때: 거울 자아와 조명 효과의 차이 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유</h2>
-              <p class="card-excerpt">남의 시선이 신경 쓰이는 건 거울 자아 때문이에요. 티셔츠를 알아본 사람이 예상 46퍼센트, 실제 23퍼센트였던 실험과 원인 설명이 갈리는 지점까지 정리했어요.</p>
+              <h2 class="card-title">남의 시선이 신경 쓰일 때: 거울 자아와 조명 효과의 차이</h2>
+              <p class="card-excerpt">타인의 평가로 나를 상상하는 거울 자아와 남들이 나를 얼마나 알아보는지 과대평가하는 조명 효과를 구분해요. 티셔츠 실험의 46%와 23%가 뜻하는 범위도 짚었어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
@@ -183,9 +183,9 @@
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
               <h2 class="card-title">후광 효과 때문에 우리가 자주 속는 것들</h2>
-              <p class="card-excerpt">좋은 인상 하나가 나머지 평가까지 물들이는 후광 효과. 1920년 사관생도 평정의 상관 .51~.64와, 항목마다 크기가 다르다는 메타분석까지 정리했어요.</p>
+              <p class="card-excerpt">좋은 인상이 다른 특성의 평가까지 번지는 후광 효과를 살펴봐요. 상관계수를 읽는 법, 외모 고정관념 연구의 범위, 인상과 실제 평가 근거를 분리하는 점검법을 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-24">2026.06.24</time>
               </div>
             </div>
@@ -195,9 +195,9 @@
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
               <h2 class="card-title">공짜로 받으면 갚고 싶어지는 호혜성 원리의 정체</h2>
-              <p class="card-excerpt">호의를 받으면 갚고 싶어지는 호혜성 원리를 1971년 콜라 실험과 식당 팁 실험으로 풀었어요. 말로 하는 승낙에만 효과가 뚜렷했다는 메타분석 반론도 함께 담았어요.</p>
+              <p class="card-excerpt">작은 호의를 받고 부탁을 들어주고 싶어지는 호혜성을 실험으로 살펴봐요. 선물에 대한 보답, 큰 부탁 뒤 작은 부탁을 하는 전략, 무료 체험의 자동결제 문제를 구분했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-24">2026.06.24</time>
               </div>
             </div>
@@ -207,9 +207,9 @@
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
               <h2 class="card-title">친구 인스타 보고 부러웠던 그 마음의 정체</h2>
-              <p class="card-excerpt">SNS를 보다 마음이 가라앉는 건 사회적 비교가 켜지기 때문이에요. 페스팅거의 1954년 개념부터, SNS 탓이라기엔 걸리는 0.4%라는 숫자까지 같이 짚었어요.</p>
+              <p class="card-excerpt">친구의 SNS를 본 뒤 드는 부러움을 사회적 비교로 살펴봐요. 순간의 자기평가와 청소년 웰빙 연구를 구분하고, 실제로 본 장면과 추측을 나누는 예시를 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-23">2026.06.23</time>
               </div>
             </div>
@@ -230,6 +230,7 @@
         <a href="/privacy">개인정보처리방침</a>
         <a href="/terms">이용약관</a>
         <a href="/about#contact">문의</a>
+              <a href="/about#editorial">콘텐츠 작성 기준</a>
       </nav>
       <p class="footer-copy">
         © <span id="footer-year">2026</span> 예밍이네 심리사전. All rights reserved.

@@ -3,253 +3,244 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yeminga.com/</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://yeminga.com/about</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://yeminga.com/privacy</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://yeminga.com/terms</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/availability-heuristic-news-anxiety</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/cognitive-reappraisal-emotion</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/priming-effect-wine-music</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/herd-mentality-crowd-behavior</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/mood-congruent-effect</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/diderot-effect-meaning-reason</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/primacy-effect-first-impression</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/peak-end-rule-memory</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/sunk-cost-fallacy-cant-stop</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/conformity-group-majority</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/cognitive-dissonance-justification</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/zero-price-effect-free-shipping</loc>
-    <lastmod>2026-09-05</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/mere-exposure-effect-familiarity</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/learned-helplessness-process</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/endowment-effect-free-trial</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/attachment-style-late-reply-anxiety</loc>
-    <lastmod>2026-09-04</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/framing-effect-95-percent-milk</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/negativity-bias-bad-memory</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/planning-fallacy-deadline</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/emotional-contagion-mood-spread</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/scarcity-principle-limited-edition</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/self-determination-theory-motivation</loc>
-    <lastmod>2026-08-18</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/looking-glass-self-others-eyes</loc>
-    <lastmod>2026-09-02</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/halo-effect-first-impression</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/anchoring-effect-price-tag</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/zeigarnik-effect-unfinished</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/reciprocity-principle-free-sample</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/decoy-effect-middle-option</loc>
-    <lastmod>2026-08-27</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/loss-aversion-subscription</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/gamjeong-labeling-anger</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/friend-instagram-social-comparison</loc>
-    <lastmod>2026-08-19</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/present-bias-discount</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/posts/dunning-kruger-effect-beginner</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yeminga.com/page/2</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://yeminga.com/page/3</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://yeminga.com/category/consume/</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yeminga.com/category/emotion/</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yeminga.com/category/relation/</loc>
-    <lastmod>2026-09-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

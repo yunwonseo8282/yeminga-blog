@@ -56,6 +56,49 @@
   --container-max: 1100px;
 }
 
+[hidden] { display: none !important; }
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 1000;
+  padding: 12px 18px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-primary-dark);
+}
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--color-primary-dark); outline-offset: 4px; }
+[id] { scroll-margin-top: 88px; }
+
+.menu-toggle {
+  font: inherit;
+  font-size: .88rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.worked-example {
+  margin: var(--space-6) 0;
+  padding: var(--space-5);
+  background: var(--color-primary-soft);
+  border-left: 4px solid var(--color-primary-dark);
+  border-radius: var(--radius-sm);
+}
+.worked-example > :first-child { margin-top: 0; }
+.worked-example > :last-child { margin-bottom: 0; }
+.table-scroll { max-width: 100%; overflow-x: auto; }
+.article-body table { width: 100%; border-collapse: collapse; line-height: 1.6; }
+.article-body th, .article-body td { padding: 10px 12px; vertical-align: top; border: 1px solid var(--color-border); }
+.article-body th { text-align: left; background: var(--color-surface); }
+.article-body caption { text-align: left; font-weight: 700; margin-bottom: 8px; }
+.article-body, .about-page { overflow-wrap: anywhere; }
+.editorial-list li { margin: 0 0 16px; }
+
 /* ---------------- 기본 리셋 ---------------- */
 *,
 *::before,
@@ -1546,4 +1589,28 @@ a.inline-cta:focus-visible {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* 작은 화면에서도 본문 폭과 키보드 탐색을 유지합니다. */
+@media (max-width: 768px) {
+  .site-header .container { flex-wrap: wrap; gap: 8px; padding-top: 8px; padding-bottom: 8px; }
+  .brand { font-size: 1rem; }
+  .brand .brand-logo { height: 32px; }
+  .main-nav {
+    position: static;
+    flex-basis: 100%;
+    display: flex;
+    box-shadow: none;
+    border-bottom: 0;
+  }
+  .article { padding: 20px 16px; border-radius: 16px; }
+  .article-header h1 { font-size: 1.6rem; line-height: 1.45; }
+  .worked-example { padding: 16px 12px; }
+  .article-body th, .article-body td { padding: 8px; font-size: .9rem; }
+  .footer-nav { gap: 12px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
 }

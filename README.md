@@ -1,79 +1,43 @@
 # 예밍이네 심리사전
 
-순수 HTML/CSS/JavaScript로 만든 정적 블로그입니다. 프레임워크 없이, 글 목록은 가벼운 Node.js 빌드 스크립트(`build.js`)로 **정적 생성(SSG)** 합니다. 결과물은 그대로 Cloudflare Pages에 배포됩니다.
+HTML/CSS/JavaScript로 만든 개인 심리학 교양 블로그입니다. 운영 주소는 https://yeminga.com 입니다. 글 본문과 목록은 정적 HTML이므로 JavaScript 없이도 읽을 수 있습니다.
 
-- 사이트 이름: 예밍이네 심리사전
-- 배포 도메인(예정): https://yeminga.com
-- 카테고리: 소비 심리 / 감정과 자아 / 인간관계 심리
+## 관리하는 파일
 
-> **왜 SSG인가?** 글 목록을 JS로 런타임 렌더링하면 JavaScript를 끈 검색/광고 봇이 콘텐츠를 못 읽습니다(SEO·애드센스 불리). 그래서 카드 HTML을 `index.html`에 미리 박아두고, JS는 카테고리 필터(show/hide)만 담당합니다.
+- `posts/*.html`: 본문, 참고 자료, 가상 사례, FAQ
+- `posts/posts.json`: 글 제목·요약·카테고리·발행일·수정일·썸네일·주소
+- `about.html`: 운영자, 작성 기준과 주요 정정 기록
+- `privacy.html`, `terms.html`: 이용 안내
+- `css/style.css`, `js/main.js`: 공통 화면과 모바일 메뉴
+- `build.js`: 목록, 관련 글, 메타데이터, FAQ 구조화 데이터, 사이트맵과 이전 주소 이동 규칙 생성
+- `scripts/validate.js`: 내부 링크·이미지·제목·날짜·FAQ·전체 목록의 중복/누락 검사
 
-## 폴더 구조
+## 글 수정
 
-```text
-yeminga-blog/
-├── build.js                # 글 목록 정적 생성 스크립트 (node build.js)
-├── index.html              # 메인 (카드가 정적으로 박혀 있음)
-├── about.html              # 소개 (E-E-A-T)
-├── privacy.html            # 개인정보처리방침
-├── robots.txt              # 봇 허용 + sitemap 위치
-├── sitemap.xml             # 사이트맵
-├── ads.txt                 # 애드센스 게시자 ID (승인 후 입력)
-├── posts/
-│   ├── posts.json          # ★ 글 메타데이터 단일 소스 (제목/요약/카테고리/날짜/썸네일/url)
-│   └── sample-post.html    # 글 템플릿 + 예시
-├── css/style.css           # 공통 스타일 (CSS 변수 기반)
-├── js/main.js              # 카테고리 필터 토글 + 푸터 연도 (카드 생성 X)
-└── images/                 # 이미지 (썸네일, og-default.png 등)
-```
+1. 해당 본문을 수정합니다. 연구의 표본·측정 항목과 비율의 분모를 원자료에서 확인하고, 일상 해석과 가상 예시를 구분합니다.
+2. `posts/posts.json`의 제목과 요약을 함께 수정하고, 실질적인 내용 변경을 했으면 `dateModified`를 실제 수정일로 설정합니다. 원래 발행일은 유지합니다.
+3. `node build.js`를 실행합니다. 본문 제목, 검색/공유 요약, Article 메타데이터와 화면 FAQ에서 추출한 FAQPage 내용이 동기화됩니다.
+4. `node scripts/validate.js`를 실행하고 변경한 글과 모바일 메뉴를 브라우저에서 확인합니다.
+5. 변경 사항을 커밋한 뒤 원격 저장소에 푸시하면 기존 Cloudflare Pages 연동으로 배포됩니다. 실제 도메인에서도 변경 내용과 응답을 확인합니다.
 
-## 새 글 추가하는 법
+`dateModified`는 자료 확인일이 아닙니다. `referenceCheckedOn`은 해당 글의 참고 자료를 확인한 기록이 있을 때만 별도로 입력합니다. 이 필드를 비워두면 자료 확인일을 표시하지 않습니다. 숫자 한 개를 점검한 것으로 모든 자료를 재검토했다고 표시하지 않습니다.
 
-1. `posts/sample-post.html`을 복사해 `posts/` 안에 새 이름으로 저장합니다.
-   - 예: `posts/why-i-buy-on-sale.html`
-2. 파일 안의 `[TODO]` 부분(제목, 설명, 카테고리, 날짜, 본문, JSON-LD)을 채웁니다.
-   - `<head>` 안에 `<!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END -->` 마커를 포함하세요. (`node build.js` 실행 시 애드센스 스크립트가 자동 주입됩니다.)
-3. `posts/posts.json`에 글 정보를 **항목 1개** 추가합니다. (순서는 상관없음 — 빌드 시 발행일 최신순 자동 정렬)
+사이트맵의 글별 `lastmod`는 `dateModified` 또는 원래 발행일을 사용합니다. 고정 페이지와 목록 페이지에는 빌드할 때마다 새 날짜를 만들지 않습니다. `sitemap.xml`과 `_redirects`는 자동 생성 파일이므로 직접 수정하지 않습니다.
 
-```json
-[
-  {
-    "title": "새 글 제목",
-    "excerpt": "카드에 보일 요약 (최대 3줄까지 표시됩니다)",
-    "category": "consume",
-    "date": "2026-07-01",
-    "thumbnail": "/images/새글-썸네일.png",
-    "url": "/posts/새글-파일명.html"
-  }
-]
-```
+## 새 글
 
-   - `category`: `consume`(소비 심리) / `emotion`(감정과 자아) / `relation`(인간관계 심리)
-   - `thumbnail`: 비우면(`""`) 파스텔 그라데이션 썸네일이 표시됩니다.
-   - 경로는 모두 루트 절대경로(`/posts/...`, `/images/...`)로 적습니다.
+기존 글 HTML을 새 파일로 복사한 뒤 본문, 참고 자료, FAQ, Article의 인용 정보와 썸네일을 새 주제에 맞게 작성합니다. 이전 글의 내용이나 출처를 남기지 않도록 확인하세요.
 
-4. **빌드 실행**: `node build.js`
-   → `index.html`의 `<!-- POSTS_START --> ~ <!-- POSTS_END -->` 사이가 카드 HTML로 다시 생성됩니다.
-5. **배포**: `git add . && git commit -m "새 글 추가" && git push`
-   → Cloudflare Pages가 자동 배포합니다.
-6. (선택) `sitemap.xml`에 새 글 `<url>` 블록을 추가하면 SEO에 좋습니다.
+`posts/posts.json`에 제목, 요약, 카테고리, 발행일, 썸네일, 주소와 태그를 추가합니다. 카테고리는 `consume`, `emotion`, `relation` 중 하나입니다. 주소 형식은 `/posts/new-article.html`입니다. 글 HTML에는 `RELATED_START`/`RELATED_END` 및 `HEAD_ADSENSE_START`/`HEAD_ADSENSE_END` 마커를 유지합니다. 빌드가 글 URL 형식, 중복과 본문 존재 여부를 검사합니다.
 
-## 색상/폰트 바꾸기
+## 화면과 광고
 
-`css/style.css` 상단의 `:root` 변수만 수정하면 전체 톤이 바뀝니다.
+- 홈페이지는 대표 글 10편과 카드 6편, 다음 페이지부터 12편씩 이어집니다. 페이지 경계의 중복과 누락을 검증합니다.
+- 모바일 메뉴는 실제 버튼으로 조작합니다. JavaScript가 없으면 메뉴 링크를 펼친 상태로 제공합니다.
+- 홈페이지·카테고리·본문의 애드센스 연결 코드는 빌드에서 유지합니다. 404, 소개, 개인정보처리방침, 이용약관에는 광고 스크립트를 넣지 않습니다.
+- `ads.txt`의 게시자 ID는 현재 계정과 맞는 값만 사용합니다. 광고 코드나 ads.txt가 존재하는 것은 애드센스 승인을 의미하지 않습니다.
+- Cloudflare Pages의 정적 HTML 주소 정규화에 따라 사용자 링크에서는 `.html`을 생략하고 실제 파일과 메타데이터에서는 확장자를 유지합니다.
 
-## 배포 (Cloudflare Pages)
+## 배포
 
-`node build.js`를 **로컬에서 실행해 생성된 `index.html`을 그대로 커밋·푸시**하는 방식이라, Cloudflare에서 별도 빌드 명령이 필요 없습니다.
-
-- 빌드 명령: (없음)
-- 출력 디렉터리: `/` (루트)
-
-> 만약 Cloudflare가 빌드 단계에서 직접 생성하게 하고 싶다면, 빌드 명령에 `node build.js`를 넣어도 됩니다. (Node 런타임 필요) 다만 위처럼 로컬 빌드 후 커밋하는 방식이 가장 단순합니다.
-
-## 배포 전 체크리스트
-
-- [ ] `ads.txt`에 애드센스 게시자 ID 입력
-- [ ] `about.html` / `privacy.html`의 `[TODO]`, 이메일, 운영자 정보 채우기
-- [ ] `images/og-default.png` (기본 공유 이미지) 추가
-- [ ] 도메인 연결 후 `robots.txt` / `sitemap.xml` 주소 확인
+로컬에서 생성 결과까지 커밋하여 Cloudflare Pages가 루트를 게시하는 기존 방식을 유지합니다. 별도 패키지 설치 없이 Node.js로 빌드와 검증을 실행합니다. 문제가 생기면 해당 변경을 되돌린 새 커밋으로 복구할 수 있습니다.

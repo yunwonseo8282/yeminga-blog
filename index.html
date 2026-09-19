@@ -27,6 +27,7 @@
   <!-- HEAD_ADSENSE_END -->
 </head>
 <body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
   <!-- ================= 헤더 ================= -->
   <header class="site-header">
     <div class="container">
@@ -35,10 +36,9 @@
         <span>예밍이네 심리사전</span>
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="메뉴 열기">☰</label>
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" hidden>메뉴 열기</button>
 
-      <nav class="main-nav" aria-label="주요 메뉴">
+      <nav class="main-nav" id="main-navigation" aria-label="주요 메뉴">
         <a href="/category/consume/">소비 심리</a>
         <a href="/category/emotion/">감정과 자아</a>
         <a href="/category/relation/">인간관계 심리</a>
@@ -47,7 +47,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <div class="container">
       <!-- ================= 히어로 ================= -->
       <section class="hero">
@@ -71,49 +71,49 @@
         <div class="hero-featured">
           <div class="hero-lead">
             <a class="hero-lead-main" href="/posts/availability-heuristic-news-anxiety">
-              <img class="thumb thumb--wide" src="/images/thumb-availability-heuristic-news-anxiety.png" alt="한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유 썸네일" loading="lazy" />
+              <img class="thumb thumb--wide" src="/images/thumb-availability-heuristic-news-anxiety-v2.png" alt="가용성 휴리스틱, 선명한 사고 뉴스와 실제 위험은 같을까요 썸네일" loading="lazy" />
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="hero-lead-title">한 번 본 사고 뉴스가 자꾸 떠올라 무서운 이유</h2>
-              <p class="hero-lead-excerpt">사고 뉴스 한 장면이 자꾸 떠오르면 실제 위험도 더 커 보일 수 있어요. 가용성 휴리스틱의 1973년 실험과 한국 뉴스 사례, 2021년 재현 한계까지 함께 정리했어요.</p>
+              <h2 class="hero-lead-title">가용성 휴리스틱, 선명한 사고 뉴스와 실제 위험은 같을까요</h2>
+              <p class="hero-lead-excerpt">선명한 사고 뉴스와 실제 발생률은 다른 자료예요. 가용성 휴리스틱의 이름 목록 실험, 뉴스 보도 연구의 범위, 분모와 기간을 맞춰 위험 숫자를 읽는 가상 계산 예시를 담았어요.</p>
             </a>
             <ul class="hero-sub-links">
-            <li><a href="/posts/cognitive-reappraisal-emotion">· 인지 재평가, 같은 일도 다르게 해석하면 감정이 바뀌는 이유</a></li>
-            <li><a href="/posts/priming-effect-wine-music">· 클래식 음악 틀었더니 비싼 와인이 더 팔린 이유</a></li>
+            <li><a href="/posts/cognitive-reappraisal-emotion">· 인지 재평가, 같은 사건의 해석을 다시 살펴보는 방법</a></li>
+            <li><a href="/posts/priming-effect-wine-music">· 와인 매장 음악과 소비, 점화 효과로 어디까지 설명할까요</a></li>
             </ul>
           </div>
           <div class="hero-list">
           <a class="hero-list-item" href="/posts/herd-mentality-crowd-behavior">
             <span class="hero-list-text">
               <span class="hero-list-cat">인간관계 심리</span>
-              <span class="hero-list-title">군중심리 때문에 혼자선 안 할 일을 무리에선 하게 되는 이유</span>
+              <span class="hero-list-title">군중심리, 무리 안에서 행동이 달라지는 조건</span>
             </span>
             <img class="hero-list-thumb" src="/images/thumb-herd-mentality-crowd-behavior.png" alt="" loading="lazy" />
           </a>
           <a class="hero-list-item" href="/posts/mood-congruent-effect">
             <span class="hero-list-text">
               <span class="hero-list-cat">감정과 자아</span>
-              <span class="hero-list-title">기분 일치 효과 때문에 슬플 때 슬픈 노래를 찾게 되는 이유</span>
+              <span class="hero-list-title">기분 일치 기억, 슬픈 기억과 슬픈 노래는 같은 설명일까요?</span>
             </span>
-            <img class="hero-list-thumb" src="/images/thumb-mood-congruent-effect.png" alt="" loading="lazy" />
+            <img class="hero-list-thumb" src="/images/thumb-mood-congruent-effect-v2.png" alt="" loading="lazy" />
           </a>
           <a class="hero-list-item" href="/posts/diderot-effect-meaning-reason">
             <span class="hero-list-text">
               <span class="hero-list-cat">소비 심리</span>
-              <span class="hero-list-title">디드로 효과 뜻과 우리가 자꾸 지갑을 여는 진짜 이유</span>
+              <span class="hero-list-title">디드로 효과, 새 물건 뒤에 추가 구매가 이어지는 이유</span>
             </span>
             <img class="hero-list-thumb" src="/images/thumb-diderot-effect-meaning-reason.png" alt="" loading="lazy" />
           </a>
           <a class="hero-list-item" href="/posts/primacy-effect-first-impression">
             <span class="hero-list-text">
               <span class="hero-list-cat">인간관계 심리</span>
-              <span class="hero-list-title">초두 효과 때문에 첫인상은 왜 좀처럼 안 바뀌는 걸까요</span>
+              <span class="hero-list-title">초두 효과: 먼저 들은 정보가 첫인상에 영향을 주는 이유</span>
             </span>
-            <img class="hero-list-thumb" src="/images/thumb-primacy-effect-first-impression.png" alt="" loading="lazy" />
+            <img class="hero-list-thumb" src="/images/thumb-primacy-effect-first-impression-v2.png" alt="" loading="lazy" />
           </a>
           <a class="hero-list-item" href="/posts/peak-end-rule-memory">
             <span class="hero-list-text">
               <span class="hero-list-cat">감정과 자아</span>
-              <span class="hero-list-title">피크엔드 법칙 때문에 힘들었던 여행이 또 가고 싶어지는 이유</span>
+              <span class="hero-list-title">피크엔드 법칙, 여행을 돌아볼 때 강렬한 순간과 끝이 남는 이유</span>
             </span>
             <img class="hero-list-thumb" src="/images/thumb-peak-end-rule-memory.png" alt="" loading="lazy" />
           </a>
@@ -127,7 +127,7 @@
           <a class="hero-list-item" href="/posts/conformity-group-majority">
             <span class="hero-list-text">
               <span class="hero-list-cat">인간관계 심리</span>
-              <span class="hero-list-title">동조 때문에 회식 메뉴 정할 때 결국 다수를 따라가는 이유</span>
+              <span class="hero-list-title">동조는 언제 커질까? 회식 메뉴와 애시 실험을 구분해 보기</span>
             </span>
             <img class="hero-list-thumb" src="/images/thumb-conformity-group-majority.png" alt="" loading="lazy" />
           </a>
@@ -147,35 +147,35 @@
               <a class="category-section-lead-main" href="/posts/zero-price-effect-free-shipping">
                 <img class="thumb thumb--wide" src="/images/thumb-zero-price-effect-free-shipping.png" alt="무료 배송 채우려다 결국 더 사버린 적 있죠 썸네일" loading="lazy" />
                 <h3 class="category-section-lead-title">무료 배송 채우려다 결국 더 사버린 적 있죠</h3>
-                <p class="category-section-lead-excerpt">0원은 싼 값이 아니라 다른 칸에서 평가돼요. 선택이 27%에서 69%로 뒤집힌 2007년 초콜릿 실험과, 딸린 비용이 크면 공짜가 역효과라는 2022년 연구까지 정리했어요.</p>
+                <p class="category-section-lead-excerpt">무료 배송을 맞추려다 총액이 늘어나는 과정을 계산해 봐요. 초콜릿 실험의 27%·69%가 어떤 사람들을 기준으로 한 수치인지, 공짜 효과의 한계도 짚었어요.</p>
               </a>
             </div>
             <div class="category-section-list">
             <a class="category-section-list-item" href="/posts/endowment-effect-free-trial">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">소비 심리</span>
-                <span class="category-section-list-title">보유 효과 때문에 무료 체험을 못 끊게 되는 거였어요</span>
+                <span class="category-section-list-title">보유 효과와 무료 체험, 익숙해진 서비스를 놓기 어려운 이유</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-endowment-effect-free-trial.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/framing-effect-95-percent-milk">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">소비 심리</span>
-                <span class="category-section-list-title">같은 우유인데 95% 무지방이 더 맛있어 보이는 이유</span>
+                <span class="category-section-list-title">프레이밍 효과, 같은 숫자가 다르게 들리는 이유</span>
               </span>
-              <img class="category-section-list-thumb" src="/images/thumb-framing-effect-95-percent-milk.png" alt="" loading="lazy" />
+              <img class="category-section-list-thumb" src="/images/thumb-framing-effect-95-percent-milk-v2.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/scarcity-principle-limited-edition">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">소비 심리</span>
-                <span class="category-section-list-title">희소성 원리, 한정판이라는 말에 무너지는 이유</span>
+                <span class="category-section-list-title">희소성 원리, 한정판 앞에서 마음이 급해지는 이유</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-scarcity-principle-limited-edition.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/anchoring-effect-price-tag">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">소비 심리</span>
-                <span class="category-section-list-title">앵커링 효과, 줄 그어진 가격표에 자꾸 속는 이유</span>
+                <span class="category-section-list-title">앵커링 효과, 줄 그어진 가격표를 다시 읽는 법</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-anchoring-effect-price-tag.png" alt="" loading="lazy" />
             </a>
@@ -190,37 +190,37 @@
           <div class="category-section-body">
             <div class="category-section-lead">
               <a class="category-section-lead-main" href="/posts/cognitive-dissonance-justification">
-                <img class="thumb thumb--wide" src="/images/thumb-cognitive-dissonance-justification.png" alt="인지 부조화로 풀어보는 내 선택을 끝까지 방어하는 마음 썸네일" loading="lazy" />
-                <h3 class="category-section-lead-title">인지 부조화로 풀어보는 내 선택을 끝까지 방어하는 마음</h3>
-                <p class="category-section-lead-excerpt">비싸게 산 물건을 자꾸 잘 샀다고 변호하는 마음을 인지 부조화로 풀어요. 1959년 1달러·20달러 실험과 2024년 다기관 재현 결과를 함께 보고, 합리화를 알아채는 법까지 정리했어요.</p>
+                <img class="thumb thumb--wide" src="/images/thumb-cognitive-dissonance-justification.png" alt="인지 부조화, 내 선택을 방어하는 마음과 점검할 기준 썸네일" loading="lazy" />
+                <h3 class="category-section-lead-title">인지 부조화, 내 선택을 방어하는 마음과 점검할 기준</h3>
+                <p class="category-section-lead-excerpt">생각과 행동의 불일치를 다룬 고전 실험과 다기관 재검토를 살펴봐요. 구매 만족을 진단하지 않고, 결정 전 기준과 현재 사실을 비교하는 가상 예시를 담았어요.</p>
               </a>
             </div>
             <div class="category-section-list">
             <a class="category-section-list-item" href="/posts/learned-helplessness-process">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">감정과 자아</span>
-                <span class="category-section-list-title">학습된 무력감, 해도 안 된다는 생각이 만들어지는 과정</span>
+                <span class="category-section-list-title">학습된 무력감, 해도 안 된다는 생각을 이해하는 연구와 한계</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-learned-helplessness-process.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/negativity-bias-bad-memory">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">감정과 자아</span>
-                <span class="category-section-list-title">부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유</span>
+                <span class="category-section-list-title">부정성 편향, 나쁜 소식이 더 크게 느껴질 때 확인할 것</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-negativity-bias-bad-memory.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/planning-fallacy-deadline">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">감정과 자아</span>
-                <span class="category-section-list-title">알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요</span>
+                <span class="category-section-list-title">계획 오류, 30분이면 된다던 일이 늘 늦어지는 이유</span>
               </span>
-              <img class="category-section-list-thumb" src="/images/thumb-planning-fallacy-deadline.png" alt="" loading="lazy" />
+              <img class="category-section-list-thumb" src="/images/thumb-planning-fallacy-deadline-v2.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/self-determination-theory-motivation">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">감정과 자아</span>
-                <span class="category-section-list-title">엄마가 &quot;공부해&quot; 한 순간 펴려던 책을 덮어버린 적 있나요</span>
+                <span class="category-section-list-title">자기 결정 이론, 하라는 말을 들으면 의욕이 꺾이는 이유일까요?</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-self-determination-theory-motivation.png" alt="" loading="lazy" />
             </a>
@@ -237,28 +237,28 @@
               <a class="category-section-lead-main" href="/posts/mere-exposure-effect-familiarity">
                 <img class="thumb thumb--wide" src="/images/thumb-mere-exposure-effect-familiarity.png" alt="처음엔 별로였는데 자꾸 보니 좋아지는 이유 썸네일" loading="lazy" />
                 <h3 class="category-section-lead-title">처음엔 별로였는데 자꾸 보니 좋아지는 이유</h3>
-                <p class="category-section-lead-excerpt">처음엔 별로였던 노래가 자꾸 듣다 보니 좋아지는 건 단순 노출 효과 때문이에요. 자이언스의 1968년 실험과, 조건마다 효과가 달라진다는 1989년 메타분석까지 정리했어요.</p>
+                <p class="category-section-lead-excerpt">반복해서 접한 대상이 더 좋아질 수 있는 단순 노출 효과를 살펴봐요. 낯선 문자와 얼굴 사진 연구, 반복이 호감을 보장하지 않는 조건과 관계에서 지킬 기준을 담았어요.</p>
               </a>
             </div>
             <div class="category-section-list">
             <a class="category-section-list-item" href="/posts/attachment-style-late-reply-anxiety">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">인간관계 심리</span>
-                <span class="category-section-list-title">애착 유형 때문에 연락 늦으면 불안해지는 사람의 속마음</span>
+                <span class="category-section-list-title">답장이 늦으면 불안할 때, 애착 유형으로 어디까지 설명할 수 있을까</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-attachment-style-late-reply-anxiety.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/emotional-contagion-mood-spread">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">인간관계 심리</span>
-                <span class="category-section-list-title">짜증 난 사람 옆에 있으면 나까지 가라앉는 이유</span>
+                <span class="category-section-list-title">다른 사람의 기분이 내게도 전해질까? 정서 전염 연구 읽기</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-emotional-contagion-mood-spread.png" alt="" loading="lazy" />
             </a>
             <a class="category-section-list-item" href="/posts/looking-glass-self-others-eyes">
               <span class="category-section-list-text">
                 <span class="category-section-list-cat">인간관계 심리</span>
-                <span class="category-section-list-title">남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유</span>
+                <span class="category-section-list-title">남의 시선이 신경 쓰일 때: 거울 자아와 조명 효과의 차이</span>
               </span>
               <img class="category-section-list-thumb" src="/images/thumb-looking-glass-self-others-eyes.png" alt="" loading="lazy" />
             </a>
@@ -276,7 +276,7 @@
 
         <!-- POSTSHEAD_START -->
         <div class="category-section-head">
-          <h2 class="category-section-title">이런 글도 있어요</h2>
+          <h2 class="category-section-title">더 읽어보기</h2>
         </div>
         <!-- POSTSHEAD_END -->
         <!-- 글 카드는 build.js가 posts/posts.json을 읽어 정적으로 생성합니다.
@@ -285,13 +285,13 @@
         <div id="post-grid" class="post-grid">
           <!-- POSTS_START -->
           <a class="post-card" href="/posts/cognitive-dissonance-justification" data-category="emotion">
-            <img class="thumb" src="/images/thumb-cognitive-dissonance-justification.png" alt="인지 부조화로 풀어보는 내 선택을 끝까지 방어하는 마음 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-cognitive-dissonance-justification.png" alt="인지 부조화, 내 선택을 방어하는 마음과 점검할 기준 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">인지 부조화로 풀어보는 내 선택을 끝까지 방어하는 마음</h2>
-              <p class="card-excerpt">비싸게 산 물건을 자꾸 잘 샀다고 변호하는 마음을 인지 부조화로 풀어요. 1959년 1달러·20달러 실험과 2024년 다기관 재현 결과를 함께 보고, 합리화를 알아채는 법까지 정리했어요.</p>
+              <h2 class="card-title">인지 부조화, 내 선택을 방어하는 마음과 점검할 기준</h2>
+              <p class="card-excerpt">생각과 행동의 불일치를 다룬 고전 실험과 다기관 재검토를 살펴봐요. 구매 만족을 진단하지 않고, 결정 전 기준과 현재 사실을 비교하는 가상 예시를 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-07">2026.07.07</time>
               </div>
             </div>
@@ -301,9 +301,9 @@
             <div class="card-body">
               <span class="badge badge--consume">소비 심리</span>
               <h2 class="card-title">무료 배송 채우려다 결국 더 사버린 적 있죠</h2>
-              <p class="card-excerpt">0원은 싼 값이 아니라 다른 칸에서 평가돼요. 선택이 27%에서 69%로 뒤집힌 2007년 초콜릿 실험과, 딸린 비용이 크면 공짜가 역효과라는 2022년 연구까지 정리했어요.</p>
+              <p class="card-excerpt">무료 배송을 맞추려다 총액이 늘어나는 과정을 계산해 봐요. 초콜릿 실험의 27%·69%가 어떤 사람들을 기준으로 한 수치인지, 공짜 효과의 한계도 짚었어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-05">2026.07.05</time>
               </div>
             </div>
@@ -313,45 +313,45 @@
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
               <h2 class="card-title">처음엔 별로였는데 자꾸 보니 좋아지는 이유</h2>
-              <p class="card-excerpt">처음엔 별로였던 노래가 자꾸 듣다 보니 좋아지는 건 단순 노출 효과 때문이에요. 자이언스의 1968년 실험과, 조건마다 효과가 달라진다는 1989년 메타분석까지 정리했어요.</p>
+              <p class="card-excerpt">반복해서 접한 대상이 더 좋아질 수 있는 단순 노출 효과를 살펴봐요. 낯선 문자와 얼굴 사진 연구, 반복이 호감을 보장하지 않는 조건과 관계에서 지킬 기준을 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-03">2026.07.03</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/learned-helplessness-process" data-category="emotion">
-            <img class="thumb" src="/images/thumb-learned-helplessness-process.png" alt="학습된 무력감, 해도 안 된다는 생각이 만들어지는 과정 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-learned-helplessness-process.png" alt="학습된 무력감, 해도 안 된다는 생각을 이해하는 연구와 한계 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">학습된 무력감, 해도 안 된다는 생각이 만들어지는 과정</h2>
-              <p class="card-excerpt">해도 안 된다는 생각이 굳어지는 과정을 대학생 96명 실험으로 정리했어요. 수동성은 학습된 게 아니라는 2016년 반론과, 통제감부터 되찾는 방법까지 함께 담았어요.</p>
+              <h2 class="card-title">학습된 무력감, 해도 안 된다는 생각을 이해하는 연구와 한계</h2>
+              <p class="card-excerpt">통제 불가능한 경험 뒤 수행 저하를 본 1975년 총 96명 연구와, 동물 실험에 근거한 2016년 설명을 구분해요. 개인의 무기력을 진단하는 개념은 아니에요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-01">2026.07.01</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/endowment-effect-free-trial" data-category="consume">
-            <img class="thumb" src="/images/thumb-endowment-effect-free-trial.png" alt="보유 효과 때문에 무료 체험을 못 끊게 되는 거였어요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-endowment-effect-free-trial.png" alt="보유 효과와 무료 체험, 익숙해진 서비스를 놓기 어려운 이유 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">보유 효과 때문에 무료 체험을 못 끊게 되는 거였어요</h2>
-              <p class="card-excerpt">무료 체험을 못 끊게 되는 건 보유 효과 때문이에요. 파는 값이 사는 값의 두 배를 넘었던 머그컵 실험과, 절차를 바꾸면 격차가 사라진다는 2005년 반론까지 함께 정리했어요.</p>
+              <h2 class="card-title">보유 효과와 무료 체험, 익숙해진 서비스를 놓기 어려운 이유</h2>
+              <p class="card-excerpt">가진 것을 내놓을 때와 새로 얻을 때의 평가가 달라지는 보유 효과를 살펴봐요. 머그컵 실험과 무료 체험의 차이, 자동결제 전에 비교할 조건도 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-28">2026.06.28</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/attachment-style-late-reply-anxiety" data-category="relation">
-            <img class="thumb" src="/images/thumb-attachment-style-late-reply-anxiety.png" alt="애착 유형 때문에 연락 늦으면 불안해지는 사람의 속마음 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-attachment-style-late-reply-anxiety.png" alt="답장이 늦으면 불안할 때, 애착 유형으로 어디까지 설명할 수 있을까 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">애착 유형 때문에 연락 늦으면 불안해지는 사람의 속마음</h2>
-              <p class="card-excerpt">연락이 조금 늦었을 때 불안이 먼저 올라오는 건 애착 유형 때문이에요. 안정 56퍼센트로 갈린 1987년 설문과, 칸으로 나누는 틀이 흔들린다는 2015년 반론까지 정리했어요.</p>
+              <h2 class="card-title">답장이 늦으면 불안할 때, 애착 유형으로 어디까지 설명할 수 있을까</h2>
+              <p class="card-excerpt">답장 불안을 애착 유형 하나로 단정하지 않고 살펴봐요. 1987년 설문의 19%가 뜻하는 것, 애착의 변화 연구가 말할 수 없는 것, 사실과 해석을 나누는 대화 예시를 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-27">2026.06.27</time>
               </div>
             </div>
@@ -379,6 +379,7 @@
         <a href="/privacy">개인정보처리방침</a>
         <a href="/terms">이용약관</a>
         <a href="/about#contact">문의</a>
+              <a href="/about#editorial">콘텐츠 작성 기준</a>
       </nav>
       <p class="footer-copy">
         © <span id="footer-year">2026</span> 예밍이네 심리사전. All rights reserved.

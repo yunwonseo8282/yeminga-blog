@@ -19,11 +19,10 @@
   <meta property="og:locale" content="ko_KR" />
 
   <link rel="stylesheet" href="/css/style.css" />
-  <!-- HEAD_ADSENSE_START -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067927801872250" crossorigin="anonymous"></script>
-  <!-- HEAD_ADSENSE_END -->
+  <!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END -->
 </head>
 <body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
   <header class="site-header">
     <div class="container">
       <a class="brand" href="/">
@@ -31,10 +30,9 @@
         <span>예밍이네 심리사전</span>
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="메뉴 열기">☰</label>
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" hidden>메뉴 열기</button>
 
-      <nav class="main-nav" aria-label="주요 메뉴">
+      <nav class="main-nav" id="main-navigation" aria-label="주요 메뉴">
         <a href="/category/consume/">소비 심리</a>
         <a href="/category/emotion/">감정과 자아</a>
         <a href="/category/relation/">인간관계 심리</a>
@@ -43,7 +41,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <div class="container">
       <article class="page">
         <h1>개인정보처리방침</h1>
@@ -150,6 +148,7 @@
         <a href="/privacy">개인정보처리방침</a>
         <a href="/terms">이용약관</a>
         <a href="/about#contact">문의</a>
+              <a href="/about#editorial">콘텐츠 작성 기준</a>
       </nav>
       <p class="footer-copy">
         © <span id="footer-year">2026</span> 예밍이네 심리사전. All rights reserved.

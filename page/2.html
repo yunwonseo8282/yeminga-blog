@@ -27,6 +27,7 @@
   <!-- HEAD_ADSENSE_END -->
 </head>
 <body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
   <!-- ================= 헤더 ================= -->
   <header class="site-header">
     <div class="container">
@@ -35,10 +36,9 @@
         <span>예밍이네 심리사전</span>
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="메뉴 열기">☰</label>
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" hidden>메뉴 열기</button>
 
-      <nav class="main-nav" aria-label="주요 메뉴">
+      <nav class="main-nav" id="main-navigation" aria-label="주요 메뉴">
         <a href="/category/consume/">소비 심리</a>
         <a href="/category/emotion/">감정과 자아</a>
         <a href="/category/relation/">인간관계 심리</a>
@@ -47,7 +47,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <div class="container">
       <!-- ================= 히어로 ================= -->
       <section class="hero">
@@ -74,7 +74,7 @@
 
         <!-- POSTSHEAD_START -->
         <div class="category-section-head">
-          <h2 class="category-section-title">이런 글도 있어요</h2>
+          <h2 class="category-section-title">전체 글 목록 · 2페이지</h2>
         </div>
         <!-- POSTSHEAD_END -->
         <!-- 글 카드는 build.js가 posts/posts.json을 읽어 정적으로 생성합니다.
@@ -82,134 +82,86 @@
              아래 마커 사이는 빌드 때 자동으로 교체되니 직접 수정하지 마세요. -->
         <div id="post-grid" class="post-grid">
           <!-- POSTS_START -->
-          <a class="post-card" href="/posts/mere-exposure-effect-familiarity" data-category="relation">
-            <img class="thumb" src="/images/thumb-mere-exposure-effect-familiarity.png" alt="처음엔 별로였는데 자꾸 보니 좋아지는 이유 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">처음엔 별로였는데 자꾸 보니 좋아지는 이유</h2>
-              <p class="card-excerpt">처음엔 별로였던 노래가 자꾸 듣다 보니 좋아지는 건 단순 노출 효과 때문이에요. 자이언스의 1968년 실험과, 조건마다 효과가 달라진다는 1989년 메타분석까지 정리했어요.</p>
-              <div class="card-meta">
-                <span>예밍이</span>
-                <time datetime="2026-07-03">2026.07.03</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/learned-helplessness-process" data-category="emotion">
-            <img class="thumb" src="/images/thumb-learned-helplessness-process.png" alt="학습된 무력감, 해도 안 된다는 생각이 만들어지는 과정 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">학습된 무력감, 해도 안 된다는 생각이 만들어지는 과정</h2>
-              <p class="card-excerpt">해도 안 된다는 생각이 굳어지는 과정을 대학생 96명 실험으로 정리했어요. 수동성은 학습된 게 아니라는 2016년 반론과, 통제감부터 되찾는 방법까지 함께 담았어요.</p>
-              <div class="card-meta">
-                <span>예밍이</span>
-                <time datetime="2026-07-01">2026.07.01</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/endowment-effect-free-trial" data-category="consume">
-            <img class="thumb" src="/images/thumb-endowment-effect-free-trial.png" alt="보유 효과 때문에 무료 체험을 못 끊게 되는 거였어요 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">보유 효과 때문에 무료 체험을 못 끊게 되는 거였어요</h2>
-              <p class="card-excerpt">무료 체험을 못 끊게 되는 건 보유 효과 때문이에요. 파는 값이 사는 값의 두 배를 넘었던 머그컵 실험과, 절차를 바꾸면 격차가 사라진다는 2005년 반론까지 함께 정리했어요.</p>
-              <div class="card-meta">
-                <span>예밍이</span>
-                <time datetime="2026-06-28">2026.06.28</time>
-              </div>
-            </div>
-          </a>
-          <a class="post-card" href="/posts/attachment-style-late-reply-anxiety" data-category="relation">
-            <img class="thumb" src="/images/thumb-attachment-style-late-reply-anxiety.png" alt="애착 유형 때문에 연락 늦으면 불안해지는 사람의 속마음 썸네일" loading="lazy" />
-            <div class="card-body">
-              <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">애착 유형 때문에 연락 늦으면 불안해지는 사람의 속마음</h2>
-              <p class="card-excerpt">연락이 조금 늦었을 때 불안이 먼저 올라오는 건 애착 유형 때문이에요. 안정 56퍼센트로 갈린 1987년 설문과, 칸으로 나누는 틀이 흔들린다는 2015년 반론까지 정리했어요.</p>
-              <div class="card-meta">
-                <span>예밍이</span>
-                <time datetime="2026-06-27">2026.06.27</time>
-              </div>
-            </div>
-          </a>
           <a class="post-card" href="/posts/framing-effect-95-percent-milk" data-category="consume">
-            <img class="thumb" src="/images/thumb-framing-effect-95-percent-milk.png" alt="같은 우유인데 95% 무지방이 더 맛있어 보이는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-framing-effect-95-percent-milk-v2.png" alt="프레이밍 효과, 같은 숫자가 다르게 들리는 이유 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">같은 우유인데 95% 무지방이 더 맛있어 보이는 이유</h2>
-              <p class="card-excerpt">95% 무지방과 지방 5%는 같은 우유인데 한쪽만 끌리는 이유를 프레이밍 효과로 풀었어요. 선택이 72%와 22%로 갈린 1981년 실험과, 효과 크기가 조건마다 다르다는 반론까지 담았어요.</p>
+              <h2 class="card-title">프레이밍 효과, 같은 숫자가 다르게 들리는 이유</h2>
+              <p class="card-excerpt">90% 만족과 10% 비만족처럼 같은 정보를 다르게 읽는 프레이밍을 살펴봐요. 고전 실험의 확실한 선택·확률적 선택을 함께 비교하고, 구독료를 같은 기간으로 계산해 봅니다.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-26">2026.06.26</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/negativity-bias-bad-memory" data-category="emotion">
-            <img class="thumb" src="/images/thumb-negativity-bias-bad-memory.png" alt="부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-negativity-bias-bad-memory.png" alt="부정성 편향, 나쁜 소식이 더 크게 느껴질 때 확인할 것 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유</h2>
-              <p class="card-excerpt">좋은 일보다 나쁜 일이 더 크게 남는 부정성 편향. 17개국 1,156명을 조사한 연구와 함께, 원인 설명이 갈리는 이유와 덜 휘둘리는 방법을 정리했어요.</p>
+              <h2 class="card-title">부정성 편향, 나쁜 소식이 더 크게 느껴질 때 확인할 것</h2>
+              <p class="card-excerpt">부정성 편향의 뉴스 실험과 기억에 관한 주장을 구분해요. 나라별 평균을 개인의 성격으로 해석하지 않고, 불편한 정보의 내용과 근거를 점검하는 방법을 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-26">2026.06.26</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/planning-fallacy-deadline" data-category="emotion">
-            <img class="thumb" src="/images/thumb-planning-fallacy-deadline.png" alt="알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-planning-fallacy-deadline-v2.png" alt="계획 오류, 30분이면 된다던 일이 늘 늦어지는 이유 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요</h2>
-              <p class="card-excerpt">늘 넉넉히 잡았다고 믿는데 매번 모자라는 계획 오류. 33.9일을 예상하고 55.5일이 걸린 1994년 실험과, 기억 자체가 짧게 남는다는 반론까지 정리했어요.</p>
+              <h2 class="card-title">계획 오류, 30분이면 된다던 일이 늘 늦어지는 이유</h2>
+              <p class="card-excerpt">논문 작성 연구의 예상 33.9일과 실제 55.5일을 정확한 범위로 읽고, 보고서의 예상·실제 시간을 비교하는 가상 기록으로 계획을 점검해봐요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/emotional-contagion-mood-spread" data-category="relation">
-            <img class="thumb" src="/images/thumb-emotional-contagion-mood-spread.png" alt="짜증 난 사람 옆에 있으면 나까지 가라앉는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-emotional-contagion-mood-spread.png" alt="다른 사람의 기분이 내게도 전해질까? 정서 전염 연구 읽기 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">짜증 난 사람 옆에 있으면 나까지 가라앉는 이유</h2>
-              <p class="card-excerpt">옆 사람 기분에 나까지 물드는 정서 전염. 표정도 목소리도 없이 글만으로 옮은 68만 명 실험과, 변화폭이 아주 작다는 반론, 덜 휩쓸리는 방법까지 정리했어요.</p>
+              <h2 class="card-title">다른 사람의 기분이 내게도 전해질까? 정서 전염 연구 읽기</h2>
+              <p class="card-excerpt">정서 전염 연구가 실제로 측정한 것을 살펴봐요. 페이스북 실험의 감정 단어 비율과 개인의 기분은 어떻게 다른지, 상대의 감정과 내 해석을 구분하는 방법을 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/scarcity-principle-limited-edition" data-category="consume">
-            <img class="thumb" src="/images/thumb-scarcity-principle-limited-edition.png" alt="희소성 원리, 한정판이라는 말에 무너지는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-scarcity-principle-limited-edition.png" alt="희소성 원리, 한정판 앞에서 마음이 급해지는 이유 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--consume">소비 심리</span>
-              <h2 class="card-title">희소성 원리, 한정판이라는 말에 무너지는 이유</h2>
-              <p class="card-excerpt">&#39;재고 2개 남음&#39; 한 줄에 결제하게 되는 희소성 원리. 적게 남은 쿠키가 더 좋아 보였던 1975년 실험부터, 효과가 조건마다 갈린다는 메타분석과 하루 묵히기까지 정리했어요.</p>
+              <h2 class="card-title">희소성 원리, 한정판 앞에서 마음이 급해지는 이유</h2>
+              <p class="card-excerpt">수량과 기간의 제한이 상품 평가와 구매 의향에 어떻게 연결되는지 살펴봐요. 쿠키 실험과 메타분석의 범위, 실제 품절 조건을 확인할 때의 질문을 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/self-determination-theory-motivation" data-category="emotion">
-            <img class="thumb" src="/images/thumb-self-determination-theory-motivation.png" alt="엄마가 &quot;공부해&quot; 한 순간 펴려던 책을 덮어버린 적 있나요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-self-determination-theory-motivation.png" alt="자기 결정 이론, 하라는 말을 들으면 의욕이 꺾이는 이유일까요? 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">엄마가 &quot;공부해&quot; 한 순간 펴려던 책을 덮어버린 적 있나요</h2>
-              <p class="card-excerpt">시키는 순간 의욕이 식는 이유를 자기 결정 이론으로 풀었어요. 상을 약속받은 아이들이 그림을 덜 그린 1973년 실험과, 보상 논쟁의 반론까지 함께 담았어요.</p>
+              <h2 class="card-title">자기 결정 이론, 하라는 말을 들으면 의욕이 꺾이는 이유일까요?</h2>
+              <p class="card-excerpt">자율성·유능감·관계성으로 동기를 살펴보고, 보상 실험의 결과와 한계를 구분해요. 외적 보상이나 타인의 요청이 언제나 의욕을 꺾는 것은 아니에요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/looking-glass-self-others-eyes" data-category="relation">
-            <img class="thumb" src="/images/thumb-looking-glass-self-others-eyes.png" alt="남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-looking-glass-self-others-eyes.png" alt="남의 시선이 신경 쓰일 때: 거울 자아와 조명 효과의 차이 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
-              <h2 class="card-title">남들이 날 어떻게 볼까 자꾸 신경 쓰이는 이유</h2>
-              <p class="card-excerpt">남의 시선이 신경 쓰이는 건 거울 자아 때문이에요. 티셔츠를 알아본 사람이 예상 46퍼센트, 실제 23퍼센트였던 실험과 원인 설명이 갈리는 지점까지 정리했어요.</p>
+              <h2 class="card-title">남의 시선이 신경 쓰일 때: 거울 자아와 조명 효과의 차이</h2>
+              <p class="card-excerpt">타인의 평가로 나를 상상하는 거울 자아와 남들이 나를 얼마나 알아보는지 과대평가하는 조명 효과를 구분해요. 티셔츠 실험의 46%와 23%가 뜻하는 범위도 짚었어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
@@ -219,9 +171,57 @@
             <div class="card-body">
               <span class="badge badge--relation">인간관계 심리</span>
               <h2 class="card-title">후광 효과 때문에 우리가 자주 속는 것들</h2>
-              <p class="card-excerpt">좋은 인상 하나가 나머지 평가까지 물들이는 후광 효과. 1920년 사관생도 평정의 상관 .51~.64와, 항목마다 크기가 다르다는 메타분석까지 정리했어요.</p>
+              <p class="card-excerpt">좋은 인상이 다른 특성의 평가까지 번지는 후광 효과를 살펴봐요. 상관계수를 읽는 법, 외모 고정관념 연구의 범위, 인상과 실제 평가 근거를 분리하는 점검법을 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
+                <time datetime="2026-06-24">2026.06.24</time>
+              </div>
+            </div>
+          </a>
+          <a class="post-card" href="/posts/anchoring-effect-price-tag" data-category="consume">
+            <img class="thumb" src="/images/thumb-anchoring-effect-price-tag.png" alt="앵커링 효과, 줄 그어진 가격표를 다시 읽는 법 썸네일" loading="lazy" />
+            <div class="card-body">
+              <span class="badge badge--consume">소비 심리</span>
+              <h2 class="card-title">앵커링 효과, 줄 그어진 가격표를 다시 읽는 법</h2>
+              <p class="card-excerpt">처음 본 숫자가 가격 판단의 기준이 되는 앵커링 효과를 살펴봐요. 1974년 실험의 중앙값, 개인차 연구의 한계, 실제 비교 가격을 확인하는 방법을 구분했어요.</p>
+              <div class="card-meta">
+                <span>예밍</span>
+                <time datetime="2026-06-24">2026.06.24</time>
+              </div>
+            </div>
+          </a>
+          <a class="post-card" href="/posts/zeigarnik-effect-unfinished" data-category="emotion">
+            <img class="thumb" src="/images/thumb-zeigarnik-effect-unfinished-v2.png" alt="자이가르닉 효과, 못 끝낸 일이 정말 더 잘 기억될까요? 썸네일" loading="lazy" />
+            <div class="card-body">
+              <span class="badge badge--emotion">감정과 자아</span>
+              <h2 class="card-title">자이가르닉 효과, 못 끝낸 일이 정말 더 잘 기억될까요?</h2>
+              <p class="card-excerpt">2025년 메타분석을 바탕으로 미완성 과제의 기억 이점, 과제로 돌아가는 행동, 주의 방해를 구분해요. 드라마와 생산성에 적용할 때의 한계도 살펴봐요.</p>
+              <div class="card-meta">
+                <span>예밍</span>
+                <time datetime="2026-06-24">2026.06.24</time>
+              </div>
+            </div>
+          </a>
+          <a class="post-card" href="/posts/reciprocity-principle-free-sample" data-category="relation">
+            <img class="thumb" src="/images/thumb-reciprocity-principle-free-sample.png" alt="공짜로 받으면 갚고 싶어지는 호혜성 원리의 정체 썸네일" loading="lazy" />
+            <div class="card-body">
+              <span class="badge badge--relation">인간관계 심리</span>
+              <h2 class="card-title">공짜로 받으면 갚고 싶어지는 호혜성 원리의 정체</h2>
+              <p class="card-excerpt">작은 호의를 받고 부탁을 들어주고 싶어지는 호혜성을 실험으로 살펴봐요. 선물에 대한 보답, 큰 부탁 뒤 작은 부탁을 하는 전략, 무료 체험의 자동결제 문제를 구분했어요.</p>
+              <div class="card-meta">
+                <span>예밍</span>
+                <time datetime="2026-06-24">2026.06.24</time>
+              </div>
+            </div>
+          </a>
+          <a class="post-card" href="/posts/decoy-effect-middle-option" data-category="consume">
+            <img class="thumb" src="/images/thumb-decoy-effect-middle-option-v2.png" alt="미끼 효과, 선택지 하나가 비교를 바꾸는 방식 썸네일" loading="lazy" />
+            <div class="card-body">
+              <span class="badge badge--consume">소비 심리</span>
+              <h2 class="card-title">미끼 효과, 선택지 하나가 비교를 바꾸는 방식</h2>
+              <p class="card-excerpt">한쪽에만 열등한 선택지가 기존 선택의 비중을 바꾸는 미끼 효과를 설명해요. 가상 요금제의 가격·용량을 직접 비교하고 재현 연구의 한계도 함께 봅니다.</p>
+              <div class="card-meta">
+                <span>예밍</span>
                 <time datetime="2026-06-24">2026.06.24</time>
               </div>
             </div>
@@ -250,6 +250,7 @@
         <a href="/privacy">개인정보처리방침</a>
         <a href="/terms">이용약관</a>
         <a href="/about#contact">문의</a>
+              <a href="/about#editorial">콘텐츠 작성 기준</a>
       </nav>
       <p class="footer-copy">
         © <span id="footer-year">2026</span> 예밍이네 심리사전. All rights reserved.

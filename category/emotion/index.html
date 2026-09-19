@@ -27,6 +27,7 @@
   <!-- HEAD_ADSENSE_END -->
 </head>
 <body>
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
   <!-- ================= 헤더 ================= -->
   <header class="site-header">
     <div class="container">
@@ -35,10 +36,9 @@
         <span>예밍이네 심리사전</span>
       </a>
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-      <label for="nav-toggle" class="nav-toggle-label" aria-label="메뉴 열기">☰</label>
+      <button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" hidden>메뉴 열기</button>
 
-      <nav class="main-nav" aria-label="주요 메뉴">
+      <nav class="main-nav" id="main-navigation" aria-label="주요 메뉴">
         <a href="/category/consume/">소비 심리</a>
         <a href="/category/emotion/">감정과 자아</a>
         <a href="/category/relation/">인간관계 심리</a>
@@ -47,7 +47,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <div class="container">
       <!-- ================= 히어로 ================= -->
       <section class="hero">
@@ -83,133 +83,133 @@
         <div id="post-grid" class="post-grid">
           <!-- POSTS_START -->
           <a class="post-card" href="/posts/cognitive-reappraisal-emotion" data-category="emotion">
-            <img class="thumb" src="/images/thumb-cognitive-reappraisal-emotion.png" alt="인지 재평가, 같은 일도 다르게 해석하면 감정이 바뀌는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-cognitive-reappraisal-emotion.png" alt="인지 재평가, 같은 사건의 해석을 다시 살펴보는 방법 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">인지 재평가, 같은 일도 다르게 해석하면 감정이 바뀌는 이유</h2>
-              <p class="card-excerpt">인지 재평가가 해석을 바꿔 감정 반응에 영향을 주는 과정을 Gross와 Brooks 연구로 풀었어요. 표현 억제와의 차이, 늘 도움이 되는 건 아닌 이유, 일상에서 써보는 법까지 정리했어요.</p>
+              <h2 class="card-title">인지 재평가, 같은 사건의 해석을 다시 살펴보는 방법</h2>
+              <p class="card-excerpt">상황의 의미를 다시 보는 재평가와 표현 억제를 구분해요. 실험 결과와 스트레스 관련 연구의 한계를 살피고, 재해석과 실제 문제 해결을 함께 하는 가상 사례를 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-28">2026.07.28</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/mood-congruent-effect" data-category="emotion">
-            <img class="thumb" src="/images/thumb-mood-congruent-effect.png" alt="기분 일치 효과 때문에 슬플 때 슬픈 노래를 찾게 되는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-mood-congruent-effect-v2.png" alt="기분 일치 기억, 슬픈 기억과 슬픈 노래는 같은 설명일까요? 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">기분 일치 효과 때문에 슬플 때 슬픈 노래를 찾게 되는 이유</h2>
-              <p class="card-excerpt">슬플 때 슬픈 노래와 기억이 더 끌리는 이유를 기분 일치 효과로 풀어요. 1981년 실험과 2023년 리뷰, 슬픈 음악 연구를 함께 보고 사람과 상황에 따라 달라지는 조건까지 정리했어요.</p>
+              <h2 class="card-title">기분 일치 기억, 슬픈 기억과 슬픈 노래는 같은 설명일까요?</h2>
+              <p class="card-excerpt">현재 기분과 기억 내용의 정서가 맞는 현상을 음악 선택과 구분해요. 슬픈 음악 경험 설문과 기억 연구가 각각 확인한 범위, 기분 의존 기억과의 차이를 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-19">2026.07.19</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/peak-end-rule-memory" data-category="emotion">
-            <img class="thumb" src="/images/thumb-peak-end-rule-memory.png" alt="피크엔드 법칙 때문에 힘들었던 여행이 또 가고 싶어지는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-peak-end-rule-memory.png" alt="피크엔드 법칙, 여행을 돌아볼 때 강렬한 순간과 끝이 남는 이유 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">피크엔드 법칙 때문에 힘들었던 여행이 또 가고 싶어지는 이유</h2>
-              <p class="card-excerpt">힘들었던 여행이 왜 다시 좋아 보이는지 피크엔드 법칙으로 풀어요. 32명 냉수 실험과 2022년 메타분석, 일상에서는 평균이 더 잘 맞을 수 있다는 한계까지 담았어요.</p>
+              <h2 class="card-title">피크엔드 법칙, 여행을 돌아볼 때 강렬한 순간과 끝이 남는 이유</h2>
+              <p class="card-excerpt">피크엔드 연구가 다루는 회고 평가와 기억 저장을 구분해요. 냉수 실험과 2022년 메타분석을 읽고, 여행의 과정과 마무리를 함께 살펴볼 기준을 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-13">2026.07.13</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/cognitive-dissonance-justification" data-category="emotion">
-            <img class="thumb" src="/images/thumb-cognitive-dissonance-justification.png" alt="인지 부조화로 풀어보는 내 선택을 끝까지 방어하는 마음 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-cognitive-dissonance-justification.png" alt="인지 부조화, 내 선택을 방어하는 마음과 점검할 기준 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">인지 부조화로 풀어보는 내 선택을 끝까지 방어하는 마음</h2>
-              <p class="card-excerpt">비싸게 산 물건을 자꾸 잘 샀다고 변호하는 마음을 인지 부조화로 풀어요. 1959년 1달러·20달러 실험과 2024년 다기관 재현 결과를 함께 보고, 합리화를 알아채는 법까지 정리했어요.</p>
+              <h2 class="card-title">인지 부조화, 내 선택을 방어하는 마음과 점검할 기준</h2>
+              <p class="card-excerpt">생각과 행동의 불일치를 다룬 고전 실험과 다기관 재검토를 살펴봐요. 구매 만족을 진단하지 않고, 결정 전 기준과 현재 사실을 비교하는 가상 예시를 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-07">2026.07.07</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/learned-helplessness-process" data-category="emotion">
-            <img class="thumb" src="/images/thumb-learned-helplessness-process.png" alt="학습된 무력감, 해도 안 된다는 생각이 만들어지는 과정 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-learned-helplessness-process.png" alt="학습된 무력감, 해도 안 된다는 생각을 이해하는 연구와 한계 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">학습된 무력감, 해도 안 된다는 생각이 만들어지는 과정</h2>
-              <p class="card-excerpt">해도 안 된다는 생각이 굳어지는 과정을 대학생 96명 실험으로 정리했어요. 수동성은 학습된 게 아니라는 2016년 반론과, 통제감부터 되찾는 방법까지 함께 담았어요.</p>
+              <h2 class="card-title">학습된 무력감, 해도 안 된다는 생각을 이해하는 연구와 한계</h2>
+              <p class="card-excerpt">통제 불가능한 경험 뒤 수행 저하를 본 1975년 총 96명 연구와, 동물 실험에 근거한 2016년 설명을 구분해요. 개인의 무기력을 진단하는 개념은 아니에요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-07-01">2026.07.01</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/negativity-bias-bad-memory" data-category="emotion">
-            <img class="thumb" src="/images/thumb-negativity-bias-bad-memory.png" alt="부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-negativity-bias-bad-memory.png" alt="부정성 편향, 나쁜 소식이 더 크게 느껴질 때 확인할 것 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">부정성 편향으로 풀어보는 나쁜 기억이 더 끈질긴 이유</h2>
-              <p class="card-excerpt">좋은 일보다 나쁜 일이 더 크게 남는 부정성 편향. 17개국 1,156명을 조사한 연구와 함께, 원인 설명이 갈리는 이유와 덜 휘둘리는 방법을 정리했어요.</p>
+              <h2 class="card-title">부정성 편향, 나쁜 소식이 더 크게 느껴질 때 확인할 것</h2>
+              <p class="card-excerpt">부정성 편향의 뉴스 실험과 기억에 관한 주장을 구분해요. 나라별 평균을 개인의 성격으로 해석하지 않고, 불편한 정보의 내용과 근거를 점검하는 방법을 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-26">2026.06.26</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/planning-fallacy-deadline" data-category="emotion">
-            <img class="thumb" src="/images/thumb-planning-fallacy-deadline.png" alt="알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-planning-fallacy-deadline-v2.png" alt="계획 오류, 30분이면 된다던 일이 늘 늦어지는 이유 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">알람 끄고 5분만 더, 그 5분이 30분이 되는 데는 이유가 있어요</h2>
-              <p class="card-excerpt">늘 넉넉히 잡았다고 믿는데 매번 모자라는 계획 오류. 33.9일을 예상하고 55.5일이 걸린 1994년 실험과, 기억 자체가 짧게 남는다는 반론까지 정리했어요.</p>
+              <h2 class="card-title">계획 오류, 30분이면 된다던 일이 늘 늦어지는 이유</h2>
+              <p class="card-excerpt">논문 작성 연구의 예상 33.9일과 실제 55.5일을 정확한 범위로 읽고, 보고서의 예상·실제 시간을 비교하는 가상 기록으로 계획을 점검해봐요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/self-determination-theory-motivation" data-category="emotion">
-            <img class="thumb" src="/images/thumb-self-determination-theory-motivation.png" alt="엄마가 &quot;공부해&quot; 한 순간 펴려던 책을 덮어버린 적 있나요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-self-determination-theory-motivation.png" alt="자기 결정 이론, 하라는 말을 들으면 의욕이 꺾이는 이유일까요? 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">엄마가 &quot;공부해&quot; 한 순간 펴려던 책을 덮어버린 적 있나요</h2>
-              <p class="card-excerpt">시키는 순간 의욕이 식는 이유를 자기 결정 이론으로 풀었어요. 상을 약속받은 아이들이 그림을 덜 그린 1973년 실험과, 보상 논쟁의 반론까지 함께 담았어요.</p>
+              <h2 class="card-title">자기 결정 이론, 하라는 말을 들으면 의욕이 꺾이는 이유일까요?</h2>
+              <p class="card-excerpt">자율성·유능감·관계성으로 동기를 살펴보고, 보상 실험의 결과와 한계를 구분해요. 외적 보상이나 타인의 요청이 언제나 의욕을 꺾는 것은 아니에요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-25">2026.06.25</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/zeigarnik-effect-unfinished" data-category="emotion">
-            <img class="thumb" src="/images/thumb-zeigarnik-effect-unfinished.png" alt="드라마가 꼭 제일 궁금한 데서 끊기는 데는 이유가 있어요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-zeigarnik-effect-unfinished-v2.png" alt="자이가르닉 효과, 못 끝낸 일이 정말 더 잘 기억될까요? 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">드라마가 꼭 제일 궁금한 데서 끊기는 데는 이유가 있어요</h2>
-              <p class="card-excerpt">못 끝낸 일이 계속 신경 쓰이는 자이가르닉 효과. 기억에 더 남는다는 통설이 흔들린 2025년 메타분석 수치와, 그래도 다시 손대게 되는 경향까지 정리했어요.</p>
+              <h2 class="card-title">자이가르닉 효과, 못 끝낸 일이 정말 더 잘 기억될까요?</h2>
+              <p class="card-excerpt">2025년 메타분석을 바탕으로 미완성 과제의 기억 이점, 과제로 돌아가는 행동, 주의 방해를 구분해요. 드라마와 생산성에 적용할 때의 한계도 살펴봐요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-24">2026.06.24</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/gamjeong-labeling-anger" data-category="emotion">
-            <img class="thumb" src="/images/thumb-gamjeong-labeling-anger.png" alt="감정에 이름만 붙였을 뿐인데 화가 스르륵 가라앉는 이유 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-gamjeong-labeling-anger-v2.png" alt="감정 라벨링, 이름을 붙이면 화가 가라앉을까요? 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">감정에 이름만 붙였을 뿐인데 화가 스르륵 가라앉는 이유</h2>
-              <p class="card-excerpt">감정에 이름만 붙이면 정말 화가 가라앉을까요. 편도체 반응이 줄어든 fMRI 연구와 거미 공포 성인 88명 실험, 오히려 거슬리는 순간까지 확인된 범위 안에서 정리했어요.</p>
+              <h2 class="card-title">감정 라벨링, 이름을 붙이면 화가 가라앉을까요?</h2>
+              <p class="card-excerpt">감정 라벨링의 뇌 영상·거미 실험이 확인한 범위와 한계를 살펴봐요. 감정 이름, 상대에 대한 해석, 전달할 요청을 구분하는 가상 대화 예시도 담았어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-23">2026.06.23</time>
               </div>
             </div>
           </a>
           <a class="post-card" href="/posts/dunning-kruger-effect-beginner" data-category="emotion">
-            <img class="thumb" src="/images/thumb-dunning-kruger-effect-beginner.png" alt="더닝 크루거 효과 때문에 입문 3일차의 내가 제일 잘난 줄 알았어요 썸네일" loading="lazy" />
+            <img class="thumb" src="/images/thumb-dunning-kruger-effect-beginner-v2.png" alt="더닝 크루거 효과, 초보자의 자신감 곡선으로 봐도 될까요 썸네일" loading="lazy" />
             <div class="card-body">
               <span class="badge badge--emotion">감정과 자아</span>
-              <h2 class="card-title">더닝 크루거 효과 때문에 입문 3일차의 내가 제일 잘난 줄 알았어요</h2>
-              <p class="card-excerpt">막 배우기 시작했을 때 자신감이 폭발하는 더닝 크루거 효과. 하위 25%가 자기를 62번째로 본 1999년 실험과, 무작위 자료로도 같은 그래프가 나온다는 반론까지 정리했어요.</p>
+              <h2 class="card-title">더닝 크루거 효과, 초보자의 자신감 곡선으로 봐도 될까요</h2>
+              <p class="card-excerpt">특정 과제의 성적과 자기 평가를 비교한 더닝 크루거 연구를 살펴봐요. 백분위와 등수의 차이, 성장 곡선의 오해, 예상 점수 기록 예시를 정리했어요.</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>예밍</span>
                 <time datetime="2026-06-23">2026.06.23</time>
               </div>
             </div>
@@ -230,6 +230,7 @@
         <a href="/privacy">개인정보처리방침</a>
         <a href="/terms">이용약관</a>
         <a href="/about#contact">문의</a>
+              <a href="/about#editorial">콘텐츠 작성 기준</a>
       </nav>
       <p class="footer-copy">
         © <span id="footer-year">2026</span> 예밍이네 심리사전. All rights reserved.

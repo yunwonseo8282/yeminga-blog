@@ -8,8 +8,8 @@
    - index.html 의 <!-- POSTS_START --> ~ <!-- POSTS_END --> 사이를
      생성한 카드 HTML로 갈아끼웁니다. (그 외 영역은 건드리지 않음)
    - 메인 1페이지에서만 FEATURED / CATSECTIONS 마커를 채웁니다.
-   - 모든 HTML의 <!-- HEAD_ADSENSE_START --> ~ <!-- HEAD_ADSENSE_END --> 사이에
-     구글 애드센스 스크립트를 일괄 주입합니다.
+   - 안내·오류 페이지를 제외한 HTML의 HEAD_ADSENSE 마커에 광고 코드를 넣습니다.
+   - 본문 FAQ와 검색용 구조화 데이터, 메뉴와 작성자 정보를 동기화합니다.
 
    실행: node build.js
 
@@ -26,6 +26,8 @@ const SITEMAP_XML = path.join(ROOT, "sitemap.xml");
 
 const SITE_ORIGIN = "https://yeminga.com";
 const PAGE_SIZE = 12;
+const HOME_PAGE_SIZE = 16;
+const AUTHOR_NAME = "예밍";
 
 const DEFAULT_PAGE_TITLE =
   "예밍이네 심리사전 | 소비·감정·인간관계 심리 이야기";
@@ -46,7 +48,7 @@ const POSTSHEAD_MARKER = /<!-- POSTSHEAD_START -->[\s\S]*?<!-- POSTSHEAD_END -->
 /* 브라우저 URL — .html 확장자 제거 (물리 경로·posts.json url 은 그대로) */
 function toCleanPath(p) {
   if (!p || p === "/" || /\/$/.test(p)) return p;
-  return p.endsWith(".html") ? p.slice(0, -5) : p;
+  return p.replace(/\.html(?=[?#]|$)/, "");
 }
 
 /* 구글 애드센스 — HEAD_ADSENSE 마커 사이에 빌드 시 주입 */
@@ -101,6 +103,44 @@ function escapeHtml(str) {
 }
 
 /* 날짜 YYYY-MM-DD → YYYY.MM.DD 표시용 */
+function plainText(html) {
+  return String(html).replace(/<[^>]*>/g, " ")
+    .replace(/&#(x[0-9a-f]+|\d+);/gi, (_, code) =>
+      String.fromCodePoint(code[0].toLowerCase() === "x" ? parseInt(code.slice(1), 16) : Number(code)))
+    .replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&")
+    .replace(/\s+/g, " ").trim();
+}
+
+/* 본문을 수정한 뒤 구조화 데이터에 이전 답변이 남지 않도록 동기화합니다. */
+function syncStructuredData(html, post) {
+  const faq = [...html.matchAll(/<div class="faq-item">([\s\S]*?)<\/div>/g)].map((match) => {
+    const question = match[1].match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
+    const answers = [...match[1].matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)];
+    if (!question || !answers.length) return null;
+    return { "@type": "Question", name: plainText(question[1]), acceptedAnswer: {
+      "@type": "Answer", text: answers.map((answer) => plainText(answer[1])).join(" "),
+    } };
+  }).filter(Boolean);
+  return html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (_, raw) => {
+    const data = JSON.parse(raw);
+    const entities = Array.isArray(data["@graph"]) ? data["@graph"] : [data];
+    for (const entity of entities) {
+      if (entity["@type"] === "Article" || entity["@type"] === "BlogPosting") {
+        Object.assign(entity, {
+          headline: post.title, description: post.excerpt,
+          datePublished: post.date, dateModified: post.dateModified || post.date,
+          mainEntityOfPage: SITE_ORIGIN + toCleanPath(post.url),
+          author: { "@type": "Person", name: AUTHOR_NAME, url: SITE_ORIGIN + "/about#operator" },
+        });
+      }
+      if (entity["@type"] === "FAQPage") entity.mainEntity = faq;
+    }
+    if (Array.isArray(data["@graph"])) data["@graph"] = entities.filter((entity) => entity["@type"] !== "FAQPage" || faq.length);
+    return `<script type="application/ld+json">\n${JSON.stringify(data, null, 2).replace(/</g, "\\u003c")}\n  </script>`;
+  });
+}
+
 function formatDate(isoDate) {
   if (!isoDate) return "";
   const [y, m, d] = String(isoDate).split("-");
@@ -310,7 +350,7 @@ function createCardHtml(post) {
               <h2 class="card-title">${escapeHtml(post.title)}</h2>
               <p class="card-excerpt">${escapeHtml(post.excerpt)}</p>
               <div class="card-meta">
-                <span>예밍이</span>
+                <span>${AUTHOR_NAME}</span>
                 <time datetime="${escapeHtml(post.date)}">${formatDate(
     post.date
   )}</time>
@@ -471,6 +511,13 @@ function paginate(items, size) {
   return pages;
 }
 
+/* 메인 대표글 10개 + 카드 6개 다음부터 이어지는 전체 글 목록 */
+function paginateArchive(posts) {
+  const first = posts.slice(0, HOME_PAGE_SIZE);
+  const remaining = posts.slice(HOME_PAGE_SIZE);
+  return [first, ...(remaining.length ? paginate(remaining, PAGE_SIZE) : [])];
+}
+
 /* 페이지네이션 내비 HTML */
 function createPaginationHtml({
   currentPage,
@@ -575,9 +622,7 @@ function renderListPage({
   }
 
   /* 그리드 제목: 메인은 "이런 글도 있어요", 카테고리는 "{라벨} 글" */
-  const resolvedPostsHead = isCategoryPage
-    ? postsHeadTitle
-    : "이런 글도 있어요";
+  const resolvedPostsHead = postsHeadTitle;
   if (POSTSHEAD_MARKER.test(html)) {
     html = html.replace(
       POSTSHEAD_MARKER,
@@ -647,31 +692,28 @@ function renderListPage({
    - node build.js 실행 시 index.html 카드 생성과 함께 호출됩니다.
 -------------------------------------------------------- */
 function buildSitemap(posts) {
-  const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-
   /* 고정 페이지 정의 */
   const staticPages = [
-    { loc: "/",            lastmod: today, changefreq: "daily",   priority: "1.0" },
-    { loc: "/about.html",  lastmod: today, changefreq: "monthly", priority: "0.6" },
-    { loc: "/privacy.html",lastmod: today, changefreq: "yearly",  priority: "0.3" },
-    { loc: "/terms.html",  lastmod: today, changefreq: "yearly",  priority: "0.3" },
+    { loc: "/", changefreq: "daily", priority: "1.0" },
+    { loc: "/about.html", changefreq: "monthly", priority: "0.6" },
+    { loc: "/privacy.html", changefreq: "yearly", priority: "0.3" },
+    { loc: "/terms.html", changefreq: "yearly", priority: "0.3" },
   ].map((p) => ({ ...p, loc: toCleanPath(p.loc) }));
 
   /* 글 페이지: lastmod = dateModified(수정일) 우선, 없으면 date(발행일) */
   const postPages = posts.map((p) => ({
     loc: toCleanPath(p.url),
-    lastmod: p.dateModified || p.date || today,
+    lastmod: p.dateModified || p.date,
     changefreq: "monthly",
     priority: "0.8",
   }));
 
   /* 목록 페이지네이션 URL (/page/2 …) */
   const listPaginationPages = [];
-  const allPageCount = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+  const allPageCount = paginateArchive(posts).length;
   for (let n = 2; n <= allPageCount; n++) {
     listPaginationPages.push({
       loc: toCleanPath(`/page/${n}.html`),
-      lastmod: today,
       changefreq: "daily",
       priority: "0.5",
     });
@@ -685,7 +727,6 @@ function buildSitemap(posts) {
 
     categoryPaginationPages.push({
       loc: `/category/${cat}/`,
-      lastmod: today,
       changefreq: "weekly",
       priority: "0.7",
     });
@@ -694,7 +735,6 @@ function buildSitemap(posts) {
     for (let n = 2; n <= catPageCount; n++) {
       categoryPaginationPages.push({
         loc: toCleanPath(`/category/${cat}/page/${n}.html`),
-        lastmod: today,
         changefreq: "weekly",
         priority: "0.5",
       });
@@ -719,7 +759,7 @@ function buildSitemap(posts) {
       (p) =>
         `  <url>\n` +
         `    <loc>${SITE_ORIGIN}${toCleanPath(p.loc)}</loc>\n` +
-        `    <lastmod>${p.lastmod}</lastmod>\n` +
+        (p.lastmod ? `    <lastmod>${p.lastmod}</lastmod>\n` : "") +
         `    <changefreq>${p.changefreq}</changefreq>\n` +
         `    <priority>${p.priority}</priority>\n` +
         `  </url>`
@@ -853,6 +893,21 @@ function fixPostMeta(posts) {
       const published = post.date || "";
       const modifiedIso = post.dateModified || published;
 
+      html = html.replace(/<title>[\s\S]*?<\/title>/,
+        `<title>${escapeHtml(post.title)} | 예밍이네 심리사전</title>`);
+      html = html.replace(/(<meta (?:name="description"|property="og:description"|name="twitter:description") content=")[^"]*("\s*\/?>)/g,
+        (_, before, after) => before + escapeHtml(post.excerpt) + after);
+      html = html.replace(/(<meta (?:property="og:title"|name="twitter:title") content=")[^"]*("\s*\/?>)/g,
+        (_, before, after) => before + escapeHtml(post.title) + after);
+      if (post.thumbnail) {
+        html = html.replace(/(<meta (?:property="og:image"|name="twitter:image") content=")[^"]*("\s*\/?>)/g,
+          (_, before, after) => before + escapeHtml(SITE_ORIGIN + post.thumbnail) + after);
+      }
+      html = html.replace(/<h1[^>]*>[\s\S]*?<\/h1>/, `<h1>${escapeHtml(post.title)}</h1>`);
+      html = html.replace(/<span>작성자:[\s\S]*?<\/span>/,
+        `<span>작성·편집: <a href="/about#operator">${AUTHOR_NAME}</a></span>`);
+      html = syncStructuredData(html, post);
+
       /* JSON-LD dateModified = dateModified || date */
       if (modifiedIso) {
         html = html.replace(
@@ -878,10 +933,10 @@ function fixPostMeta(posts) {
         );
       }
 
-      /* 참고 자료 칸 맨 아래: 자료 확인일 = dateModified || date */
-      if (modifiedIso) {
-        const checkedLabel = escapeHtml(formatDateKo(modifiedIso));
-        html = html.replace(/\s*<p class="ref-checked">[\s\S]*?<\/p>/g, "");
+      /* 글 수정은 자료 재확인과 다릅니다. 명시적으로 기록한 확인일만 표시합니다. */
+      html = html.replace(/\s*<p class="ref-checked">[\s\S]*?<\/p>/g, "");
+      if (post.referenceCheckedOn) {
+        const checkedLabel = escapeHtml(formatDateKo(post.referenceCheckedOn));
         html = html.replace(
           /(<div class="ref-box">[\s\S]*?<\/ul>)(\s*)(<\/div>)/,
           `$1\n  <p class="ref-checked">자료 확인일: ${checkedLabel}</p>\n$3`
@@ -1000,8 +1055,10 @@ function buildHeadAdsense() {
       continue;
     }
 
-    const replacement =
-      `<!-- HEAD_ADSENSE_START -->\n${ADSENSE_SCRIPT}\n  <!-- HEAD_ADSENSE_END -->`;
+    const utilityPage = ["404.html", "about.html", "privacy.html", "terms.html"].includes(path.relative(ROOT, filePath));
+    const replacement = utilityPage
+      ? "<!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END -->"
+      : `<!-- HEAD_ADSENSE_START -->\n${ADSENSE_SCRIPT}\n  <!-- HEAD_ADSENSE_END -->`;
     html = html.replace(HEAD_ADSENSE_MARKER, replacement);
     fs.writeFileSync(filePath, html, "utf8");
     updated++;
@@ -1015,8 +1072,18 @@ function buildListPages(template, posts) {
     '          <p class="empty-state">아직 등록된 글이 없어요. 곧 채워질 예정이에요!</p>';
   let generated = 0;
 
-  const allPages = paginate(posts, PAGE_SIZE);
+  const allPages = paginateArchive(posts);
   const totalAllPages = allPages.length;
+  const archiveDir = path.join(ROOT, "page");
+  if (fs.existsSync(archiveDir)) {
+    for (const filename of fs.readdirSync(archiveDir)) {
+      const match = filename.match(/^(\d+)\.html$/);
+      if (match && (Number(match[1]) > totalAllPages || Number(match[1]) === 1)) {
+        // 이 빌드가 생성하는 숫자 이름의 목록 페이지만 정리합니다.
+        fs.unlinkSync(path.join(archiveDir, filename));
+      }
+    }
+  }
 
   allPages.forEach((pagePosts, idx) => {
     const pageNum = idx + 1;
@@ -1027,7 +1094,7 @@ function buildListPages(template, posts) {
     if (pageNum === 1 && posts.length > 0) {
       /* 메인 1페이지: 상단 뉴스형(posts[0]~[9]) + 그리드 posts.slice(10, 16) */
       featuredHtml = createFeaturedBlockHtml(posts);
-      const gridPosts = posts.slice(10, 16);
+      const gridPosts = pagePosts.slice(10);
       cardsHtml =
         gridPosts.length > 0
           ? gridPosts.map(createCardHtml).join("\n")
@@ -1074,7 +1141,7 @@ function buildListPages(template, posts) {
       getPageHref: (n) => (n === 1 ? "/" : `/page/${n}`),
       featuredHtml,
       catSectionsHtml,
-      postsHeadTitle: "이런 글도 있어요",
+      postsHeadTitle: pageNum === 1 ? "더 읽어보기" : `전체 글 목록 · ${pageNum}페이지`,
     });
     generated++;
   });
@@ -1140,10 +1207,38 @@ function buildListPages(template, posts) {
   );
 }
 
+/* 생성 결과 전체의 공통 탐색 요소를 한 번에 맞춥니다. */
+function syncPageChrome() {
+  const files = collectHtmlFilesRecursive(ROOT).filter((file) => !file.includes(`${path.sep}.git${path.sep}`));
+  for (const file of files) {
+    let html = fs.readFileSync(file, "utf8");
+    html = html.replace(/<input type="checkbox" id="nav-toggle"[^>]*>\s*<label[^>]*>[\s\S]*?<\/label>/,
+      '<button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" hidden>메뉴 열기</button>');
+    html = html.replace(/<nav class="main-nav"(?! id=)/, '<nav class="main-nav" id="main-navigation"');
+    if (!html.includes('class="skip-link"')) html = html.replace(/<body>/,
+      '<body>\n  <a class="skip-link" href="#main-content">본문 바로가기</a>');
+    html = html.replace(/<main(?![^>]*\bid=)([^>]*)>/, '<main id="main-content" tabindex="-1"$1>');
+    html = html.replace(/(<nav class="footer-nav"[^>]*>)([\s\S]*?)(<\/nav>)/, (_, open, body, close) =>
+      open + (body.includes('/about#editorial') ? body : body + '        <a href="/about#editorial">콘텐츠 작성 기준</a>\n      ') + close);
+    fs.writeFileSync(file, html, "utf8");
+  }
+}
+
 function build() {
   // 1) 데이터 읽기
   const raw = fs.readFileSync(POSTS_JSON, "utf8");
   const posts = JSON.parse(raw);
+
+  const urls = new Set();
+  for (const post of posts) {
+    if (!post.title || !post.excerpt || !CATEGORY_MAP[post.category] ||
+        !/^\/posts\/[a-z0-9-]+\.html$/.test(post.url) || !/^\d{4}-\d{2}-\d{2}$/.test(post.date)) {
+      throw new Error(`글 메타데이터를 확인하세요: ${post.url || "URL 없음"}`);
+    }
+    if (urls.has(post.url)) throw new Error(`중복 글 주소: ${post.url}`);
+    if (!fs.existsSync(path.join(ROOT, post.url.slice(1)))) throw new Error(`본문 파일 없음: ${post.url}`);
+    urls.add(post.url);
+  }
 
   // 2) 최신 발행일순 정렬 (내림차순)
   posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
@@ -1176,22 +1271,23 @@ function build() {
   // 9) 예전 /slug.html → /posts/slug 301 (_redirects)
   buildRedirects(posts);
 
-  // 10) 모든 HTML에 애드센스 스크립트 주입
+  // 10) 콘텐츠 페이지에 광고 코드, 전체 페이지에 공통 메뉴 반영
   buildHeadAdsense();
+  syncPageChrome();
 }
 
 build();
 
 /* ---------------------------------------------------------
    새 글 추가 워크플로우
-   1) posts/sample-post.html 을 복사해 posts/ 에 새 글 HTML 작성
+   1) 기존 글의 구조를 참고해 posts/ 에 새 글 HTML 작성
       (head에 <!-- HEAD_ADSENSE_START --><!-- HEAD_ADSENSE_END --> 마커 포함)
    2) posts/posts.json 에 항목 1개 추가 (title, excerpt, category,
       date, thumbnail, url). category 는 consume | emotion | relation
       글을 수정·재작성한 경우 선택적으로 "dateModified": "YYYY-MM-DD" 추가
-      (sitemap lastmod·JSON-LD dateModified·화면 "수정:" 표기·참고 자료 확인일에 사용.
-       없으면 date 사용. date 와 같을 때는 화면 수정 표기 생략)
+      (sitemap lastmod·JSON-LD dateModified·화면 "수정:" 표기에 사용.
+       참고 자료 확인일은 별도로 확인한 경우에만 referenceCheckedOn 으로 기록)
    3) node build.js 실행 → 목록/카테고리 페이지 + 관련 글 + _redirects
       + 애드센스 head 주입
-   4) git add . && git commit && git push → Cloudflare Pages 자동 배포
+   4) node scripts/validate.js 및 화면 확인 후 커밋·푸시하면 Cloudflare Pages 자동 배포
 --------------------------------------------------------- */

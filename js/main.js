@@ -29,7 +29,34 @@ function initFooterYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
+/* JavaScript가 없으면 메뉴를 펼쳐 둡니다. 작은 화면에서만 접습니다. */
+function initMobileMenu() {
+  const button = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('main-navigation');
+  if (!button || !nav) return;
+  const mobile = window.matchMedia('(max-width: 768px)');
+  const setOpen = (open) => {
+    nav.hidden = mobile.matches && !open;
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? '메뉴 닫기' : '메뉴 열기';
+  };
+  const adapt = () => {
+    button.hidden = !mobile.matches;
+    setOpen(!mobile.matches);
+  };
+  button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobile.matches) {
+      setOpen(false);
+      button.focus();
+    }
+  });
+  mobile.addEventListener('change', adapt);
+  adapt();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initActiveFilter();
   initFooterYear();
+  initMobileMenu();
 });
