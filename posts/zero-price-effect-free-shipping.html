@@ -5,16 +5,17 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>무료 배송 채우려다 결국 더 사버린 적 있죠 | 예밍이네 심리사전</title>
-  <meta name="description" content="무료 배송을 맞추려다 총액이 늘어나는 과정을 계산해 봐요. 초콜릿 실험의 27%·69%가 어떤 사람들을 기준으로 한 수치인지, 공짜 효과의 한계도 짚었어요." />
+  <meta name="description" content="내 장바구니 금액으로 배송비를 내는 쪽과 추가 구매하는 쪽의 총지출을 비교해요. 공짜 효과 연구의 선택 비율과 한계, 직접 입력하는 무료 배송 비교기를 담았어요." />
   <link rel="canonical" href="https://yeminga.com/posts/zero-price-effect-free-shipping" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="예밍이네 심리사전" />
   <meta property="og:title" content="무료 배송 채우려다 결국 더 사버린 적 있죠" />
-  <meta property="og:description" content="무료 배송을 맞추려다 총액이 늘어나는 과정을 계산해 봐요. 초콜릿 실험의 27%·69%가 어떤 사람들을 기준으로 한 수치인지, 공짜 효과의 한계도 짚었어요." />
+  <meta property="og:description" content="내 장바구니 금액으로 배송비를 내는 쪽과 추가 구매하는 쪽의 총지출을 비교해요. 공짜 효과 연구의 선택 비율과 한계, 직접 입력하는 무료 배송 비교기를 담았어요." />
   <meta property="og:url" content="https://yeminga.com/posts/zero-price-effect-free-shipping" />
   <meta property="og:image" content="https://yeminga.com/images/thumb-zero-price-effect-free-shipping.png" />
   <meta property="og:locale" content="ko_KR" />
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/spending-tools.css" />
   <!-- HEAD_ADSENSE_START -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067927801872250" crossorigin="anonymous"></script>
   <!-- HEAD_ADSENSE_END -->
@@ -25,7 +26,7 @@
     {
       "@type": "Article",
       "headline": "무료 배송 채우려다 결국 더 사버린 적 있죠",
-      "description": "무료 배송을 맞추려다 총액이 늘어나는 과정을 계산해 봐요. 초콜릿 실험의 27%·69%가 어떤 사람들을 기준으로 한 수치인지, 공짜 효과의 한계도 짚었어요.",
+      "description": "내 장바구니 금액으로 배송비를 내는 쪽과 추가 구매하는 쪽의 총지출을 비교해요. 공짜 효과 연구의 선택 비율과 한계, 직접 입력하는 무료 배송 비교기를 담았어요.",
       "inLanguage": "ko-KR",
       "articleSection": "소비 심리",
       "keywords": "제로 가격 효과",
@@ -39,7 +40,7 @@
         "name": "예밍이네 심리사전"
       },
       "datePublished": "2026-07-05",
-      "dateModified": "2026-09-19",
+      "dateModified": "2026-09-28",
       "citation": [
         "Shampanier, K., Mazar, N., & Ariely, D., 2007, Zero as a Special Price: The True Value of Free Products, Marketing Science",
         "Fan, X., Cai, F. C., & Bodenhausen, G. V., 2022, The boomerang effect of zero pricing: when and why a zero price is less effective than a low price for enhancing consumer demand, Journal of the Academy of Marketing Science",
@@ -123,7 +124,7 @@
           <div class="article-meta">
             <span>작성·편집: <a href="/about#operator">예밍</a></span>
             <time datetime="2026-07-05">2026. 7. 5.</time>
-            <span class="article-modified">수정: 2026.09.19</span>
+            <span class="article-modified">수정: 2026.09.28</span>
           </div>
         </header>
 
@@ -135,6 +136,8 @@
 </div>
 
 <p class="hook">'조금만 더 담으면 무료 배송'이 제로 가격 효과의 입구예요.</p>
+
+<p><a class="inline-cta" href="#shipping-calculator">내 장바구니 금액으로 무료 배송 비교하기 ↓</a></p>
 
 <p>배송비를 아끼려고 장바구니를 다시 뒤지다 보면, 원래 살 생각도 없던 물건이 하나둘 담기거든요. 결제창에 배송비 0원이 뜨면 이득을 챙긴 기분이 드는데, 총액은 처음보다 훌쩍 올라가 있어요. 몇천 원을 아끼려고 몇만 원을 더 쓰는 구조인데, 그 순간에는 이게 잘 안 보이잖아요.</p>
 
@@ -234,6 +237,61 @@
 <!-- AD:INARTICLE-BLOG-02 -->
 
 <section class="worked-example" aria-labelledby="shipping-example"><h2 id="shipping-example">가상 장바구니: 3,000원을 아끼려다 9,000원을 더 쓰는 경우</h2><p>필요한 물건이 28,000원, 배송비는 3,000원, 무료 배송 기준은 40,000원이라고 가정해요. 쿠폰이나 추가 수수료는 없어요.</p><div class="table-scroll"><table><thead><tr><th>선택</th><th>물건값</th><th>배송비</th><th>총액</th></tr></thead><tbody><tr><td>필요한 것만 주문</td><td>28,000원</td><td>3,000원</td><td>31,000원</td></tr><tr><td>12,000원 물건 추가</td><td>40,000원</td><td>0원</td><td>40,000원</td></tr></tbody></table></div><p>배송비는 3,000원 줄지만 결제 총액은 <strong>9,000원 늘어요.</strong> 추가 상품을 전혀 쓰지 않는다면 무료 배송이 더 싼 선택은 아니죠. 반대로 곧 살 예정이던 물건이고 단가도 괜찮다면 추가 지출로 얻는 가치가 있으므로 결론이 달라질 수 있어요.</p><p>이 예시의 계산은 <strong>추가로 쓸 돈 − 아낄 배송비 = 총액 증가분</strong>이에요. 실제 주문에서는 쿠폰 조건과 판매처별 단가까지 포함해야 해요. 이 계산으로 심리 효과의 크기를 측정할 수는 없지만, “배송비 절약”과 “전체 지출 절약”을 혼동하는 일은 확인할 수 있어요.</p></section>
+<section class="spending-tool" id="shipping-calculator" aria-labelledby="shipping-calculator-title">
+  <p class="tool-eyebrow">직접 비교해 보기</p>
+  <h2 id="shipping-calculator-title">무료 배송, 총지출은 얼마나 달라질까요?</h2>
+  <p>필요한 상품만 주문할 때와 상품을 더 담을 때의 결제 총액을 나란히 보여드려요. 같은 판매처에서 한 번에 주문하고, 모든 상품 금액이 무료 배송 기준에 포함되는 경우를 가정해요.</p>
+  <p class="tool-note" id="shipping-input-help">금액은 쉼표 없이 0~100,000,000원의 정수로 입력해 주세요. 무료 배송 기준이 0원이면 두 선택 모두 배송비가 없는 것으로 계산해요.</p>
+  <form hidden novalidate aria-label="무료 배송 총지출 비교" aria-describedby="shipping-input-help shipping-limits">
+    <div class="tool-fields">
+      <div class="tool-field">
+        <label for="shipping-basket">필요한 상품 금액 (원)</label>
+        <input id="shipping-basket" data-field="basket" type="text" inputmode="numeric" autocomplete="off" value="28000" aria-describedby="shipping-basket-hint shipping-basket-error" />
+        <span class="tool-hint" id="shipping-basket-hint">처음부터 사려고 했던 상품의 합계</span>
+        <span class="tool-error" id="shipping-basket-error" data-error="basket"></span>
+      </div>
+      <div class="tool-field">
+        <label for="shipping-fee">기본 배송비 (원)</label>
+        <input id="shipping-fee" data-field="fee" type="text" inputmode="numeric" autocomplete="off" value="3000" aria-describedby="shipping-fee-hint shipping-fee-error" />
+        <span class="tool-hint" id="shipping-fee-hint">무료 배송 기준을 못 채웠을 때 내는 금액</span>
+        <span class="tool-error" id="shipping-fee-error" data-error="fee"></span>
+      </div>
+      <div class="tool-field">
+        <label for="shipping-threshold">무료 배송 기준 (원)</label>
+        <input id="shipping-threshold" data-field="threshold" type="text" inputmode="numeric" autocomplete="off" value="40000" aria-describedby="shipping-threshold-hint shipping-threshold-error" />
+        <span class="tool-hint" id="shipping-threshold-hint">이 금액 이상 주문하면 배송비가 0원</span>
+        <span class="tool-error" id="shipping-threshold-error" data-error="threshold"></span>
+      </div>
+      <div class="tool-field">
+        <label for="shipping-extra">추가 상품 금액 (원)</label>
+        <input id="shipping-extra" data-field="extra" type="text" inputmode="numeric" autocomplete="off" value="12000" aria-describedby="shipping-extra-hint shipping-extra-error" />
+        <span class="tool-hint" id="shipping-extra-hint">무료 배송을 위해 더 담으려는 상품의 합계</span>
+        <span class="tool-error" id="shipping-extra-error" data-error="extra"></span>
+      </div>
+    </div>
+    <p class="tool-error" data-tool-errors role="alert"></p>
+    <div class="tool-actions">
+      <button type="button" data-calculate>총지출 비교하기</button>
+      <button type="button" data-example>본문 예시값으로 계산</button>
+    </div>
+    <p class="tool-status" data-tool-status role="status"></p>
+    <div aria-live="polite" aria-atomic="true"><div class="tool-results" data-tool-result hidden>
+      <h3>두 선택의 결제 총액</h3>
+      <dl class="tool-result-grid">
+        <div class="tool-result-card"><dt>필요한 것만 주문</dt><dd><span data-result="before-total"></span><span class="tool-result-detail" data-result="before-detail"></span></dd></div>
+        <div class="tool-result-card"><dt>추가 상품까지 주문</dt><dd><span data-result="after-total"></span><span class="tool-result-detail" data-result="after-detail"></span></dd></div>
+      </dl>
+      <p class="tool-summary" data-result="summary"></p>
+      <p data-result="condition"></p>
+      <p class="tool-note" data-result="equation"></p>
+      <p class="tool-note">추가 상품을 실제로 쓸지, 다른 곳의 가격과 비교해도 괜찮은지 함께 확인해 주세요. 총액이 같거나 낮다는 이유만으로 필요한 구매가 되는 것은 아니에요.</p>
+    </div></div>
+  </form>
+  <noscript><p>직접 계산하려면 JavaScript를 켜 주세요. 바로 위의 가상 장바구니 표와 계산식은 그대로 읽을 수 있어요.</p></noscript>
+  <p class="tool-note" id="shipping-limits">쿠폰·포인트·회원 할인·도서산간 추가비·묶음배송 제외 상품은 반영하지 않아요. 해당 조건이 있으면 실제 결제 화면의 두 총액을 확인해 주세요. 이 도구는 지출을 비교하는 계산이며 심리 효과의 크기를 측정하지 않아요.</p>
+  <p class="tool-privacy">이 계산기는 입력값을 브라우저 안에서만 처리해요. 입력값을 저장하거나 서버로 보내지 않아요.</p>
+</section>
+
 <h2>자주 묻는 질문</h2>
 
 <div class="faq-item">
@@ -334,5 +392,6 @@
   </footer>
 
   <script src="/js/main.js"></script>
+  <script src="/js/spending-tools.js"></script>
 </body>
 </html>

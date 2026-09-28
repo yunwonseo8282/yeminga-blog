@@ -1,10 +1,10 @@
 [
   {
     "title": "안 쓰는 구독, 왜 못 끊을까요? 손실 회피와 해지 판단",
-    "excerpt": "손실 회피 연구가 말하는 범위와 구독 미해지의 여러 이유를 나눠 봅니다. 다음 달 이용 횟수와 요금을 비교하는 가상 계산 예시도 담았어요.",
+    "excerpt": "손실 회피 연구의 범위와 구독 미해지의 여러 이유를 살펴봐요. 직접 입력하는 구독 비용 비교기로 다음 달 월 요금과 별도 이용 비용도 비교할 수 있어요.",
     "category": "consume",
     "date": "2026-06-23",
-    "dateModified": "2026-09-19",
+    "dateModified": "2026-09-28",
     "thumbnail": "/images/thumb-loss-aversion-subscription.png",
     "url": "/posts/loss-aversion-subscription.html",
     "tags": [
@@ -338,10 +338,10 @@
   },
   {
     "title": "무료 배송 채우려다 결국 더 사버린 적 있죠",
-    "excerpt": "무료 배송을 맞추려다 총액이 늘어나는 과정을 계산해 봐요. 초콜릿 실험의 27%·69%가 어떤 사람들을 기준으로 한 수치인지, 공짜 효과의 한계도 짚었어요.",
+    "excerpt": "내 장바구니 금액으로 배송비를 내는 쪽과 추가 구매하는 쪽의 총지출을 비교해요. 공짜 효과 연구의 선택 비율과 한계, 직접 입력하는 무료 배송 비교기를 담았어요.",
     "category": "consume",
     "date": "2026-07-05",
-    "dateModified": "2026-09-19",
+    "dateModified": "2026-09-28",
     "thumbnail": "/images/thumb-zero-price-effect-free-shipping.png",
     "url": "/posts/zero-price-effect-free-shipping.html",
     "tags": [

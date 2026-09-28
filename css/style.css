@@ -99,6 +99,24 @@
 .article-body, .about-page { overflow-wrap: anywhere; }
 .editorial-list li { margin: 0 0 16px; }
 
+/* 홈페이지의 상황별 읽기 시작 지점 */
+.start-here { margin: 0 0 var(--space-7); }
+.start-here-heading { margin-bottom: var(--space-4); }
+.start-here-heading h2 { margin: 0 0 var(--space-2); font-size: var(--fs-xl); }
+.start-here-heading p { margin: 0; color: var(--color-text-soft); }
+.start-here-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-4); }
+.start-here-links > a { display: flex; flex-direction: column; padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text); text-decoration: none; }
+.start-here-links > a:hover { border-color: var(--color-primary); }
+.start-here-kind { font-size: var(--fs-xs); color: var(--color-primary-dark); font-weight: 700; }
+.start-here-links h3 { margin: var(--space-3) 0 var(--space-2); font-size: var(--fs-lg); line-height: 1.5; }
+.start-here-links p { margin: 0 0 var(--space-5); color: var(--color-text-soft); font-size: var(--fs-sm); line-height: 1.7; }
+.start-here-action { margin-top: auto; font-size: var(--fs-sm); font-weight: 700; color: var(--color-primary-dark); }
+@media (max-width: 768px) {
+  .start-here-links { grid-template-columns: 1fr; }
+  .start-here-links > a { padding: var(--space-4); }
+  .start-here-links p { margin-bottom: var(--space-3); }
+}
+
 /* ---------------- 기본 리셋 ---------------- */
 *,
 *::before,
