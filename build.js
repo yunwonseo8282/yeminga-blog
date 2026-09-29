@@ -18,6 +18,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { createHash } = require("node:crypto");
 
 const ROOT = __dirname;
 const POSTS_JSON = path.join(ROOT, "posts", "posts.json");
@@ -1215,9 +1216,15 @@ function buildListPages(template, posts) {
 
 /* 생성 결과 전체의 공통 탐색 요소를 한 번에 맞춥니다. */
 function syncPageChrome() {
+  // 스타일이 바뀌면 기존 방문자의 브라우저 캐시와 다른 주소로 요청합니다.
+  const styleVersion = createHash("sha256")
+    .update(fs.readFileSync(path.join(ROOT, "css/style.css"), "utf8").replace(/\r\n/g, "\n"))
+    .digest("hex").slice(0, 12);
   const files = collectHtmlFilesRecursive(ROOT).filter((file) => !file.includes(`${path.sep}.git${path.sep}`));
   for (const file of files) {
     let html = fs.readFileSync(file, "utf8");
+    html = html.replace(/href="\/css\/style\.css(?:\?[^\"]*)?"/g,
+      `href="/css/style.css?v=${styleVersion}"`);
     html = html.replace(/<input type="checkbox" id="nav-toggle"[^>]*>\s*<label[^>]*>[\s\S]*?<\/label>/,
       '<button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" hidden>메뉴 열기</button>');
     html = html.replace(/<nav class="main-nav"(?! id=)/, '<nav class="main-nav" id="main-navigation"');
