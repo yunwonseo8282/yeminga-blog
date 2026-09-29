@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">1+1과 대용량의 단위가격 비교</title>
+  <desc id="desc">가상 예시. A는 200g 두 봉지 총 3,600원, 100g당 900원. B는 500g 한 봉지 4,200원, 100g당 840원. A는 총액이 낮고 B는 단가가 낮다.</desc>
+  <rect width="1200" height="675" rx="32" fill="#f7f2fa"/>
+  <g font-family="'Malgun Gothic','Apple SD Gothic Neo',sans-serif" fill="#34233e">
+    <text x="70" y="88" font-size="25" fill="#765686" font-weight="700">예밍이네 · 장보기 비교 노트</text>
+    <text x="70" y="154" font-size="43" font-weight="800">‘더 주는 것’과 ‘더 싼 것’ 비교하기</text>
+    <rect x="70" y="200" width="510" height="332" rx="24" fill="#fff" stroke="#dfd1e7" stroke-width="3"/>
+    <rect x="620" y="200" width="510" height="332" rx="24" fill="#fff" stroke="#dfd1e7" stroke-width="3"/>
+    <text x="106" y="255" font-size="27" font-weight="700">A · 1+1</text>
+    <text x="656" y="255" font-size="27" font-weight="700">B · 대용량</text>
+    <text x="106" y="309" font-size="31">200g × 2봉지</text>
+    <text x="656" y="309" font-size="31">500g × 1봉지</text>
+    <text x="106" y="372" font-size="45" font-weight="800">3,600원</text>
+    <text x="656" y="372" font-size="45" font-weight="800">4,200원</text>
+    <path d="M106 401H544M656 401H1094" stroke="#ebe3f0" stroke-width="2"/>
+    <text x="106" y="453" font-size="32" fill="#775191">100g당 900원</text>
+    <text x="656" y="453" font-size="32" fill="#775191">100g당 840원</text>
+    <text x="106" y="500" font-size="25">총 결제액이 낮아요</text>
+    <text x="656" y="500" font-size="25">내용물 단가가 낮아요</text>
+    <text x="70" y="587" font-size="29" font-weight="700">그다음 질문: 받은 양을 다 쓸 수 있나요?</text>
+    <text x="70" y="633" font-size="21" fill="#786981">설명용 가상 가격 · 같은 용도와 품질 가정 · 배송비·쿠폰 제외</text>
+  </g>
+</svg>

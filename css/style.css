@@ -1628,6 +1628,25 @@ a.inline-cta:focus-visible {
   .footer-nav { gap: 12px 18px; }
 }
 
+/* 가격 비교표는 숫자를 한 줄로 유지하고 표 영역 안에서만 스크롤합니다. */
+.thumb[src="/images/unit-price-bundle-comparison.svg"] { object-fit: contain; background: #f7f2fa; }
+.article--unit-prices .article-body figure img { width: 100%; max-width: 720px; }
+.article--unit-prices .table-scroll { margin: var(--space-5) 0; }
+.article--unit-prices .table-scroll table {
+  display: table;
+  width: 100%;
+  min-width: 460px;
+  max-width: none;
+  margin: 0;
+  overflow: visible;
+}
+.article--unit-prices .table-scroll th,
+.article--unit-prices .table-scroll td {
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+.article--unit-prices .table-hint { font-size: var(--fs-sm); color: var(--color-text-soft); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }

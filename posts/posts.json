@@ -341,7 +341,7 @@
     "excerpt": "내 장바구니 금액으로 배송비를 내는 쪽과 추가 구매하는 쪽의 총지출을 비교해요. 공짜 효과 연구의 선택 비율과 한계, 직접 입력하는 무료 배송 비교기를 담았어요.",
     "category": "consume",
     "date": "2026-07-05",
-    "dateModified": "2026-09-28",
+    "dateModified": "2026-09-29",
     "thumbnail": "/images/thumb-zero-price-effect-free-shipping.png",
     "url": "/posts/zero-price-effect-free-shipping.html",
     "tags": [
@@ -527,5 +527,21 @@
       "인지 편향"
     ],
     "dateModified": "2026-09-19"
+  },
+  {
+    "title": "1+1과 대용량, 정말 저렴할까요? 단위가격과 필요한 양 비교하기",
+    "excerpt": "1+1·대용량·2+1을 같은 단위로 비교해요. 직접 구성한 원화 계산 사례로 100g당 가격, 실제 쓸 양, 최종 결제액이 어떻게 다른지 확인하고 장보기 메모로 옮겨 보세요.",
+    "category": "consume",
+    "date": "2026-09-29",
+    "referenceCheckedOn": "2026-09-29",
+    "thumbnail": "/images/unit-price-bundle-comparison.svg",
+    "url": "/posts/unit-price-bundle-discount.html",
+    "tags": [
+      "소비 심리",
+      "단위가격",
+      "묶음 할인",
+      "무료 배송",
+      "프레이밍 효과"
+    ]
   }
 ]

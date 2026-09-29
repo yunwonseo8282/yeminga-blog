@@ -22,6 +22,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://yeminga.com/posts/unit-price-bundle-discount</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://yeminga.com/posts/availability-heuristic-news-anxiety</loc>
     <lastmod>2026-09-19</lastmod>
     <changefreq>monthly</changefreq>
@@ -89,7 +95,7 @@
   </url>
   <url>
     <loc>https://yeminga.com/posts/zero-price-effect-free-shipping</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
