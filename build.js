@@ -43,6 +43,7 @@ const POSTS_MARKER = /<!-- POSTS_START -->[\s\S]*?<!-- POSTS_END -->/;
 const PAGINATION_MARKER = /<!-- PAGINATION_START -->[\s\S]*?<!-- PAGINATION_END -->/;
 const HERO_MARKER = /<!-- HERO_START -->[\s\S]*?<!-- HERO_END -->/;
 const START_HERE_MARKER = /<!-- START_HERE_START -->[\s\S]*?<!-- START_HERE_END -->/;
+const SELF_TESTS_MARKER = /<!-- SELF_TESTS_START -->[\s\S]*?<!-- SELF_TESTS_END -->/;
 const FEATURED_MARKER = /<!-- FEATURED_START -->[\s\S]*?<!-- FEATURED_END -->/;
 const CATSECTIONS_MARKER = /<!-- CATSECTIONS_START -->[\s\S]*?<!-- CATSECTIONS_END -->/;
 const POSTSHEAD_MARKER = /<!-- POSTSHEAD_START -->[\s\S]*?<!-- POSTSHEAD_END -->/;
@@ -579,9 +580,10 @@ function renderListPage({
   const canonicalUrl = `${SITE_ORIGIN}${toCleanPath(canonicalPath)}`;
   const isCategoryPage = String(canonicalPath).startsWith("/category/");
 
-  // 상황별 시작 지점은 홈페이지에서만 보여줍니다.
+  // 상황별 시작 지점과 테스트 소개는 홈페이지에서만 보여줍니다.
   if (canonicalPath !== "/") {
     html = html.replace(START_HERE_MARKER, "<!-- START_HERE_START --><!-- START_HERE_END -->");
+    html = html.replace(SELF_TESTS_MARKER, "<!-- SELF_TESTS_START --><!-- SELF_TESTS_END -->");
   }
 
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(pageTitle)}</title>`);
