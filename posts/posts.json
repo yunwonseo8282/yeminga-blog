@@ -533,6 +533,7 @@
     "excerpt": "1+1·대용량·2+1을 같은 단위로 비교해요. 직접 구성한 원화 계산 사례로 100g당 가격, 실제 쓸 양, 최종 결제액이 어떻게 다른지 확인하고 장보기 메모로 옮겨 보세요.",
     "category": "consume",
     "date": "2026-09-29",
+    "dateModified": "2026-10-02",
     "referenceCheckedOn": "2026-09-29",
     "thumbnail": "/images/unit-price-bundle-comparison.svg",
     "url": "/posts/unit-price-bundle-discount.html",
@@ -542,6 +543,22 @@
       "묶음 할인",
       "무료 배송",
       "프레이밍 효과"
+    ]
+  },
+  {
+    "title": "20%에 10% 더 할인하면 30%일까요? 쿠폰 적용가 계산하기",
+    "excerpt": "중복 할인·최대 할인액·최소 주문액을 가상 원화 사례로 계산해요. 쿠폰을 쓰려고 더 담은 물건과 배송비까지 포함해, 원래 필요한 주문보다 실제 지출이 줄었는지 비교해요.",
+    "category": "consume",
+    "date": "2026-10-02",
+    "referenceCheckedOn": "2026-10-02",
+    "thumbnail": "/images/coupon-discount-final-price.svg",
+    "url": "/posts/coupon-discount-final-price.html",
+    "tags": [
+      "소비 심리",
+      "쿠폰",
+      "중복 할인",
+      "최종 결제액",
+      "무료 배송"
     ]
   }
 ]
