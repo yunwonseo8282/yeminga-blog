@@ -39,12 +39,108 @@
       difference: monthly - separateTotal };
   }
 
+
+  const MAX_QUANTITY = 1000000;
+  const UNIT_TYPES = Object.freeze({
+    g: { dimension: 'mass', scale: 1, baseUnit: 'g', basis: 100 },
+    kg: { dimension: 'mass', scale: 1000, baseUnit: 'g', basis: 100 },
+    mL: { dimension: 'volume', scale: 1, baseUnit: 'mL', basis: 100 },
+    L: { dimension: 'volume', scale: 1000, baseUnit: 'mL', basis: 100 },
+    '개': { dimension: 'count', scale: 1, baseUnit: '개', basis: 1 },
+  });
+
+  function readQuantity(value, label, maximum = MAX_QUANTITY) {
+    const raw = typeof value === 'number' ? String(value) : typeof value === 'string' ? value.trim() : '';
+    if (!raw) throw new Error(label + ': 값을 입력해 주세요.');
+    if (!/^\d+(?:\.\d{1,3})?$/.test(raw)) {
+      throw new Error(label + ': 쉼표 없이 0 이상, 소수 셋째 자리까지 입력해 주세요.');
+    }
+    const number = Number(raw);
+    if (!Number.isFinite(number) || number > maximum) {
+      throw new Error(label + ': ' + maximum.toLocaleString('ko-KR') + ' 이하로 입력해 주세요.');
+    }
+    return number;
+  }
+
+  function readUnit(value, label) {
+    const raw = typeof value === 'string' ? value.trim() : '';
+    if (!Object.prototype.hasOwnProperty.call(UNIT_TYPES, raw)) {
+      throw new Error(label + ': g, kg, mL, L, 개 중에서 골라 주세요.');
+    }
+    return raw;
+  }
+
+  function fieldError(field, message) {
+    const error = new Error(message);
+    error.field = field;
+    return error;
+  }
+
+  const UNIT_PRICE_FIELDS = ['a', 'b'].flatMap((side) => {
+    const name = '상품 ' + side.toUpperCase();
+    return [
+      { key: side + 'Price', label: name + ' 결제 금액' },
+      { key: side + 'Quantity', label: name + ' 받는 총량', parser: readQuantity },
+      { key: side + 'Use', label: name + ' 예상 사용량', parser: readQuantity },
+      { key: side + 'Unit', label: name + ' 단위', parser: readUnit },
+    ];
+  });
+
+  function validateUnitPrice(values) {
+    for (const side of ['a', 'b']) {
+      const name = '상품 ' + side.toUpperCase();
+      if (values[side + 'Quantity'] <= 0) {
+        throw fieldError(side + 'Quantity', name + ' 받는 총량: 0보다 크게 입력해 주세요.');
+      }
+      if (values[side + 'Unit'] === '개') {
+        for (const key of ['Quantity', 'Use']) {
+          if (!Number.isInteger(values[side + key])) {
+            throw fieldError(side + key, name + ': 개 단위의 수량은 정수로 입력해 주세요.');
+          }
+        }
+      }
+      if (values[side + 'Use'] > values[side + 'Quantity']) {
+        throw fieldError(side + 'Use', name + ': 이 구성만으로 사용 계획을 채울 수 없어요. 받는 총량을 확인해 주세요.');
+      }
+    }
+    if (UNIT_TYPES[values.aUnit].dimension !== UNIT_TYPES[values.bUnit].dimension) {
+      throw fieldError('bUnit', '상품 B 단위: 두 상품을 같은 종류의 단위로 맞춰 주세요. 무게, 부피, 개수는 서로 환산하지 않아요.');
+    }
+  }
+
+  function calculateUnitPrice(values) {
+    const parsed = {};
+    for (const field of UNIT_PRICE_FIELDS) {
+      try {
+        parsed[field.key] = (field.parser || readInteger)(values[field.key], field.label, field.maximum);
+      } catch (error) {
+        error.field = field.key;
+        throw error;
+      }
+    }
+    validateUnitPrice(parsed);
+    const unit = UNIT_TYPES[parsed.aUnit];
+    const item = (side) => {
+      const scale = UNIT_TYPES[parsed[side + 'Unit']].scale;
+      // Keep conversion at the supported thousandth precision (e.g. 0.4 kg = 400 g).
+      const receivedBase = Math.round(parsed[side + 'Quantity'] * 1000 * scale) / 1000;
+      const usedBase = Math.round(parsed[side + 'Use'] * 1000 * scale) / 1000;
+      const totalPrice = parsed[side + 'Price'];
+      return { totalPrice, receivedBase, usedBase,
+        leftoverBase: Math.round((receivedBase - usedBase) * 1000) / 1000,
+        perReceived: totalPrice / receivedBase * unit.basis,
+        perUsed: usedBase === 0 ? null : totalPrice / usedBase * unit.basis };
+    };
+    return { a: item('a'), b: item('b'), baseUnit: unit.baseUnit, basis: unit.basis,
+      priceDifference: parsed.bPrice - parsed.aPrice };
+  }
+
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { readInteger, calculateShipping, calculateSubscription, MAX_WON, MAX_USES };
+    module.exports = { readInteger, readQuantity, readUnit, calculateShipping, calculateSubscription, calculateUnitPrice, MAX_WON, MAX_USES, MAX_QUANTITY };
   }
   if (typeof document === 'undefined') return;
 
-  function setupTool(id, fields, examples, calculate, render) {
+  function setupTool(id, fields, examples, calculate, render, validate) {
     const section = document.getElementById(id);
     if (!section) return;
     const form = section.querySelector('form');
@@ -63,24 +159,40 @@
     const run = () => {
       const values = {};
       let firstInvalid = null;
+      let calculationError = '';
+      const markError = (field, error) => {
+        field.input.setAttribute('aria-invalid', 'true');
+        field.error.textContent = error.message;
+        firstInvalid = firstInvalid || field.input;
+      };
       errorSummary.textContent = '';
       fieldElements.forEach((field) => {
         clearError(field);
-        try { values[field.key] = readInteger(field.input.value, field.label, field.maximum); }
-        catch (error) {
-          field.input.setAttribute('aria-invalid', 'true');
-          field.error.textContent = error.message;
-          firstInvalid = firstInvalid || field.input;
-        }
+        try { values[field.key] = (field.parser || readInteger)(field.input.value, field.label, field.maximum); }
+        catch (error) { markError(field, error); }
       });
+      let data;
+      if (!firstInvalid) {
+        try {
+          if (validate) validate(values);
+          data = calculate(values);
+        } catch (error) {
+          const field = fieldElements.find((item) => item.key === error.field);
+          if (field) markError(field, error);
+          else {
+            calculationError = error.message;
+            firstInvalid = fieldElements[0].input;
+          }
+        }
+      }
       if (firstInvalid) {
         result.hidden = true;
         status.textContent = '';
-        errorSummary.textContent = '입력한 값을 확인해 주세요. 오류가 있는 항목 아래에 이유를 표시했어요.';
+        errorSummary.textContent = calculationError || '입력한 값을 확인해 주세요. 오류가 있는 항목 아래에 이유를 표시했어요.';
         firstInvalid.focus();
         return;
       }
-      render(calculate(values), set);
+      render(data, set);
       status.textContent = '';
       result.hidden = false;
     };
@@ -96,16 +208,42 @@
       fieldElements.forEach((field) => { field.input.value = examples[field.key]; });
       run();
     });
-    fieldElements.forEach((field) => field.input.addEventListener('input', () => {
-      clearError(field);
-      errorSummary.textContent = '';
-      result.hidden = true;
-      status.textContent = '값을 바꿨어요. 비교하기를 눌러 새 결과를 확인해 주세요.';
-    }));
+    fieldElements.forEach((field) => {
+      const onEdit = () => {
+        clearError(field);
+        errorSummary.textContent = '';
+        result.hidden = true;
+        status.textContent = '값을 바꿨어요. 비교하기를 눌러 새 결과를 확인해 주세요.';
+      };
+      field.input.addEventListener('input', onEdit);
+      field.input.addEventListener('change', onEdit);
+    });
     form.hidden = false;
   }
 
   function initTools() {
+    setupTool('unit-price-calculator', UNIT_PRICE_FIELDS,
+      { aPrice: 3600, aQuantity: 400, aUse: 400, aUnit: 'g', bPrice: 4200, bQuantity: 500, bUse: 400, bUnit: 'g' },
+      calculateUnitPrice, (data, set) => {
+        const quantity = (value) => new Intl.NumberFormat('ko-KR', { maximumFractionDigits: 3 }).format(value) + data.baseUnit;
+        const unitCost = (value) => value === null ? '사용 예상량 0: 계산하지 않아요.'
+          : (value > 0 && value < 0.005 ? '0.01원 미만' : '약 ' + won(value)) + ' / ' + data.basis + data.baseUnit;
+        for (const side of ['a', 'b']) {
+          const item = data[side];
+          set(side + '-total', won(item.totalPrice));
+          set(side + '-received', quantity(item.receivedBase));
+          set(side + '-used', quantity(item.usedBase));
+          set(side + '-left', quantity(item.leftoverBase));
+          set(side + '-unit-price', unitCost(item.perReceived));
+          set(side + '-use-price', unitCost(item.perUsed));
+        }
+        set('summary', data.priceDifference > 0
+          ? '상품 B를 고르면 결제 금액이 A보다 ' + won(data.priceDifference) + ' 늘어요.'
+          : data.priceDifference < 0 ? '상품 B를 고르면 결제 금액이 A보다 ' + won(-data.priceDifference) + ' 줄어요.'
+            : '두 상품의 결제 금액이 같아요.');
+        set('condition', '단가는 ' + data.basis + data.baseUnit + ' 기준이에요. 예상 사용량 기준 단가는 결제 금액 전체를 사용할 양으로 나눠 계산해요. 같은 용도·품질인지, 실제로 쓸 양인지도 확인해 주세요.');
+      }, validateUnitPrice);
+
     setupTool('shipping-calculator', [
       { key: 'basket', label: '필요한 상품 금액' }, { key: 'fee', label: '기본 배송비' },
       { key: 'threshold', label: '무료 배송 기준' }, { key: 'extra', label: '추가 상품 금액' },

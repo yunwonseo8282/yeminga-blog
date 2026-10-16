@@ -11,11 +11,11 @@
 .spending-tool .tool-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 22px 0 16px; }
 .spending-tool .tool-field { min-width: 0; }
 .spending-tool label { display: block; margin-bottom: 7px; font-weight: 700; line-height: 1.5; }
-.spending-tool input {
+.spending-tool input, .spending-tool select {
   width: 100%; min-width: 0; min-height: 48px; padding: 11px 12px; border: 1px solid #a79cbd;
   border-radius: 8px; background: #fff; color: var(--color-text); font: inherit; font-size: 1rem;
 }
-.spending-tool input[aria-invalid="true"] { border: 2px solid #ac2847; }
+.spending-tool input[aria-invalid="true"], .spending-tool select[aria-invalid="true"] { border: 2px solid #ac2847; }
 .spending-tool .tool-hint, .spending-tool .tool-note { font-size: .88rem; line-height: 1.7; color: #514961; }
 .spending-tool .tool-hint { display: block; margin-top: 6px; }
 .spending-tool .tool-error { display: block; margin-top: 6px; font-size: .88rem; color: #98223e; line-height: 1.6; }
@@ -39,6 +39,9 @@
 .spending-tool .tool-summary { color: #503389; font-weight: 700; }
 .spending-tool .tool-results > :last-child { margin-bottom: 0; }
 .spending-tool .tool-privacy { padding-top: 12px; border-top: 1px solid #d4c6f6; font-size: .85rem; line-height: 1.7; }
+.spending-tool .tool-product { min-width: 0; margin: 0; padding: 16px; border: 1px solid #c9bce7; border-radius: 10px; }
+.spending-tool .tool-product legend { padding: 0 6px; font-weight: 700; }
+.spending-tool .tool-product .tool-field + .tool-field { margin-top: 16px; }
 @media (max-width: 600px) {
   .spending-tool { padding: 20px 14px; }
   .spending-tool .tool-fields, .spending-tool .tool-result-grid { grid-template-columns: 1fr; }

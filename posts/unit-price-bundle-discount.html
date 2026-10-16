@@ -15,6 +15,7 @@
   <meta property="og:image" content="https://yeminga.com/images/unit-price-bundle-comparison.svg" />
   <meta property="og:locale" content="ko_KR" />
   <link rel="stylesheet" href="/css/style.css?v=9edb8044fc9c" />
+  <link rel="stylesheet" href="/css/spending-tools.css?v=20261016" />
   <!-- HEAD_ADSENSE_START -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4067927801872250" crossorigin="anonymous"></script>
   <!-- HEAD_ADSENSE_END -->
@@ -39,7 +40,7 @@
         "name": "예밍이네 심리사전"
       },
       "datePublished": "2026-09-29",
-      "dateModified": "2026-10-02",
+      "dateModified": "2026-10-16",
       "image": "https://yeminga.com/images/unit-price-bundle-comparison.svg",
       "citation": [
         "https://www.accc.gov.au/consumers/pricing/unit-prices-for-groceries",
@@ -107,7 +108,7 @@
           <div class="article-meta">
             <span>작성·편집: <a href="/about#operator">예밍</a></span>
             <time datetime="2026-09-29">2026. 9. 29.</time>
-            <span class="article-modified">수정: 2026.10.02</span>
+            <span class="article-modified">수정: 2026.10.16</span>
           </div>
         </header>
 
@@ -127,6 +128,7 @@
     <li><a href="#same-unit">100g당 가격으로 맞추기</a></li>
     <li><a href="#bundle-example">1+1과 대용량 비교 예시</a></li>
     <li><a href="#needed-amount">남길 양이 있다면 다시 계산하기</a></li>
+    <li><a href="#unit-price-calculator">내 상품 두 개로 직접 계산하기</a></li>
     <li><a href="#two-plus-one">2+1과 25% 할인 비교하기</a></li>
     <li><a href="#shopping-note">장보기 전에 적어 둘 다섯 줄</a></li>
   </ul>
@@ -172,6 +174,107 @@
 <p>이 계산에서 B의 남은 100g은 가치가 없다고 가정했어요. 나중에 먹거나 나눠 쓸 수 있다면 버린 양으로 처리하면 안 돼요. 반대로 보관 공간이나 소비기한 때문에 다 쓰기 어렵다면, 낮은 표시 단가만 보고 큰 포장을 고르는 판단을 다시 살펴볼 수 있죠. 제품에 적힌 보관 방법과 개봉 후 안내도 함께 확인해요.</p>
 <p>같은 예시에서 B의 사용량당 비용을 A와 같은 1g당 9원 이하로 만들려면 4,200 ÷ 9 ≈ 466.7g 이상을 실제로 써야 해요. 정수 g으로 따지면 <strong>467g 이상</strong>이에요. 이것은 가정한 가격에서 계산한 기준이며 모든 대용량 제품에 적용하는 비율은 아니에요.</p>
 <p>ACCC 역시 <a href="https://www.accc.gov.au/media-release/compare-unit-prices-to-save-at-the-checkout" target="_blank" rel="noopener">단위가격 비교 안내</a>에서 특가가 항상 가장 낮은 단가는 아니며, 큰 포장을 다 쓰지 못할 가능성도 살펴보라고 안내해요.</p>
+
+<section class="spending-tool" id="unit-price-calculator" aria-labelledby="unit-price-title">
+  <p class="tool-eyebrow">내 상품으로 직접 비교</p>
+  <h2 id="unit-price-title">받는 양과 쓸 양, 단가가 어떻게 달라질까요?</h2>
+  <p>두 상품의 실제 결제액·받는 총량·내가 쓸 것으로 예상하는 양을 넣어 보세요. 1+1의 같은 상품 증정분은 총량에 포함해요. 기본값은 위 가상 예시예요.</p>
+  <p class="tool-note" id="unit-price-inputs">금액은 쉼표 없이 0~100,000,000원의 정수, 수량은 0~1,000,000 범위에서 소수 셋째 자리까지 입력해요. 받는 총량은 0보다 커야 하고, ‘개’는 정수만 가능해요. g과 kg, mL와 L는 서로 바꿔 계산하지만 무게와 부피는 섞지 않아요.</p>
+  <form novalidate hidden aria-describedby="unit-price-inputs unit-price-limits">
+    <div class="tool-fields">
+    <fieldset class="tool-product">
+      <legend>상품 A</legend>
+      <div class="tool-field">
+        <label for="unit-Price-a">상품 A 실제 결제액 (원)</label>
+        <input id="unit-Price-a" data-field="aPrice" type="text" inputmode="numeric" autocomplete="off" value="3600" aria-describedby="unit-Price-a-hint unit-Price-a-error" />
+        <span class="tool-hint" id="unit-Price-a-hint">이 구성 전체에 적용된 할인 후 금액</span>
+        <span class="tool-error" id="unit-Price-a-error" data-error="aPrice"></span>
+      </div>
+      <div class="tool-field">
+        <label for="unit-a-unit">상품 A 용량 단위</label>
+        <select id="unit-a-unit" data-field="aUnit" aria-describedby="unit-a-unit-hint unit-a-unit-error">
+          <option value="g">g (그램)</option><option value="kg">kg (킬로그램)</option><option value="mL">mL (밀리리터)</option><option value="L">L (리터)</option><option value="개">개</option>
+        </select>
+        <span class="tool-hint" id="unit-a-unit-hint">받는 양과 예상 사용량에 같은 단위를 적용해요.</span>
+        <span class="tool-error" id="unit-a-unit-error" data-error="aUnit"></span>
+      </div>
+      <div class="tool-field">
+        <label for="unit-Quantity-a">상품 A 받는 총량</label>
+        <input id="unit-Quantity-a" data-field="aQuantity" type="text" inputmode="decimal" autocomplete="off" value="400" aria-describedby="unit-Quantity-a-hint unit-Quantity-a-error" />
+        <span class="tool-hint" id="unit-Quantity-a-hint">같은 상품의 증정분까지 합한 양</span>
+        <span class="tool-error" id="unit-Quantity-a-error" data-error="aQuantity"></span>
+      </div>
+      <div class="tool-field">
+        <label for="unit-Use-a">상품 A 예상 사용량</label>
+        <input id="unit-Use-a" data-field="aUse" type="text" inputmode="decimal" autocomplete="off" value="400" aria-describedby="unit-Use-a-hint unit-Use-a-error" />
+        <span class="tool-hint" id="unit-Use-a-hint">받는 총량 안에서 나중에 쓰거나 나눌 양도 포함</span>
+        <span class="tool-error" id="unit-Use-a-error" data-error="aUse"></span>
+      </div>
+    </fieldset>
+    <fieldset class="tool-product">
+      <legend>상품 B</legend>
+      <div class="tool-field">
+        <label for="unit-Price-b">상품 B 실제 결제액 (원)</label>
+        <input id="unit-Price-b" data-field="bPrice" type="text" inputmode="numeric" autocomplete="off" value="4200" aria-describedby="unit-Price-b-hint unit-Price-b-error" />
+        <span class="tool-hint" id="unit-Price-b-hint">이 구성 전체에 적용된 할인 후 금액</span>
+        <span class="tool-error" id="unit-Price-b-error" data-error="bPrice"></span>
+      </div>
+      <div class="tool-field">
+        <label for="unit-b-unit">상품 B 용량 단위</label>
+        <select id="unit-b-unit" data-field="bUnit" aria-describedby="unit-b-unit-hint unit-b-unit-error">
+          <option value="g">g (그램)</option><option value="kg">kg (킬로그램)</option><option value="mL">mL (밀리리터)</option><option value="L">L (리터)</option><option value="개">개</option>
+        </select>
+        <span class="tool-hint" id="unit-b-unit-hint">받는 양과 예상 사용량에 같은 단위를 적용해요.</span>
+        <span class="tool-error" id="unit-b-unit-error" data-error="bUnit"></span>
+      </div>
+      <div class="tool-field">
+        <label for="unit-Quantity-b">상품 B 받는 총량</label>
+        <input id="unit-Quantity-b" data-field="bQuantity" type="text" inputmode="decimal" autocomplete="off" value="500" aria-describedby="unit-Quantity-b-hint unit-Quantity-b-error" />
+        <span class="tool-hint" id="unit-Quantity-b-hint">같은 상품의 증정분까지 합한 양</span>
+        <span class="tool-error" id="unit-Quantity-b-error" data-error="bQuantity"></span>
+      </div>
+      <div class="tool-field">
+        <label for="unit-Use-b">상품 B 예상 사용량</label>
+        <input id="unit-Use-b" data-field="bUse" type="text" inputmode="decimal" autocomplete="off" value="400" aria-describedby="unit-Use-b-hint unit-Use-b-error" />
+        <span class="tool-hint" id="unit-Use-b-hint">받는 총량 안에서 나중에 쓰거나 나눌 양도 포함</span>
+        <span class="tool-error" id="unit-Use-b-error" data-error="bUse"></span>
+      </div>
+    </fieldset>
+    </div>
+    <p class="tool-error" data-tool-errors role="alert"></p>
+    <div class="tool-actions">
+      <button type="button" data-calculate>두 상품 단가 비교하기</button>
+      <button type="button" data-example>본문 예시값으로 계산</button>
+    </div>
+    <p class="tool-status" data-tool-status role="status"></p>
+    <div aria-live="polite" aria-atomic="true"><div class="tool-results" data-tool-result hidden>
+      <h3>입력한 두 구성의 비용과 양</h3>
+      <dl class="tool-result-grid">
+        <div class="tool-result-card"><dt>상품 A 입력 결제액</dt><dd><span data-result="a-total"></span>
+          <span class="tool-result-detail">받는 양: <span data-result="a-received"></span></span>
+          <span class="tool-result-detail">예상 사용량: <span data-result="a-used"></span></span>
+          <span class="tool-result-detail">남을 것으로 본 양: <span data-result="a-left"></span></span>
+          <span class="tool-result-detail">받는 양 기준: <span data-result="a-unit-price"></span></span>
+          <span class="tool-result-detail">예상 사용량 기준: <span data-result="a-use-price"></span></span>
+        </dd></div>
+        <div class="tool-result-card"><dt>상품 B 입력 결제액</dt><dd><span data-result="b-total"></span>
+          <span class="tool-result-detail">받는 양: <span data-result="b-received"></span></span>
+          <span class="tool-result-detail">예상 사용량: <span data-result="b-used"></span></span>
+          <span class="tool-result-detail">남을 것으로 본 양: <span data-result="b-left"></span></span>
+          <span class="tool-result-detail">받는 양 기준: <span data-result="b-unit-price"></span></span>
+          <span class="tool-result-detail">예상 사용량 기준: <span data-result="b-use-price"></span></span>
+        </dd></div>
+      </dl>
+      <p class="tool-summary" data-result="summary"></p>
+      <p class="tool-note" data-result="condition"></p>
+      <p class="tool-note">금액은 소수 둘째 자리까지 반올림한 값이에요. 받는 양 기준은 결제액 ÷ 받는 양, 예상 사용량 기준은 결제액 ÷ 예상 사용량으로 계산해요. g·mL는 100단위당, 개는 1개당 표시해요.</p>
+    </div></div>
+  </form>
+  <noscript><p>직접 계산하려면 JavaScript를 켜 주세요. 위 수식과 가상 비교표, 아래 장보기 메모는 그대로 읽을 수 있어요.</p></noscript>
+  <p class="tool-note" id="unit-price-limits">예상 사용량은 직접 입력한 계획이며 실측값이 아니에요. 남은 양을 나중에 쓰거나 나눌 수 있다면 예상 사용량에 포함해요. 두 상품의 예상 사용량이 다르면 같은 필요를 충족하는 비교인지도 확인해 주세요. 사용량 0은 사용량당 비용을 계산할 수 없다는 뜻이에요.</p>
+  <p class="tool-note">두 상품에 같은 결제액 기준을 적용해 주세요. 배송비·쿠폰·사은품 가치는 자동 반영하지 않아요. 여러 상품 주문의 배송비나 할인액을 각 상품에 전부 더하거나 빼지 않도록, <a href="#shopping-note">장보기 메모</a>에 주문 전체 지출을 따로 적어 보세요. 낮은 단가가 같은 품질이나 필요한 양의 충족을 보장하지는 않아요.</p>
+  <p class="tool-privacy">입력값은 이 브라우저 안에서만 계산해요. 계산 기능은 값을 저장하거나 서버로 보내지 않아요.</p>
+</section>
 
 <section class="worked-example" aria-labelledby="two-plus-one">
   <h2 id="two-plus-one">가상 예시 2: 2+1과 25% 할인은 필요한 개수에 따라 달라져요</h2>
@@ -296,5 +399,6 @@
   </footer>
 
   <script src="/js/main.js"></script>
+  <script src="/js/spending-tools.js?v=20261016"></script>
 </body>
 </html>
