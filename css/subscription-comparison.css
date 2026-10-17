@@ -1,0 +1,16 @@
+.article--annual-subscription .table-scroll { margin: var(--space-5) 0; }
+.article--annual-subscription .table-scroll table {
+  display: table;
+  width: 100%;
+  min-width: 560px;
+  max-width: none;
+  margin: 0;
+  overflow: visible;
+}
+.article--annual-subscription .table-scroll th { white-space: nowrap; }
+.article--annual-subscription .table-scroll th,
+.article--annual-subscription .table-scroll td { overflow-wrap: normal; }
+.article--annual-subscription .table-scroll td:first-child,
+.article--annual-subscription .table-scroll td:nth-child(2) { white-space: nowrap; }
+.article--annual-subscription .table-hint { font-size: var(--fs-sm); color: var(--color-text-soft); }
+.article--annual-subscription .article-body figure img { width: 100%; max-width: 720px; }

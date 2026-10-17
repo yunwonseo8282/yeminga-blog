@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">월간 결제 횟수와 연간 총액의 가상 비교</title><desc id="desc">월간 회당12000원, 연간108000원의 가상 조건에서8회96000원,9회108000원,10회120000원을 비교해요.9회는 같고10회부터 연간 총액이 낮아요.</desc>
+<rect width="1200" height="800" rx="30" fill="#f5effb"/>
+<g font-family="Malgun Gothic,Arial,sans-serif" fill="#493b65"><text x="75" y="85" font-size="42" font-weight="700">월 12,000원 vs 연간 108,000원</text><text x="75" y="133" font-size="25">첫12개월 · 동일 기능 · 중도 환급 없음이라는 가상 조건</text></g>
+<g stroke="#d7c9ec" stroke-width="2"><path d="M270 205v365M270 570h815"/></g>
+<g font-family="Malgun Gothic,Arial,sans-serif" font-size="31" fill="#493b65"><text x="75" y="280">월간 8회</text><text x="75" y="390">월간 9회</text><text x="75" y="500">월간 10회</text></g>
+<g fill="#ad93d5"><rect x="270" y="235" width="576" height="62" rx="10"/><rect x="270" y="345" width="648" height="62" rx="10"/><rect x="270" y="455" width="720" height="62" rx="10"/></g>
+<path d="M918 190v370" stroke="#ba527c" stroke-width="4" stroke-dasharray="9 8"/>
+<g font-family="Malgun Gothic,Arial,sans-serif" font-size="28" font-weight="700" fill="#fff"><text x="300" y="277">96,000원</text><text x="300" y="387">108,000원</text><text x="300" y="497">120,000원</text></g>
+<g font-family="Malgun Gothic,Arial,sans-serif" fill="#493b65"><text x="735" y="620" font-size="27" fill="#a4426a">점선: 연간 108,000원</text><text x="75" y="690" font-size="35" font-weight="700">9회는 같고, 10회부터 연간 총액이 낮아요</text><text x="75" y="740" font-size="23">예밍이네 가상 계산 · 실제 상품 가격이나 절약 보장이 아니에요</text></g>
+</svg>

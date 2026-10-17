@@ -560,5 +560,22 @@
       "최종 결제액",
       "무료 배송"
     ]
+  },
+  {
+    "title": "월간·연간 구독, 몇 달 써야 연간 결제가 이득일까요?",
+    "excerpt": "월 환산 가격과 실제 청구액을 구분해요. 가상 요금으로 월간·연간 선결제·연간약정 월납을 비교하고, 결제 횟수별 손익분기점과 가입 전 메모를 직접 계산해 봅니다.",
+    "category": "consume",
+    "date": "2026-10-17",
+    "dateModified": "2026-10-17",
+    "referenceCheckedOn": "2026-10-17",
+    "thumbnail": "/images/annual-monthly-subscription.svg",
+    "url": "/posts/annual-monthly-subscription-break-even.html",
+    "tags": [
+      "소비 심리",
+      "구독",
+      "연간 결제",
+      "월간 결제",
+      "손익분기"
+    ]
   }
 ]
