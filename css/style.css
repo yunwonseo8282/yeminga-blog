@@ -1657,7 +1657,8 @@ a.inline-cta:focus-visible {
 /* 가격 비교표는 숫자를 한 줄로 유지하고 표 영역 안에서만 스크롤합니다. */
 .thumb[src="/images/unit-price-bundle-comparison.svg"],
 .thumb[src="/images/annual-monthly-subscription.svg"],
-.thumb[src="/images/refusal-reasons-boundaries.svg"] { object-fit: contain; background: #f7f2fa; }
+.thumb[src="/images/refusal-reasons-boundaries.svg"],
+.thumb[src="/images/worry-waiting-note.svg"] { object-fit: contain; background: #f7f2fa; }
 .article--unit-prices .article-body figure img { width: 100%; max-width: 720px; }
 .article--unit-prices .table-scroll { margin: var(--space-5) 0; }
 .article--unit-prices .table-scroll table {
