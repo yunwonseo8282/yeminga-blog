@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+<title id="title">즉시 할인과 포인트 적립, 두 번의 결제액 비교</title><desc id="desc">원래 필요한 오늘 물건 5만원과 다음 물건 2만원의 가상 계산. A 10퍼센트 할인은 총 6만5천원. B 15퍼센트 적립은 7500포인트 전액 사용 시 6만2500원, 4000포인트 사용 시 6만6천원, 미사용 시 7만원.</desc>
+<rect width="1200" height="1200" rx="48" fill="#f5eee5"/>
+<g font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" fill="#44382f">
+<text x="76" y="112" font-size="59" font-weight="700">10% 할인 vs 15% 적립</text><text x="76" y="185" font-size="39">원래 필요한 두 번의 구매, 총 얼마를 낼까요?</text>
+<text x="76" y="245" font-size="29" fill="#776552">가상 조건: 오늘 50,000원 + 다음 물건 20,000원</text>
+<rect x="66" y="295" width="1068" height="150" rx="24" fill="#fff"/><text x="100" y="353" font-size="36" font-weight="700">A  오늘 10% 할인</text><text x="100" y="412" font-size="36">45,000 + 20,000 = 65,000원</text>
+<rect x="66" y="480" width="1068" height="150" rx="24" fill="#fff"/><text x="100" y="538" font-size="36" font-weight="700">B  적립 7,500P 전액 사용</text><text x="100" y="597" font-size="36">50,000 + 12,500 = 62,500원</text>
+<rect x="66" y="665" width="1068" height="150" rx="24" fill="#fff"/><text x="100" y="723" font-size="36" font-weight="700">B  한도 때문에 4,000P만 사용</text><text x="100" y="782" font-size="36">50,000 + 16,000 = 66,000원</text>
+<rect x="66" y="850" width="1068" height="150" rx="24" fill="#fff"/><text x="100" y="908" font-size="36" font-weight="700">B  포인트 미사용</text><text x="100" y="967" font-size="36">50,000 + 20,000 = 70,000원</text>
+<text x="76" y="1071" font-size="28" fill="#776552">예밍이네가 구성한 가상 계산 · 별도 비용·신규 적립 없음</text><text x="76" y="1122" font-size="28" fill="#776552">미사용 잔액은 따로 기록하며, 실제 상품 규칙은 아니에요.</text>
+</g></svg>
