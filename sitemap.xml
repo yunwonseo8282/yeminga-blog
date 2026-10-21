@@ -22,6 +22,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://yeminga.com/posts/listening-or-advice-support-conversation</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://yeminga.com/posts/instant-discount-versus-reward-points</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -284,5 +290,10 @@
     <loc>https://yeminga.com/category/relation/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/category/relation/page/2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

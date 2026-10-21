@@ -629,5 +629,22 @@
       "총지출",
       "쿠폰"
     ]
+  },
+  {
+    "title": "친구가 고민을 말할 때, 조언부터 해도 될까요?",
+    "excerpt": "고민을 들었을 때 듣기·생각 정리·선택지 찾기 중 어떤 도움을 원하는지 확인해 봐요. 가상 대화에서 필요한 도움이 달라지는 순간과 내가 할 수 있는 범위를 살피고, 대화 전후 메모로 옮겨 봅니다.",
+    "category": "relation",
+    "date": "2026-10-21",
+    "dateModified": "2026-10-21",
+    "referenceCheckedOn": "2026-10-21",
+    "thumbnail": "/images/listening-or-advice.svg",
+    "url": "/posts/listening-or-advice-support-conversation.html",
+    "tags": [
+      "인간관계 심리",
+      "경청",
+      "조언",
+      "고민 대화",
+      "도움"
+    ]
   }
 ]
