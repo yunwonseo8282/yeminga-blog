@@ -646,5 +646,22 @@
       "고민 대화",
       "도움"
     ]
+  },
+  {
+    "title": "친구와 식사비를 나눌 때, 무엇부터 합의할까요?",
+    "excerpt": "함께 먹은 음식과 각자 마신 음료를 나눠 보고, 균등 분담과 항목별 분담을 가상 금액으로 비교해요. 쿠폰은 한 번만 적용하고, 이미 보낸 돈까지 반영해 추가로 주고받을 금액을 확인합니다.",
+    "category": "consume",
+    "date": "2026-10-22",
+    "dateModified": "2026-10-22",
+    "referenceCheckedOn": "2026-10-22",
+    "thumbnail": "/images/shared-meal-bill.svg",
+    "url": "/posts/shared-meal-bill-splitting.html",
+    "tags": [
+      "소비 심리",
+      "식사비",
+      "공동 지출",
+      "비용 분담",
+      "정산"
+    ]
   }
 ]
