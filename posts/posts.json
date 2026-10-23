@@ -100,7 +100,7 @@
     "excerpt": "처음 본 숫자가 가격 판단의 기준이 되는 앵커링 효과를 살펴봐요. 1974년 실험의 중앙값, 개인차 연구의 한계, 실제 비교 가격을 확인하는 방법을 구분했어요.",
     "category": "consume",
     "date": "2026-06-24",
-    "dateModified": "2026-09-19",
+    "dateModified": "2026-10-23",
     "thumbnail": "/images/thumb-anchoring-effect-price-tag.png",
     "url": "/posts/anchoring-effect-price-tag.html",
     "tags": [
@@ -662,6 +662,23 @@
       "공동 지출",
       "비용 분담",
       "정산"
+    ]
+  },
+  {
+    "title": "‘짧게’와 ‘자세히’라는 피드백, 무엇부터 고칠까요?",
+    "excerpt": "서로 다른 피드백을 받은 뒤 바로 전부 고치기보다, 목적·청중·지적한 부분을 먼저 확인해요. 가상 발표의 수정 전후를 비교하고, 함께 반영할 의견과 다시 물을 조건을 수정 메모로 나눠 봅니다.",
+    "category": "emotion",
+    "date": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "referenceCheckedOn": "2026-10-23",
+    "thumbnail": "/images/feedback-revision-plan.svg",
+    "url": "/posts/conflicting-feedback-revision-plan.html",
+    "tags": [
+      "감정과 자아",
+      "피드백",
+      "수정 계획",
+      "발표",
+      "자기 평가"
     ]
   }
 ]

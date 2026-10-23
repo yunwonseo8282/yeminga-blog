@@ -22,6 +22,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://yeminga.com/posts/conflicting-feedback-revision-plan</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://yeminga.com/posts/shared-meal-bill-splitting</loc>
     <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -215,7 +221,7 @@
   </url>
   <url>
     <loc>https://yeminga.com/posts/anchoring-effect-price-tag</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -296,6 +302,11 @@
     <loc>https://yeminga.com/category/emotion/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yeminga.com/category/emotion/page/2</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://yeminga.com/category/relation/</loc>
