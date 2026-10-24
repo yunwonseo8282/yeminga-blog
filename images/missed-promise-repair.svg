@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+<title id="title">약속을 못 지킨 뒤, 사과와 새 약속 나누기</title><desc id="desc">이미 생긴 일과 현재 상태, 가능한 수습 제안, 새 합의와 실제 이행을 따로 기록하는 세 칸. 효과가 검증된 절차가 아닌 예밍이네의 직접 구성입니다.</desc>
+<rect width="1200" height="1200" rx="48" fill="#f0e9fb"/>
+<g font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" fill="#302d3b">
+<text x="80" y="125" font-size="58" font-weight="700">약속한 일을</text><text x="80" y="202" font-size="58" font-weight="700">못 끝냈다면</text>
+<text x="80" y="270" font-size="34" fill="#665b76">사과와 다음 행동을 따로 기록해요</text>
+<rect x="72" y="328" width="1056" height="205" rx="28" fill="#fff"/><text x="108" y="397" font-size="44" font-weight="700">이미 생긴 일과 현재 상태</text><text x="108" y="461" font-size="36">원래 약속 · 완료/미완료 · 확인된 영향</text>
+<path d="M600 545v28m-14-13 14 14 14-14" fill="none" stroke="#a68ad8" stroke-width="8" stroke-linecap="round"/>
+<rect x="72" y="588" width="1056" height="205" rx="28" fill="#fff"/><text x="108" y="657" font-size="44" font-weight="700">가능한 수습 제안</text><text x="108" y="721" font-size="36">범위 · 시각 · 조건 / 상대 확인 전</text>
+<path d="M600 805v28m-14-13 14 14 14-14" fill="none" stroke="#a68ad8" stroke-width="8" stroke-linecap="round"/>
+<rect x="72" y="848" width="1056" height="205" rx="28" fill="#fff"/><text x="108" y="917" font-size="44" font-weight="700">새 합의와 실제 이행</text><text x="108" y="981" font-size="36">누가 · 무엇을 · 언제 / 실제 전달 기록</text>
+<text x="80" y="1122" font-size="29" fill="#665b76">제안은 합의와 다르고, 합의는 완료와 달라요.</text>
+<text x="80" y="1170" font-size="24" fill="#665b76">예밍이네의 직접 구성 · 관계 회복 효과를 검증한 그림이 아니에요.</text>
+</g></svg>

@@ -1662,7 +1662,8 @@ a.inline-cta:focus-visible {
 .thumb[src="/images/discount-reward-points.svg"],
 .thumb[src="/images/listening-or-advice.svg"],
 .thumb[src="/images/shared-meal-bill.svg"],
-.thumb[src="/images/feedback-revision-plan.svg"] { object-fit: contain; background: #f7f2fa; }
+.thumb[src="/images/feedback-revision-plan.svg"],
+.thumb[src="/images/missed-promise-repair.svg"] { object-fit: contain; background: #f7f2fa; }
 .article--unit-prices .article-body figure img { width: 100%; max-width: 720px; }
 .article--unit-prices .table-scroll { margin: var(--space-5) 0; }
 .article--unit-prices .table-scroll table {
