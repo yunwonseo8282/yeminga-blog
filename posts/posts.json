@@ -698,5 +698,23 @@
       "일정 변경",
       "의사소통"
     ]
+  },
+  {
+    "title": "같이 살까요, 따로 살까요? 배송비를 묶음별로 계산하는 법",
+    "excerpt": "같은 물건을 따로 주문하거나 한곳에 모았을 때, 배송비 묶음마다 최종 결제액을 비교해요. 가상 사례로 묶음배송 가능·불가, 무료배송을 위한 추가 구매와 확인할 조건을 나눠 계산했어요.",
+    "category": "consume",
+    "date": "2026-10-26",
+    "dateModified": "2026-10-26",
+    "referenceCheckedOn": "2026-10-26",
+    "thumbnail": "/images/shipping-group-comparison.svg",
+    "url": "/posts/combined-versus-separate-shipping.html",
+    "tags": [
+      "소비 심리",
+      "배송비",
+      "묶음배송",
+      "장바구니",
+      "무료배송",
+      "총지출"
+    ]
   }
 ]
