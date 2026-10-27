@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+<title id="title">모임 후보와 확정은 다른 기록이에요</title><desc id="desc">저자가 직접 구성한 가상 사례. 기존 세 후보에는 각각 두 명만 가능해 세 명 모두 참석하는 공통 후보가 0개. 새 11월9일 후보에 두 명 가능, 한 명 미확인이라 응답 대기. 전원 가능을 확인하고 이 날짜로 정하는 동의를 받은 뒤 최종 안내를 남긴다. 관계 개선 효과를 검증한 절차가 아니다.</desc>
+<rect width="1200" height="1200" rx="48" fill="#f0e9fb"/>
+<g font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" fill="#302d3b">
+<text x="72" y="112" font-size="58" font-weight="700">같이 가능한 날이 없을 때</text><text x="72" y="188" font-size="58" font-weight="700">후보와 확정을 나눠요</text>
+<text x="72" y="252" font-size="36" fill="#665b76">셋 모두·온라인·한 시간 / 직접 구성한 가상 사례</text>
+<rect x="62" y="304" width="1076" height="210" rx="26" fill="#fff"/>
+<text x="98" y="379" font-size="51" font-weight="700">기존 세 후보: 각각 두 명 가능</text><text x="98" y="455" font-size="44">이번 후보 중 전원 공통은 0개</text>
+<path d="M600 530v24m-13-12 13 14 13-14" fill="none" stroke="#a68ad8" stroke-width="8" stroke-linecap="round"/>
+<rect x="62" y="570" width="1076" height="210" rx="26" fill="#e7defa"/>
+<text x="98" y="645" font-size="51" font-weight="700">새 후보: 가능 2명·미확인 1명</text><text x="98" y="721" font-size="44">가상 11월 9일 / 아직 응답 대기</text>
+<path d="M600 797v24m-13-12 13 14 13-14" fill="none" stroke="#a68ad8" stroke-width="8" stroke-linecap="round"/>
+<rect x="62" y="838" width="1076" height="210" rx="26" fill="#fff"/>
+<text x="98" y="913" font-size="51" font-weight="700">전원 가능을 확인한 뒤</text><text x="98" y="989" font-size="44">이날로 정하는 동의 → 최종 안내</text>
+<text x="72" y="1122" font-size="37" font-weight="700">미확인 응답을 동의로 바꾸어 적지 않아요.</text>
+<text x="72" y="1170" font-size="28" fill="#665b76">실제 모임 일정이나 효과를 측정한 연구 결과가 아니에요.</text>
+</g></svg>
