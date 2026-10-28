@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+<title id="title">선택 전 기록과 결과 뒤 생각을 나눠요</title><desc id="desc">직접 구성한 가상 우산 사례. 오전 8시 기록에는 설명용 비 가능성 30퍼센트와 우산을 두고 가는 선택이 있다. 결과 뒤 떠오른 회상은 원기록과 나누고, 오후4시에 확인한 우산 대여함이 오전에도 이용가능했는지는 미확인으로 남긴다. 연구 효과를 측정한 그림이 아니다.</desc>
+<rect width="1200" height="1200" rx="72" fill="#f0eafa"/>
+<g font-family="sans-serif" fill="#302c40"><text x="80" y="120" font-size="48" font-weight="700">결과를 알고 난 뒤에도</text><text x="80" y="188" font-size="48" font-weight="700">당시 기록은 그대로 읽어요</text><text x="80" y="246" font-size="30" fill="#60566d">직접 구성한 가상 사례 · 실제 날씨 예보 아님</text>
+<rect x="70" y="288" width="1060" height="220" rx="32" fill="#fff"/><text x="110" y="353" font-size="38" font-weight="700">오전 8시 · 출발 전 원기록</text><text x="110" y="416" font-size="34">가상 비 가능성 30% / 우산은 두고 가기로 함</text><text x="110" y="474" font-size="30">비가 올 수도, 안 올 수도 있다고 기록</text>
+<rect x="70" y="546" width="1060" height="206" rx="32" fill="#e3d8f3"/><text x="110" y="611" font-size="38" font-weight="700">결과를 알고 난 뒤 · 현재의 회상</text><text x="110" y="674" font-size="34">“거의 비가 올 줄 알았는데…”</text><text x="110" y="725" font-size="30">이 생각을 출발 전 원기록으로 옮기지 않아요</text>
+<rect x="70" y="790" width="1060" height="218" rx="32" fill="#fff"/><text x="110" y="855" font-size="38" font-weight="700">오후 4시 · 나중에 확인한 정보</text><text x="110" y="918" font-size="34">건물의 우산 대여함을 처음 확인함</text><text x="110" y="974" font-size="30">오전의 이용 가능 여부·안내 열람은 미확인</text>
+<text x="80" y="1076" font-size="32" font-weight="700">원기록이 없으면 “당시 기록 없음”으로 남겨요.</text><text x="80" y="1134" font-size="27" fill="#60566d">정보를 구분하는 저자 구성 예시 · 편향 감소 효과를 측정한 그림 아님</text></g></svg>

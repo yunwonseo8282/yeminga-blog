@@ -734,5 +734,23 @@
       "의사소통",
       "선호"
     ]
+  },
+  {
+    "title": "결과를 알고 나니 뻔해 보일 때, 선택 당시 기록을 다시 읽는 법",
+    "excerpt": "결과를 알기 전 원기록과 지금 떠올리는 기억을 나눠 봐요. 가상 우산 사례에서 결과만 다른 두 장면을 비교하고, 나중에 확인한 정보와 다음 선택의 확인 항목을 회고 메모로 정리했어요.",
+    "category": "emotion",
+    "date": "2026-10-28",
+    "dateModified": "2026-10-28",
+    "referenceCheckedOn": "2026-10-28",
+    "thumbnail": "/images/decision-before-after.svg",
+    "url": "/posts/decision-before-after-outcome.html",
+    "tags": [
+      "감정과 자아",
+      "사후 확신 편향",
+      "결과 편향",
+      "선택 회고",
+      "자기 평가",
+      "기록"
+    ]
   }
 ]
