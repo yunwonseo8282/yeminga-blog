@@ -752,5 +752,22 @@
       "자기 평가",
       "기록"
     ]
+  },
+  {
+    "title": "빌려준 물건을 돌려받을 때, 구성품과 수령을 확인하는 법",
+    "excerpt": "빌려준 물건을 돌려받을 때 전체 개수만 세지 않아요. 삼각대 세트와 별도 대여품이 섞인 가상 사례로, 반환 합의·발송·수령·구성품 확인을 나누고 남은 질문을 메모해 봅니다.",
+    "category": "relation",
+    "date": "2026-10-30",
+    "dateModified": "2026-10-30",
+    "thumbnail": "/images/borrowed-items-return.svg",
+    "url": "/posts/borrowed-items-return-check.html",
+    "tags": [
+      "인간관계 심리",
+      "물건 반환",
+      "구성품",
+      "수령 확인",
+      "대여",
+      "인계"
+    ]
   }
 ]

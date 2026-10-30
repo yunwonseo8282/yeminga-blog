@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+<title id="title">받은 개수와 구성품은 달라요</title>
+<desc id="desc">직접 구성한 가상 사례. 삼각대 본체·거치대·주머니 세 구성품과 독서등 한 개를 별도 건으로 빌려줬다. 이번 봉투에는 본체·주머니·독서등 세 개가 있어 삼각대 구성품은 셋 중 둘, 독서등은 한 개를 확인했다. 거치대가 다른 경로로 반환됐는지는 따로 확인한다.</desc>
+<rect width="1200" height="1200" rx="64" fill="#f0eafa"/>
+<g font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" fill="#302c40">
+<text x="80" y="104" font-size="56" font-weight="700">받은 개수와 구성품은 달라요</text>
+<text x="80" y="163" font-size="36" fill="#60566d">직접 구성한 가상 예시</text>
+<rect x="64" y="200" width="1072" height="235" rx="30" fill="#ffffff"/>
+<text x="104" y="265" font-size="50" font-weight="700">1. 빌려준 것</text>
+<text x="104" y="331" font-size="46">본체·거치대·주머니 = 삼각대 세트</text>
+<text x="104" y="391" font-size="42">독서등 1개는 별도 대여</text>
+<rect x="64" y="465" width="1072" height="235" rx="30" fill="#e3d8f3"/>
+<text x="104" y="530" font-size="50" font-weight="700">2. 이번 봉투에서 확인</text>
+<text x="104" y="596" font-size="46">본체·주머니·독서등</text>
+<text x="104" y="656" font-size="42">받은 물건은 총 3개</text>
+<rect x="64" y="730" width="1072" height="285" rx="30" fill="#ffffff"/>
+<text x="104" y="795" font-size="50" font-weight="700">3. 대여 건별로 대조</text>
+<text x="104" y="866" font-size="48">삼각대 구성품 2/3</text>
+<text x="104" y="936" font-size="48">독서등 1/1 · 별도 기록</text>
+<text x="80" y="1091" font-size="38" font-weight="700">거치대: 이번 봉투에서 미확인</text>
+<text x="80" y="1151" font-size="36" fill="#60566d">다른 경로 반환 여부는 따로 확인해요</text>
+</g>
+</svg>
