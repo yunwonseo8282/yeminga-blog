@@ -42,7 +42,7 @@ HTML/CSS/JavaScript로 만든 개인 심리학 교양 블로그입니다. 운영
 
 무료 배송 글의 `#shipping-calculator`, 구독 글의 `#subscription-calculator`, 단위가격 글의 `#unit-price-calculator`에서 독자가 금액·이용 횟수·받는 양과 예상 사용량을 직접 비교할 수 있습니다. 단위가격 비교는 g/kg·mL/L·개처럼 차원이 같은 단위를 사용하며, 다른 차원의 단위를 서로 바꾸지 않습니다. 계산 로직과 화면 연결은 `js/spending-tools.js`, 스타일은 `css/spending-tools.css`에서 관리합니다. 기능은 브라우저에서만 계산하며 입력을 저장하거나 전송하지 않습니다. JavaScript가 꺼져도 기존 가상 계산 예시와 본문을 읽을 수 있습니다.
 
-기능 수정 후 `node scripts/test-spending-tools.js`로 계산 경계값을 확인하고 전체 빌드·검증과 모바일 화면 확인을 진행합니다. 홈페이지의 `START_HERE_START`/`START_HERE_END` 영역은 이 도구와 생각 정리 예시로 연결하며, 빌드 시 카테고리 및 다음 목록 페이지에서는 제거됩니다.
+기능 수정 후 `node scripts/test-spending-tools.js`로 계산 경계값을 확인하고 전체 빌드·검증과 모바일 화면 확인을 진행합니다. 홈페이지의 `START_HERE_START`/`START_HERE_END` 영역은 이 도구와 생각 정리 예시로 연결합니다. 소비 카테고리 첫 페이지에는 `build.js`의 `createConsumeGuideHtml()`에서 관리하는 계산기·수기 메모 선택 안내를 넣고, 다른 카테고리와 다음 목록 페이지에서는 제거합니다. 홈의 기존 시작 카드는 보존합니다.
 
 홈페이지의 `SELF_TESTS_START`/`SELF_TESTS_END` 영역은 공개된 예밍아놀자 테스트의 시작 페이지로 연결합니다. 이 소개도 홈페이지에서만 표시하며, 카테고리 및 다음 목록 페이지에서는 제거됩니다.
 
