@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="650" viewBox="0 0 600 650" role="img" aria-labelledby="title desc">
+<title id="title">가상 일정: 합계 90분, 가장 긴 구간 35분</title>
+<desc id="desc">19시부터 19시35분까지 35분,20시10분부터20시45분까지35분,21시20분부터21시40분까지20분의 작업 빈칸이다. 합계는90분이지만 한 번에50분을 쓸 구간은 없다. 구간 사이 고정 일정과 휴식은 본문 표에 표시한다.</desc>
+<rect width="600" height="650" rx="24" fill="#f7f2fa"/>
+<g font-family="'Noto Sans KR',sans-serif" fill="#30263f">
+<text x="32" y="48" font-size="22" fill="#6c4ab4">직접 구성한 가상 일정</text>
+<text x="32" y="98" font-size="32" font-weight="700">합계와 연속 길이는 달라요</text>
+<rect x="32" y="133" width="536" height="100" rx="14" fill="#e4d9fb"/>
+<text x="52" y="173" font-size="26">① 19:00~19:35</text><text x="52" y="213" font-size="30" font-weight="700">35분</text>
+<rect x="32" y="253" width="536" height="100" rx="14" fill="#e4d9fb"/>
+<text x="52" y="293" font-size="26">② 20:10~20:45</text><text x="52" y="333" font-size="30" font-weight="700">35분</text>
+<rect x="32" y="373" width="536" height="100" rx="14" fill="#ece5f8"/>
+<text x="52" y="413" font-size="26">③ 21:20~21:40</text><text x="52" y="453" font-size="30" font-weight="700">20분</text>
+<text x="32" y="523" font-size="29" font-weight="700">합계 90분 / 최장 연속 35분</text>
+<text x="32" y="568" font-size="25">50분을 한 번에 넣을 칸은 없어요.</text>
+<text x="32" y="611" font-size="20" fill="#655a74">구간 사이 식사·통화·휴식은 본문 표에 있어요.</text>
+</g></svg>
