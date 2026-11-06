@@ -72,7 +72,11 @@ for (const post of posts) {
     name: text((match[1].match(/<h3[^>]*>([\s\S]*?)<\/h3>/) || [])[1] || ''),
     answer: [...match[1].matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((p) => text(p[1])).join(' '),
   }));
-  const schemaFaq = scripts.find((item) => item['@type'] === 'FAQPage');
+  const schemaFaqs = scripts.filter((item) => item['@type'] === 'FAQPage');
+  if (visibleFaq.length > 0) {
+    check(schemaFaqs.length === 1, post.url + ': 화면 FAQ가 있으면 FAQPage는 정확히 하나여야 합니다');
+  }
+  const schemaFaq = schemaFaqs[0];
   if (schemaFaq) {
     try { assert.deepEqual(schemaFaq.mainEntity.map((item) => ({ name: item.name, answer: item.acceptedAnswer.text })), visibleFaq); }
     catch { errors.push(post.url + ': 화면과 FAQ 구조화 데이터 불일치'); }
