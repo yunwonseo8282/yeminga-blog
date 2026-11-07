@@ -787,5 +787,22 @@
       "재개 준비",
       "시간 기록"
     ]
+  },
+  {
+    "title": "수리비 8만 원, 이미 낸 진단비 2만 원은 또 더해야 할까요?",
+    "excerpt": "수리 견적이 총액인지 추가액인지부터 확인해요. 가상 진단비·수리비·교체값으로 잔금과 누적 지출을 나누고, 포함 항목과 미확인 조건을 물어볼 비교 메모를 구성했어요.",
+    "category": "consume",
+    "date": "2026-11-07",
+    "dateModified": "2026-11-07",
+    "referenceCheckedOn": "2026-11-07",
+    "thumbnail": "/images/repair-estimate-remaining-cost.svg",
+    "url": "/posts/repair-estimate-remaining-cost.html",
+    "tags": [
+      "수리 견적",
+      "진단비",
+      "교체 비용",
+      "소비 비교",
+      "매몰 비용"
+    ]
   }
 ]
