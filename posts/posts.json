@@ -804,5 +804,21 @@
       "소비 비교",
       "매몰 비용"
     ]
+  },
+  {
+    "title": "수납칸이 많은 가방, 내 불편도 해결할까요?",
+    "excerpt": "열쇠 꺼내기와 노트북을 넣고 닫기를 같은 기준으로 비교해요. 기존 가방·파우치의 가상 사용 장면과 새 후보의 미확인 조건, 아직 정하지 않은 미래 사용을 나눠 봅니다.",
+    "category": "consume",
+    "date": "2026-11-11",
+    "dateModified": "2026-11-11",
+    "thumbnail": "/images/bag-compartments-use-check.svg",
+    "url": "/posts/bag-compartments-use-check.html",
+    "tags": [
+      "소비와 선택",
+      "가방 교체",
+      "구매 전 비교",
+      "사용 조건",
+      "수납"
+    ]
   }
 ]

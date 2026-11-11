@@ -1667,9 +1667,12 @@ a.inline-cta:focus-visible {
 .thumb[src="/images/decision-before-after.svg"],
 .thumb[src="/images/fragmented-time-slots.svg"],
 .thumb[src="/images/repair-estimate-remaining-cost.svg"],
+.thumb[src="/images/bag-compartments-use-check.svg"],
 .thumb[src="/images/borrowed-items-return.svg"],
 .thumb[src="/images/meeting-date-options.svg"],
 .thumb[src="/images/missed-promise-repair.svg"] { object-fit: contain; background: #f7f2fa; }
+.article--bag-fit .article-body table { display: table; width: 100%; }
+.article--bag-fit .article-body th { white-space: normal; }
 .article--time-slots .article-body th,
 .article--time-slots .article-body td { overflow-wrap: normal; }
 .article--unit-prices .article-body figure img { width: 100%; max-width: 720px; }
