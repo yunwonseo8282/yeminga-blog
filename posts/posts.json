@@ -820,5 +820,22 @@
       "사용 조건",
       "수납"
     ]
+  },
+  {
+    "title": "친구 방에 올린 사진, 다른 단체방에 보내도 될까요?",
+    "excerpt": "사진 속 사람에게 확인한 공유 범위와 새 단체방의 멤버를 비교해요. 가상 사례로 다시 물어볼 문장, 답이 없을 때 고를 대안, 이미 보냈을 때 할 말을 살펴봐요.",
+    "category": "relation",
+    "date": "2026-11-14",
+    "dateModified": "2026-11-14",
+    "referenceCheckedOn": "2026-11-14",
+    "thumbnail": "/images/group-photo-sharing-permission.svg",
+    "url": "/posts/group-photo-sharing-permission.html",
+    "tags": [
+      "인간관계 심리",
+      "사진 공유",
+      "단체방",
+      "동의",
+      "의사소통"
+    ]
   }
 ]
