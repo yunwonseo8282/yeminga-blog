@@ -837,5 +837,22 @@
       "동의",
       "의사소통"
     ]
+  },
+  {
+    "title": "책을 덮으면 기억이 안 날 때, 빠진 내용을 찾는 복습",
+    "excerpt": "한 문단을 읽고 가린 뒤 기억나는 내용을 적어 봐요. 직접 해볼 가상 안내문과 대조 예시로 빠진 조건을 찾고, 다음에 다시 확인할 질문을 만들어요.",
+    "category": "emotion",
+    "date": "2026-11-17",
+    "dateModified": "2026-11-17",
+    "referenceCheckedOn": "2026-11-17",
+    "thumbnail": "/images/yeminga-thinking.png",
+    "url": "/posts/read-recall-check-review.html",
+    "tags": [
+      "감정과 자아",
+      "기억",
+      "복습",
+      "회상",
+      "자기평가"
+    ]
   }
 ]
