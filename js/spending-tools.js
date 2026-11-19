@@ -40,6 +40,24 @@
   }
 
 
+  function describeSubscriptionThreshold(data) {
+    const { monthly, single } = data;
+    if (single === 0) return monthly === 0
+      ? '입력한 두 가격이 모두 0원이어서 이용 횟수에 관계없이 비용이 같아요.'
+      : '단건 이용 가격이 0원이므로 이용 횟수에 관계없이 단건 이용 비용이 더 적어요.';
+    const count = (value) => value.toLocaleString('ko-KR');
+    const equalUses = monthly % single === 0 ? monthly / single : null;
+    const cheaperFrom = Math.floor(monthly / single) + 1;
+    const separateThrough = Math.ceil(monthly / single) - 1;
+    const parts = [];
+    if (separateThrough >= 0) parts.push((separateThrough === 0 ? '0회는'
+      : '0~' + count(separateThrough) + '회는') + ' 단건 이용이 더 저렴해요.');
+    if (equalUses !== null) parts.push(count(equalUses) + '회는 비용이 같아요.');
+    parts.push(count(cheaperFrom) + '회부터는 구독이 더 저렴해요.');
+    if (cheaperFrom > MAX_USES) parts.push('구독이 더 저렴해지는 기준은 입력 가능한 0~10,000회 범위 밖이에요.');
+    return '입력한 가격 기준으로 ' + parts.join(' ');
+  }
+
   const MAX_QUANTITY = 1000000;
   const UNIT_TYPES = Object.freeze({
     g: { dimension: 'mass', scale: 1, baseUnit: 'g', basis: 100 },
@@ -136,7 +154,7 @@
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { readInteger, readQuantity, readUnit, calculateShipping, calculateSubscription, calculateUnitPrice, MAX_WON, MAX_USES, MAX_QUANTITY };
+    module.exports = { readInteger, readQuantity, readUnit, calculateShipping, calculateSubscription, describeSubscriptionThreshold, calculateUnitPrice, MAX_WON, MAX_USES, MAX_QUANTITY };
   }
   if (typeof document === 'undefined') return;
 
@@ -279,6 +297,9 @@
         : data.difference > 0 ? '입력한 횟수만큼 따로 이용하면 구독보다 ' + won(data.difference) + ' 적게 들어요.'
           : data.difference < 0 ? '입력한 횟수만큼 이용하면 구독이 따로 이용하기보다 ' + won(-data.difference) + ' 적게 들어요.'
             : '입력한 횟수에서는 구독과 따로 이용하는 비용이 같아요.');
+      // Keep older open pages usable while the updated HTML is being deployed.
+      const threshold = document.querySelector('#subscription-calculator [data-result="threshold"]');
+      if (threshold) threshold.textContent = describeSubscriptionThreshold(data);
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTools);

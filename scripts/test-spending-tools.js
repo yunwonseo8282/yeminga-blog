@@ -1,6 +1,6 @@
 /* node scripts/test-spending-tools.js — 독립적인 계산·입력 경계 검증 */
 const assert = require('node:assert/strict');
-const { readInteger, readQuantity, readUnit, calculateShipping, calculateSubscription, calculateUnitPrice, MAX_WON, MAX_QUANTITY } = require('../js/spending-tools.js');
+const { readInteger, readQuantity, readUnit, calculateShipping, calculateSubscription, describeSubscriptionThreshold, calculateUnitPrice, MAX_WON, MAX_QUANTITY } = require('../js/spending-tools.js');
 
 const shipping = (overrides = {}) => calculateShipping({ basket: 28000, fee: 3000, threshold: 40000, extra: 12000, ...overrides });
 assert.equal(shipping().beforeTotal, 31000);
@@ -37,6 +37,23 @@ assert.equal(subscription({ monthly: 0, single: 0 }).difference, 0);
 assert.equal(subscription({ single: 0 }).difference, 12000);
 assert.equal(subscription({ monthly: 100, uses: 3 }).perUse, 100 / 3);
 assert.equal(subscription({ uses: 10000, single: MAX_WON }).separateTotal, 1000000000000);
+
+// Price thresholds must distinguish equality, strict savings, free options and the input limit.
+const threshold = (monthly, single) => describeSubscriptionThreshold(subscription({ monthly, single }));
+assert.equal(threshold(12000, 4000), '입력한 가격 기준으로 0~2회는 단건 이용이 더 저렴해요. 3회는 비용이 같아요. 4회부터는 구독이 더 저렴해요.');
+assert.equal(threshold(12500, 4000), '입력한 가격 기준으로 0~3회는 단건 이용이 더 저렴해요. 4회부터는 구독이 더 저렴해요.');
+assert.equal(threshold(1, 2), '입력한 가격 기준으로 0회는 단건 이용이 더 저렴해요. 1회부터는 구독이 더 저렴해요.');
+assert.equal(threshold(0, 4000), '입력한 가격 기준으로 0회는 비용이 같아요. 1회부터는 구독이 더 저렴해요.');
+assert.match(threshold(0, 0), /모두 0원이어서 이용 횟수에 관계없이 비용이 같아요/);
+assert.match(threshold(12000, 0), /이용 횟수에 관계없이 단건 이용 비용이 더 적어요/);
+assert.match(threshold(10000, 1), /10,000회는 비용이 같아요\. 10,001회부터는 구독이 더 저렴해요\. 구독이 더 저렴해지는 기준은 입력 가능한 0~10,000회 범위 밖/);
+assert.match(threshold(20001, 2), /0~10,000회는 단건 이용이 더 저렴해요\. 10,001회부터/);
+assert.doesNotMatch(threshold(20001, 2), /비용이 같아요/);
+assert.match(threshold(MAX_WON, 1), /99,999,999회는 단건 이용이 더 저렴해요\. 100,000,000회는 비용이 같아요\. 100,000,001회부터/);
+assert.doesNotMatch(threshold(9999, 1), /범위 밖/);
+assert.equal(subscription({ monthly: 12500, single: 4000, uses: 3 }).difference, 500);
+assert.equal(subscription({ monthly: 12500, single: 4000, uses: 4 }).difference, -3500);
+console.log('구독 가격 기준 검증 통과: 동일 비용·나누어떨어지지 않는 가격·0원·입력 범위 밖 기준');
 
 for (const invalid of ['', ' ', null, undefined, -1, '-1', '1.5', 1.5, '1e3', Infinity, 'Infinity', NaN, 'NaN', '1,000', 'abc', {}, true, MAX_WON + 1, '999999999999999999999']) {
   assert.throws(() => readInteger(invalid, '금액'), undefined, '거절해야 하는 입력: ' + String(invalid));
