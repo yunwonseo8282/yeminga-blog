@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title desc">
+<title id="title">같은 물병도 후기의 사용 장면이 다를 수 있어요</title>
+<desc id="desc">가상 후기 B는 책상에 세워 사용했고 C는 가방에 넣고 사용했어요. 옵션과 실제로 적힌 조건을 나누어 읽어요.</desc>
+<rect width="600" height="400" rx="28" fill="#f7f2fa"/>
+<g font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" fill="#302741">
+<text x="32" y="49" font-size="27" font-weight="700">좋은 후기, 내 조건에도 맞을까요?</text>
+<text x="32" y="80" font-size="18" fill="#6b5b80">직접 구성한 가상 후기 · 실제 상품 평가가 아니에요</text>
+<rect x="24" y="103" width="268" height="226" rx="20" fill="#fff" stroke="#a593ce" stroke-width="2"/>
+<rect x="308" y="103" width="268" height="226" rx="20" fill="#fff" stroke="#a593ce" stroke-width="2"/>
+<text x="44" y="143" font-size="24" font-weight="700">후기 B</text>
+<text x="328" y="143" font-size="24" font-weight="700">후기 C</text>
+<rect x="43" y="166" width="230" height="47" rx="12" fill="#eee8fa"/>
+<rect x="327" y="166" width="230" height="47" rx="12" fill="#f5eddb"/>
+<text x="55" y="197" font-size="23" font-weight="700">책상에 세워 사용</text>
+<text x="339" y="197" font-size="23" font-weight="700">가방에 넣어 사용</text>
+<text x="44" y="255" font-size="22">누수 없음이라고 적음</text>
+<text x="328" y="255" font-size="22">누수 있었다고 적음</text>
+<text x="44" y="294" font-size="19" fill="#6b5b80">가방 휴대는 미확인</text>
+<text x="328" y="294" font-size="19" fill="#6b5b80">잠금 상태는 미기재</text>
+<text x="32" y="372" font-size="23" font-weight="700">평가를 맞붙이기 전에 사용 장면부터 비교해요</text>
+</g></svg>
