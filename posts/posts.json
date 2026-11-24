@@ -871,5 +871,22 @@
       "사용 조건",
       "구매 판단"
     ]
+  },
+  {
+    "title": "무료배송 주문을 부분 반품하면, 얼마나 돌려받을까요?",
+    "excerpt": "가상 주문 두 건으로 무료배송 기준과 반품 수거비를 확인해요. 초기 배송비가 붙을 때의 환불액, 수거비를 따로 냈을 때의 지출과 확인 메모를 담았어요.",
+    "category": "consume",
+    "date": "2026-11-24",
+    "dateModified": "2026-11-24",
+    "referenceCheckedOn": "2026-11-24",
+    "thumbnail": "/images/yeminga-curious.png",
+    "url": "/posts/partial-return-shipping-refund.html",
+    "tags": [
+      "부분 반품",
+      "무료배송",
+      "환불액",
+      "배송비",
+      "소비 비교"
+    ]
   }
 ]
